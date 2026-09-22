@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practice helm and line-handling commands from the USCGA boards packet.">
+  <meta name="theme-color" content="#4d8580">
+  <title>USCGA Boards Packet Practice</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">USCGA BOARDS PACKET</p>
+        <h1>Practice deck</h1>
+      </div>
+      <div class="header-actions">
+        <button class="theme-button" id="themeButton" type="button" aria-label="Toggle dark mode">Dark mode</button>
+        <button class="theme-button" id="focusButton" type="button" aria-label="Toggle focus mode">Focus mode</button>
+        <button class="theme-button" id="resetButton" type="button">Reset progress</button>
+      </div>
+    </header>
+
+    <section class="setup-panel" id="setupPanel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">READY WHEN YOU ARE</p>
+          <h2>Choose your drill</h2>
+        </div>
+        <p class="muted">Questions repeat on purpose. Repetition is the point.</p>
+      </div>
+      <div class="controls">
+        <label>
+          Topic
+          <select id="categorySelect">
+            <option value="all">Both command sets</option>
+            <option value="helm">Helm commands</option>
+            <option value="lines">Line handling commands</option>
+          </select>
+        </label>
+        <label>
+          Session length
+          <select id="lengthSelect">
+            <option value="10">10 questions</option>
+            <option value="20">20 questions</option>
+            <option value="30">30 questions</option>
+          </select>
+        </label>
+        <label>
+          Difficulty
+          <select id="levelSelect">
+            <option value="1">Level 1 · Recognize</option>
+            <option value="2">Level 2 · Recall</option>
+            <option value="3">Level 3 · Packet exact</option>
+          </select>
+        </label>
+        <label>
+          Study mode
+          <select id="modeSelect">
+            <option value="practice">Practice mix</option>
+            <option value="learn">Learn first</option>
+            <option value="review">Review due</option>
+            <option value="exact">Exact recall</option>
+            <option value="contrast">Confusion drill</option>
+          </select>
+        </label>
+        <button class="primary-button" id="startButton" type="button">Start practice <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="mode-hint" id="modeHint">A balanced mix of recognition, recall, cloze, and true/false questions.</p>
+    </section>
+
+    <section class="stats-row" aria-label="Practice statistics">
+      <div class="stat"><span id="answeredStat">0</span><small>answered</small></div>
+      <div class="stat"><span id="accuracyStat">0%</span><small>accuracy</small></div>
+      <div class="stat"><span id="missedStat">0</span><small>to review</small></div>
+    </section>
+
+    <section class="quiz-panel hidden" id="quizPanel">
+      <div class="quiz-meta">
+        <span id="progressLabel">Question 1 of 10</span>
+        <button class="menu-button" id="menuButton" type="button">Practice sets</button>
+        <span id="categoryLabel">Command practice</span>
+      </div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+      <div class="question-area" id="questionArea"></div>
+      <div class="feedback hidden" id="feedback" role="status" aria-live="polite"></div>
+      <div class="keyboard-hint" id="keyboardHint">1–4 answer · Enter submits or advances · N advances · Esc returns to practice sets</div>
+      <button class="next-button hidden" id="nextButton" type="button">Next question <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="results-panel hidden" id="resultsPanel"></section>
+      <section class="command-progress" id="commandProgress">
+        <div class="section-heading"><div><p class="eyebrow">MEMORY MAP</p><h2>Command mastery</h2></div><p class="muted">Each command moves forward when you recall it correctly and returns when it needs work.</p></div>
+        <div class="mastery-summary" aria-label="Mastery summary">
+          <div class="mastery-stat"><strong id="masteredCount">0</strong><span>mastered</span></div>
+          <div class="mastery-stat"><strong id="learningCount">0</strong><span>learning</span></div>
+          <div class="mastery-stat"><strong id="dueCount">0</strong><span>due now</span></div>
+        </div>
+        <div class="mastery-toolbar">
+          <label for="masteryFilter">Show</label>
+          <select id="masteryFilter">
+            <option value="all">All commands</option>
+            <option value="needs">Needs practice</option>
+            <option value="learning">Learning</option>
+            <option value="mastered">Mastered</option>
+          </select>
+        </div>
+        <div class="mastery-list" id="masteryList"></div>
+      </section>
+    <p class="privacy-note">Progress and preferences stay in this browser. Nothing is uploaded.</p>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
