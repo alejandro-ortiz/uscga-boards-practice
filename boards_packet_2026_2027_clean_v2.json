@@ -20,19 +20,7 @@
       "section": "The Coast Guard Ethos",
       "items": [
         {
-          "phrase": "In Service to our Nation"
-        },
-        {
-          "phrase": "With Honor, Respect, and Devotion to Duty We protect"
-        },
-        {
-          "phrase": "We defend We save"
-        },
-        {
-          "phrase": "We are Semper Paratus"
-        },
-        {
-          "phrase": "We are the United States Coast Guard"
+          "phrase": "In Service to our Nation. With Honor, Respect, and Devotion to Duty We protect. We defend. We save. We are Semper Paratus. We are the United States Coast Guard."
         }
       ]
     },
@@ -1020,192 +1008,37 @@
     "nautical_flags": {
       "section": "Nautical Flags",
       "items": [
-        {
-          "name": "Alfa",
-          "international_meaning": "I have a diver down; keep well clear at slow speed.",
-          "navy_meaning": "I have a diver down; keep well clear at slow speed.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Bravo",
-          "international_meaning": "I am taking in, discharging, or carrying dangerous cargo.",
-          "navy_meaning": "I am taking in, discharging, or carrying dangerous cargo.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Charlie",
-          "international_meaning": "\"Yes\" or \"affirmative\".",
-          "navy_meaning": "\"Yes\" or \"affirmative\".",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Delta",
-          "international_meaning": "I am maneuvering with difficulty; keep clear.",
-          "navy_meaning": "I am maneuvering with difficulty; keep clear.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Echo",
-          "international_meaning": "I am directing my course to starboard.",
-          "navy_meaning": "I am directing my course to starboard.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Foxtrot",
-          "international_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway",
-          "navy_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Golf",
-          "international_meaning": "I require a pilot.",
-          "navy_meaning": "I require a pilot.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Hotel",
-          "international_meaning": "I have a pilot on board.",
-          "navy_meaning": "I have a pilot on board.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "India",
-          "international_meaning": "Coming alongside.",
-          "navy_meaning": "I am directing my course to port.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Juliet",
-          "international_meaning": "I am on fire and have dangerous cargo; keep clear.",
-          "navy_meaning": "I am on fire and have dangerous cargo; keep clear.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Kilo",
-          "international_meaning": "I wish to communicate with you.",
-          "navy_meaning": "I wish to communicate with you.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Lima",
-          "international_meaning": "You should stop your vessel immediately.",
-          "navy_meaning": "You should stop your vessel immediately.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Mike",
-          "international_meaning": "My vessel is stopped; making no way.",
-          "navy_meaning": "My vessel is stopped; making no way.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "November",
-          "international_meaning": "No or negative.",
-          "navy_meaning": "No or negative.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Oscar",
-          "international_meaning": "Man overboard.",
-          "navy_meaning": "Man overboard.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Papa",
-          "international_meaning": "All personnel return to ship; proceeding to sea (Inport).",
-          "navy_meaning": "All personnel return to ship; proceeding to sea (Inport).",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Quebec",
-          "international_meaning": "Boat recall; all boats return to ship.",
-          "navy_meaning": "Ship meets health regs; request clearance into port.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Romeo",
-          "international_meaning": "Preparing to replenish (At sea). Ready duty ship (Inport).",
-          "navy_meaning": "None.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Sierra",
-          "international_meaning": "Conducting flag hoist drill.",
-          "navy_meaning": "Moving astern.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Tango",
-          "international_meaning": "Do not pass ahead of me.",
-          "navy_meaning": "Keep clear; engaged in trawling.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Uniform",
-          "international_meaning": "You are running into danger.",
-          "navy_meaning": "You are running into danger.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Victor",
-          "international_meaning": "I require assistance.",
-          "navy_meaning": "I require assistance.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Whiskey",
-          "international_meaning": "I require medical assistance.",
-          "navy_meaning": "I require medical assistance.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Xray",
-          "international_meaning": "Stop carrying out your intentions and watch for my signals.",
-          "navy_meaning": "",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Yankee",
-          "international_meaning": "Ship has visual communications duty.",
-          "navy_meaning": "I am dragging anchor.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Zulu",
-          "international_meaning": "I require a tug.",
-          "navy_meaning": "I require a tug.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Code/Answer",
-          "international_meaning": "Flag that follows is from the International Code of Signals.",
-          "navy_meaning": "Message is understood. Also, numeric decimal point.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "First substitute",
-          "international_meaning": "Absence of flag officer or unit commander (Inport).",
-          "navy_meaning": "Substitute for the first flag in this hoist.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Second substitute",
-          "international_meaning": "Absence of chief of staff (Inport).",
-          "navy_meaning": "Substitute for the second flag in this hoist.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Third substitute",
-          "international_meaning": "Absence of commanding officer (Inport).",
-          "navy_meaning": "Substitute for the third flag in this hoist.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        },
-        {
-          "name": "Fourth substitute",
-          "international_meaning": "Absence of civil or military official whose flag is flying on this ship.",
-          "navy_meaning": "Substitute for the fourth flagin this hoist.",
-          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
-        }
+        { "name": "Alfa", "navy_meaning": "I have a diver down; keep well clear at slow speed.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Bravo", "navy_meaning": "I am taking in, discharging, or carrying dangerous cargo.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Charlie", "navy_meaning": "\"Yes\" or \"affirmative\".", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Delta", "navy_meaning": "I am maneuvering with difficulty; keep clear.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Echo", "navy_meaning": "I am directing my course to starboard.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Foxtrot", "navy_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Golf", "navy_meaning": "I require a pilot.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Hotel", "navy_meaning": "I have a pilot on board.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "India", "international_meaning": "Coming alongside.", "navy_meaning": "I am directing my course to port.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Juliet", "navy_meaning": "I am on fire and have dangerous cargo; keep clear.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Kilo", "navy_meaning": "I wish to communicate with you.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Lima", "navy_meaning": "You should stop your vessel immediately.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Mike", "navy_meaning": "My vessel is stopped; making no way.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "November", "navy_meaning": "No or negative.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Oscar", "navy_meaning": "Man overboard.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Papa", "navy_meaning": "All personnel return to ship; proceeding to sea (Inport).", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Quebec", "international_meaning": "Boat recall; all boats return to ship.", "navy_meaning": "Ship meets health regs; request clearance into port.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Romeo", "international_meaning": "Preparing to replenish (At sea). Ready duty ship (Inport).", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Sierra", "international_meaning": "Conducting flag hoist drill.", "navy_meaning": "Moving astern.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Tango", "international_meaning": "Do not pass ahead of me.", "navy_meaning": "Keep clear; engaged in trawling.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Uniform", "navy_meaning": "You are running into danger.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Victor", "navy_meaning": "I require assistance.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Whiskey", "navy_meaning": "I require medical assistance.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Xray", "international_meaning": "Stop carrying out your intentions and watch for my signals.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Yankee", "international_meaning": "Ship has visual communications duty.", "navy_meaning": "I am dragging anchor.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Zulu", "navy_meaning": "I require a tug.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Code/Answer", "international_meaning": "Flag that follows is from the International Code of Signals.", "navy_meaning": "Message is understood. Also, numeric decimal point.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "First substitute", "international_meaning": "Absence of flag officer or unit commander (Inport).", "navy_meaning": "Substitute for the first flag in this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Second substitute", "international_meaning": "Absence of chief of staff (Inport).", "navy_meaning": "Substitute for the second flag in this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Third substitute", "international_meaning": "Absence of commanding officer (Inport).", "navy_meaning": "Substitute for the third flag in this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
+        { "name": "Fourth substitute", "international_meaning": "Absence of civil or military official whose flag is flying on this ship.", "navy_meaning": "Substitute for the fourth flagin this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" }
       ]
     },
     "lights_and_dayshapes": {
