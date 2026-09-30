@@ -1,6 +1,15 @@
 # USCGA Boards Packet Practice
 
-A browser-only study tool for practicing the United States Coast Guard Academy boards packet helm and line-handling commands.
+A browser-only study tool for studying the 2026-2027 United States Coast Guard Academy boards packet.
+
+It currently includes the Academy mission, Coast Guard ethos, General Orders of the Sentry, helm commands, line-handling commands, radio prowords, and Coast Guard missions.
+
+Choose one of four focused modes:
+
+- **Study**: browse packet items with answers visible.
+- **Matching**: match prompts and answers in either direction.
+- **Recall**: type definitions, reverse answers, and missing words.
+- **Exact**: type complete packet wording and compare it with the source.
 
 ## Run locally
 

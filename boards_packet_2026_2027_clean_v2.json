@@ -1,0 +1,1990 @@
+{
+  "title": "U.S. Coast Guard Academy Boards Packet 2026–2027",
+  "scope": "Content through CHAPTER 2 APPEARANCE AND GROOMING. REFERENCES and all material after this chapter are intentionally omitted.",
+  "note": "This is a reorganization of the packet content, not a determination of what is or is not board-required. Source wording is retained as closely as possible.",
+  "matching": {
+    "academy_mission": {
+      "section": "The Mission of the United States Coast Guard Academy",
+      "items": [
+        {
+          "title": "Mission",
+          "meaning": "The mission of the United States Coast Guard Academy is to graduate young men and women with sound bodies, stout hearts, and alert minds, with a liking for the sea and its lore, and with that high sense of honor, loyalty, and obedience which goes with trained initiative and leadership; well-grounded in seamanship, the sciences, and the amenities, andstrong in the resolve to be worthy of the traditions of commissioned officers in the United States Coast Guard in the service of their country and humanity."
+        },
+        {
+          "title": "Origin",
+          "meaning": "Composed in 1929 by VADM Harry G. Hamlet while Superintendent of the Academy"
+        }
+      ]
+    },
+    "coast_guard_ethos": {
+      "section": "The Coast Guard Ethos",
+      "items": [
+        {
+          "phrase": "In Service to our Nation"
+        },
+        {
+          "phrase": "With Honor, Respect, and Devotion to Duty We protect"
+        },
+        {
+          "phrase": "We defend We save"
+        },
+        {
+          "phrase": "We are Semper Paratus"
+        },
+        {
+          "phrase": "We are the United States Coast Guard"
+        }
+      ]
+    },
+    "general_orders_of_the_sentry": {
+      "section": "General Orders of the Sentry",
+      "items": [
+        {
+          "number": 1,
+          "order": "To take charge of this post and all government property in view."
+        },
+        {
+          "number": 2,
+          "order": "To walk my post in a military manner, keeping always on the alert and observing everything that takes place within sight or hearing."
+        },
+        {
+          "number": 3,
+          "order": "To report all violations of orders I am instructed to enforce."
+        },
+        {
+          "number": 4,
+          "order": "To repeat all calls from posts more distant from the guardhouse than my own."
+        },
+        {
+          "number": 5,
+          "order": "To quit my post only when properly relieved."
+        },
+        {
+          "number": 6,
+          "order": "To receive, obey, and pass on to the sentry who relieves me all orders from the commanding officer, officer of the day, and officers and petty officers of the watch."
+        },
+        {
+          "number": 7,
+          "order": "To talk to no one except in the line of duty."
+        },
+        {
+          "number": 8,
+          "order": "To give the alarm in case of fire or disorder."
+        },
+        {
+          "number": 9,
+          "order": "To call the officer of the deck in any case not covered by instructions."
+        },
+        {
+          "number": 10,
+          "order": "To salute all officers and all colors and standards not cased."
+        },
+        {
+          "number": 11,
+          "order": "To be especially watchful at night, and during the time for challenging, to challenge all persons on or near my post and to allow no one to pass without the proper authority."
+        }
+      ]
+    },
+    "helm_commands": {
+      "section": "Helm Commands",
+      "items": [
+        {
+          "command": "RIGHT/LEFT STANDARD/FULL RUDDER",
+          "action": "Apply the ordered rudder. Standard rudder is the amount required to turn the ship on its standard tactical diameter, normally 20 degrees. Full rudder is the amount required to steer on a reduced tactical diameter, normally 30 degrees. The rudder angle can vary from ship to ship."
+        },
+        {
+          "command": "RIGHT/LEFT ### DEGREES RUDDER",
+          "action": "Apply the ordered rudder. The Conn can follow this order with a new course for the Helmsman to steer, such as “STEADY ON COURSE 256” or another rudder command. If the Conn does not specify a course, the Helmsmen must call out the heading at 10-degree increments, such as “PASSING TO THE RIGHT 150, PASSING TO THE RIGHT 160” until the Conn orders a course."
+        },
+        {
+          "command": "EASE YOUR RUDDER\n\nEASE YOUR RUDDER TO RIGHT/LEFT ## DEGREES",
+          "action": "Decrease the rudder angle by half the amount currently applied or by the amount ordered. The Conn can follow this order with a new course for the Helmsman to steer or another rudder command. If the Conn does not specify a course, the Helmsman must call out the heading at 10-degree increments until the Conn orders a course."
+        },
+        {
+          "command": "RUDDER AMIDSHIPS",
+          "action": "Place the rudder at zero degrees."
+        },
+        {
+          "command": "MEET HER",
+          "action": "Use the rudder as necessary to check the swing of the ship without steadying on any specific course."
+        },
+        {
+          "command": "STEADY\nSTEADY AS SHE GOES\nSTEADY ON COURSE ###",
+          "action": "Steer the course on which the ship is currently headed or the ordered course. If the ship is turning and the Conn gives the command STEADY or STEADY AS SHE GOES, the Helmsman notes the heading and responds “MARK, ###,” calling the heading of the ship at that point. The Helmsman then steers the ship to that heading and calls “STEADY ON COURSE ###,” when the heading has been reached."
+        },
+        {
+          "command": "STEER ON",
+          "action": "The Helmsman steers on a range or object identified by the Conning Officer."
+        },
+        {
+          "command": "SHIFT YOUR RUDDER",
+          "action": "Move the rudder to the same angle in the opposite direction from where it is currently ordered. The Conn can only give this order when a specific rudder angle is in effect."
+        },
+        {
+          "command": "NOTHING TO THE RIGHT/LEFT OF COURSE ###",
+          "action": "Steer nothing to the right/left of the course specified."
+        },
+        {
+          "command": "HOW’S YOUR RUDDER",
+          "action": "This is a query from the Conn to ascertain the current ridder placement. The Helmsman replies, “MY RUDDER IS RIGHT/LEFT ### DEGREES.”"
+        },
+        {
+          "command": "MARK YOUR HEAD",
+          "action": "A command given to the Helmsman to state the heading of the ship at the moment the command was given. The Helmsman responds, “MARK ###.”"
+        },
+        {
+          "command": "SALLY YOUR RUDDER",
+          "action": "Shifting back and forth between a set number of degrees of right and left rudder as ordered by the OOD."
+        },
+        {
+          "command": "MIND YOUR HELM",
+          "action": "A command from the Conn, CO, OOD (if separate), or the Navigator to the Helmsman to pay closer attention to their steering."
+        }
+      ]
+    },
+    "line_handling_commands": {
+      "section": "Line Handling Commands",
+      "items": [
+        {
+          "command": "PUT OVER",
+          "action": "Pass the specified line to the pier and provide enough slack to allow line handlers the place the line over the bit, cleat, or bollard."
+        },
+        {
+          "command": "HOLD",
+          "action": "Do not let any more line out even though the risk of parting may exist."
+        },
+        {
+          "command": "CHECK",
+          "action": "Hold heavy tension on the specified line but render it as necessary to prevent parting the line."
+        },
+        {
+          "command": "SURGE",
+          "action": "Hold moderate tension on a line but render it enough to permit movement of the ship."
+        },
+        {
+          "command": "EASE",
+          "action": "Let a line out until it is under less tension, but not slacked."
+        },
+        {
+          "command": "SLACK",
+          "action": "Take all tension off a line."
+        },
+        {
+          "command": "TAKE SLACK OUT OF",
+          "action": "Take all slack out of a line, but so not take strain."
+        },
+        {
+          "command": "SHIFT",
+          "action": "Move a line to the specified location."
+        },
+        {
+          "command": "HEAVE AROUND ON",
+          "action": "Take a strain on a line."
+        },
+        {
+          "command": "SINGLE UP",
+          "action": "Take in all but one bight so there remains a single part to the line. Can also be used to single up all normal mooring lines."
+        },
+        {
+          "command": "DOUBLE UP",
+          "action": "Pass an additional bight on the specified line so there are three parts on the line. This can also be used to double up all normal mooring lines. Cutters without sufficient mooring line for three parts should just pass the bitter end of the single up to the peer."
+        },
+        {
+          "command": "CAST OFF",
+          "action": "When using another ship’s lines to secure your ship, it means to cast off the ends of their lines."
+        },
+        {
+          "command": "TAKE IN",
+          "action": "Allow the pier line handler enough slack to take the line off the fitting and bring the line aboard. Used when secured with your own line."
+        },
+        {
+          "command": "STAND BY YOUR LINES",
+          "action": "Man the lines, ready to cast off or moor."
+        },
+        {
+          "command": "UP-BEHIND",
+          "action": "Cease hauling on the line and slack it quickly."
+        }
+      ]
+    },
+    "radio_prowords": {
+      "section": "Radios and Messages",
+      "items": [
+        {
+          "proword": "Correction",
+          "meaning": "An error has been made."
+        },
+        {
+          "proword": "I say again",
+          "meaning": "I am repeating transmission or portions indicated."
+        },
+        {
+          "proword": "I spell",
+          "meaning": "I shall spell the next word phonetically."
+        },
+        {
+          "proword": "Out",
+          "meaning": "End of transmission, no receipt required."
+        },
+        {
+          "proword": "Over",
+          "meaning": "Go ahead; or, this is end of transmission, reply as necessary."
+        },
+        {
+          "proword": "Roger",
+          "meaning": "I have received your last transmission or message."
+        },
+        {
+          "proword": "Say again",
+          "meaning": "Repeat your last message."
+        },
+        {
+          "proword": "Wilco",
+          "meaning": "I have received your message, understood it, and will comply. (Used by commanding officer only.)"
+        }
+      ]
+    },
+    "coast_guard_missions": {
+      "section": "11 Missions of the U.S. Coast Guard",
+      "items": [
+        {
+          "mission": "Search and Rescue",
+          "activities": [
+            "Operate a national distress/response communication system.",
+            "Operate surface and air assets.",
+            "Plan, coordinate, and conduct search and rescue operations for persons and property in distress."
+          ]
+        },
+        {
+          "mission": "Marine Safety",
+          "activities": [
+            "Establish standards and conduct vessel inspections to ensure the safety of passengers and crew aboard commercial vessels.",
+            "Partner with states and boating safety organizations to reduce recreational boating accidents and deaths.",
+            "Investigate marine casualties.",
+            "License U.S. mariners."
+          ]
+        },
+        {
+          "mission": "Ports, Waterways, and Coastal\nSecurity",
+          "activities": [
+            "Conduct harbor patrols and complete vulnerability assessments.",
+            "Enforce security zones.",
+            "Approve vessel and facility security plans; ensure compliance.",
+            "Develop Area Maritime Security Plans and conduct risk assessments.",
+            "Assess foreign port antiterrorism measures, and other activities",
+            "to prevent terrorist attacks and minimize the damage."
+          ]
+        },
+        {
+          "mission": "Drug Interdiction",
+          "activities": [
+            "Deploy cutters, aircraft and deployable specialized forces to",
+            "conduct patrols, interdict and seize maritime drug trafficking vessels."
+          ]
+        },
+        {
+          "mission": "Migrant Interdiction",
+          "activities": [
+            "Deploy cutters and aircraft to prevent, disrupt and interdict maritime smuggling and maritime migration by",
+            "undocumentedmigrants to the U.S."
+          ]
+        },
+        {
+          "mission": "Defense Readiness",
+          "activities": [
+            "Provide forces to the Department of Defense (DoD) to perform jointmilitary operations worldwide.",
+            "Deploy cutters, boats, aircraft and deployable specialized forces in and around harbors to protect DoD force mobilization operations in the U.S. and expeditionary",
+            "operations overseas."
+          ]
+        },
+        {
+          "mission": "Ice Operations",
+          "activities": [
+            "Conduct Polar Operations to facilitate the movement of critical goods and personnel in support of scientific requirements, nationalsecurity activities and maritime safety.",
+            "Conduct domestic icebreaking operations to facilitate navigation and commerce.",
+            "Conduct International Ice Patrol operations."
+          ]
+        },
+        {
+          "mission": "Aids to Navigation and Waterways Management",
+          "activities": [
+            "Maintain the extensive system of U.S. aids to navigation.",
+            "Monitorand coordinate marine traffic in keyports and waterways through Vessel Traffic Services.",
+            "Regulate construction and operation ofbridges that span navigable waters."
+          ]
+        },
+        {
+          "mission": "Marine Environmental Protection",
+          "activities": [
+            "Prevent and respond to oil and hazardous substance spills.",
+            "Preventillegal dumping in U.S. waters.",
+            "Prevent invasions by aquatic nuisance species."
+          ]
+        },
+        {
+          "mission": "Living Marine Resources",
+          "activities": [
+            "Safeguard U.S. living marineresources and their environment, toinclude protected species, protectedareas, and critical habitats, from unlawful acts and",
+            "environmental degradation."
+          ]
+        },
+        {
+          "mission": "Other Law Enforcement",
+          "activities": [
+            "Protect the U.S. maritime borders, EEZ, and relevant areas of the highseas by detecting, deterring, and",
+            "interdicting foreign vessels engaged in illegal activities."
+          ]
+        }
+      ],
+      "themes": [
+        "MARITIME SAFETY: Protect those on the sea.",
+        "MARITIME SECURITY: Protect the U.S. from threats delivered by sea.",
+        "MARITIME STEWARDSHIP: Protect the sea itself."
+      ]
+    }
+  },
+  "term_definitions": {
+    "nautical_dictionary": {
+      "section": "Basic Nautical Dictionary",
+      "items": [
+        {
+          "term": "Abeam",
+          "definition": "At right angles to the centerline of the outside of a ship"
+        },
+        {
+          "term": "Adrift",
+          "definition": "Loose from moorings or out of place"
+        },
+        {
+          "term": "Aft",
+          "definition": "In, near, or toward the stern"
+        },
+        {
+          "term": "Aground",
+          "definition": "Resting on or touching the ground or bottom"
+        },
+        {
+          "term": "Ahead",
+          "definition": "Forward of the bow"
+        },
+        {
+          "term": "All Hands",
+          "definition": "Entire ship’s company, both officers and enlisted personnel"
+        },
+        {
+          "term": "Amidships",
+          "definition": "In the middle portion of ship, along the line of the keel"
+        },
+        {
+          "term": "Anchorage",
+          "definition": "Suitable place for a ship to anchor. Area of a port or harbor"
+        },
+        {
+          "term": "Anchor Detail",
+          "definition": "Group of ship’s personnel who handle ground tackle when the ship isanchoring or getting underway"
+        },
+        {
+          "term": "Anemometer",
+          "definition": "Instrument to measure wind velocity"
+        },
+        {
+          "term": "Athwartships",
+          "definition": "At right angles to the fore and aft of centerline of a ship"
+        },
+        {
+          "term": "Astern",
+          "definition": "Toward the stern; an object or vessel that is abaft of another vessel or object Ballast – Heavy weight in the hold of a vessel to maintain proper stability, trim, or draft"
+        },
+        {
+          "term": "Barometer",
+          "definition": "Instrument that registers atmospheric pressure; used in forecasting weather"
+        },
+        {
+          "term": "Barque",
+          "definition": "A type of sailing vessel with three (or more) masts, fore-and-aft sails rigged on the aftermost mast and square sails rigged on all other masts"
+        },
+        {
+          "term": "Beam",
+          "definition": "Width; breadth; the greatest athwartships width of a vessel"
+        },
+        {
+          "term": "Bearing",
+          "definition": "Direction of an object expressed in degrees either as relative or true bearing"
+        },
+        {
+          "term": "Belay",
+          "definition": "To cancel an order; to stop; to firmly secure a line"
+        },
+        {
+          "term": "Bilge",
+          "definition": "Lower part of a vessel where wastewater and seepage collect"
+        },
+        {
+          "term": "Bitt",
+          "definition": "Strong iron post on ship’s deck for working / fastening lines; invariably in pairs Bitter End - The utmost end of a line"
+        },
+        {
+          "term": "Bow",
+          "definition": "The forward section of a vessel"
+        },
+        {
+          "term": "Breast Line",
+          "definition": "A mooring line running at right angles from the ship’s fore-and-aft line"
+        },
+        {
+          "term": "Bridge",
+          "definition": "Raised platform from which the ship is steered, navigated, and conned"
+        },
+        {
+          "term": "Bulkhead",
+          "definition": "One of the vertical wall-like structures enclosing a compartment"
+        },
+        {
+          "term": "Buoy",
+          "definition": "Floating marker anchored by a line or chain to a sinker on the ocean floor which, by shape and color, conveys navigational information; may be lit or unlit and may be equipped with whistles, bells, gongs, AIS, or RACON"
+        },
+        {
+          "term": "Carry On",
+          "definition": "An order to resume work or duties"
+        },
+        {
+          "term": "Chain Locker",
+          "definition": "Compartment in which chain cable is stowed"
+        },
+        {
+          "term": "Cleat",
+          "definition": "A small metal deck fitting with horns; used for securing lines; also called belaying acleat. Short piece of wood nailed to brow or gangplank to give surer footing"
+        },
+        {
+          "term": "Conn",
+          "definition": "Individual in charge of directing helmsman and lee helmsman in the movement of the helm, control of rudder, and propulsion of engine."
+        },
+        {
+          "term": "Coxswain",
+          "definition": "Enlisted member in charge of a boat; acts as helmsman. Pronounced “kok-sun”"
+        },
+        {
+          "term": "Cutter",
+          "definition": "A Coast Guard vessel sixty-five feet in length or longer with overnightaccommodations; a type of sailing vessel"
+        },
+        {
+          "term": "Damage Control",
+          "definition": "Measures necessary to keep ship afloat, fighting, and in operatingcondition"
+        },
+        {
+          "term": "Dead Ahead",
+          "definition": "Directly ahead of the ship’s bow; bearing 000 degrees relative"
+        },
+        {
+          "term": "Deck",
+          "definition": "On a ship corresponds to the floor of a building on land"
+        },
+        {
+          "term": "Dog",
+          "definition": "Metal fitting used to secure watertight doors, hatch covers, scuttles, etc."
+        },
+        {
+          "term": "Double Up",
+          "definition": "To increase the number of ship-to-pier turns of a mooring line"
+        },
+        {
+          "term": "Draft",
+          "definition": "Depth of water from the surface to the ship’s keel; a detail of crew members"
+        },
+        {
+          "term": "Engineer of the Watch (EOW)",
+          "definition": "An officer in charge of the engineering department while on watch"
+        },
+        {
+          "term": "Fantail",
+          "definition": "Main deck section in the after part of a flush-deck ship"
+        },
+        {
+          "term": "Fathom",
+          "definition": "A six-foot unit of length"
+        },
+        {
+          "term": "Fender",
+          "definition": "Canvas, wood, rope gear, or old rubber tire used over the side to protect a ship fromchaffing when alongside a pier or another ship"
+        },
+        {
+          "term": "Fore and Aft",
+          "definition": "Running in the direction of the keel"
+        },
+        {
+          "term": "Forecastle",
+          "definition": "Upper deck in the forward part of the ship; pronounced “foke-sul,” abbreviated fo’csle"
+        },
+        {
+          "term": "Foul",
+          "definition": "Jammed, not clear for running"
+        },
+        {
+          "term": "Frame",
+          "definition": "Ribs of a vessel"
+        },
+        {
+          "term": "Halyard",
+          "definition": "Line used for hoisting flags, pennants, or balls"
+        },
+        {
+          "term": "Hatch",
+          "definition": "An opening in the ship’s deck for communication or for handling stores and cargo"
+        },
+        {
+          "term": "Hawsepipe",
+          "definition": "The steel castings in the bow through which anchor cables run"
+        },
+        {
+          "term": "Hawser",
+          "definition": "Heavy line, 5 inches or more in circumference, used for heavy work"
+        },
+        {
+          "term": "Heave",
+          "definition": "To throw or toss; to pull on a line"
+        },
+        {
+          "term": "Heel",
+          "definition": "To list over"
+        },
+        {
+          "term": "Helmsman",
+          "definition": "The person at the wheel; the person who steers the ship"
+        },
+        {
+          "term": "Hull",
+          "definition": "Framework of a vessel, together with all her decks, deckhouses, inside plating orplanking, but exclusive to masts, rigging, guns, and all superstructure items"
+        },
+        {
+          "term": "Inboard",
+          "definition": "Toward the ship’s centerline"
+        },
+        {
+          "term": "Keel",
+          "definition": "Backbone of a ship; running from stern to sternpost at the bottom"
+        },
+        {
+          "term": "Knot",
+          "definition": "One nautical mile per hour; a knob, tie, or fastening formed with rope"
+        },
+        {
+          "term": "Ladder(well)",
+          "definition": "In a ship corresponds to stairs in a building"
+        },
+        {
+          "term": "Leeward",
+          "definition": "Direction away from the wind"
+        },
+        {
+          "term": "Magazine",
+          "definition": "Compartment used for stowage of ammunition and explosives"
+        },
+        {
+          "term": "Line",
+          "definition": "Seagoing term for rope or cable"
+        },
+        {
+          "term": "Main Deck",
+          "definition": "Highest complete deck extending from stern to stern and from side to side Marlinspike – Pointed iron instrument used in splicing line or wire"
+        },
+        {
+          "term": "Mooring",
+          "definition": "Securing a ship to a pier, buoy, or another ship; anchoring with two or moreanchors"
+        },
+        {
+          "term": "Muster",
+          "definition": "To assemble the crew; roll call"
+        },
+        {
+          "term": "Nautical Mile",
+          "definition": "6,076 feet or 2000 yards; one minute of latitude"
+        },
+        {
+          "term": "Officer on Deck/Officer of the Day",
+          "definition": "The officer on watch in charge of the ship when moored or anchored"
+        },
+        {
+          "term": "Outboard",
+          "definition": "Toward the side of the vessel, or outside the vessel entirely"
+        },
+        {
+          "term": "Overhead",
+          "definition": "On a ship, equivalent to the ceiling of a building ashore"
+        },
+        {
+          "term": "Pilot",
+          "definition": "An expert who comes on board ships in harbors or dangerous waters to advise thecaptain as to how the ship should be conned; a person who controls an aircraft"
+        },
+        {
+          "term": "Pitch",
+          "definition": "The forward heaving and lunging motion of a vessel at sea"
+        },
+        {
+          "term": "Port",
+          "definition": "Left side of the ship facing forward; a harbor; an opening in the ship’ side"
+        },
+        {
+          "term": "Quarter",
+          "definition": "That part of ship’s side near the stern"
+        },
+        {
+          "term": "Quartermaster of the Watch (QMOW)",
+          "definition": "The individual responsible for assessing weather and maintaining shipboard logs on the bridge"
+        },
+        {
+          "term": "Rack",
+          "definition": "A sailor’s bed"
+        },
+        {
+          "term": "Roll",
+          "definition": "Side-to-side rotation of a ship at sea"
+        },
+        {
+          "term": "Rudder",
+          "definition": "A flat, vertical, mobile structure at the stern of a vessel; used to control the vessel’sheading"
+        },
+        {
+          "term": "Screw",
+          "definition": "The propeller; the rotating bladed device that propels the vessel through the water"
+        },
+        {
+          "term": "Secure",
+          "definition": "To make fast; to tie; an order given on completion of a drill, exercise, or evolution,meaning to withdraw from corresponding stations and duties"
+        },
+        {
+          "term": "Side Lights",
+          "definition": "Red and green running lights carried on port and starboard sides, respectively Slack – The part of a line hanging loose; to ease off, state of the tide when there is nohorizontal movement"
+        },
+        {
+          "term": "Sound",
+          "definition": "To measure depth of liquids in oil tanks, voids, blisters, and other compartments ortanks"
+        },
+        {
+          "term": "Spring Line",
+          "definition": "Mooring line leading at an angle of about 45 degrees off centerline of vessel;to turn a vessel with a line"
+        },
+        {
+          "term": "Standby",
+          "definition": "Preparatory order meaning “get ready” or “prepare to”."
+        },
+        {
+          "term": "Starboard",
+          "definition": "Right side of a ship looking forward"
+        },
+        {
+          "term": "Stern",
+          "definition": "After part of a ship"
+        },
+        {
+          "term": "Tide",
+          "definition": "The vertical rise and fall of the sea caused by gravitational effect of sun and moon"
+        },
+        {
+          "term": "Wardroom",
+          "definition": "Officer’s mess and lounge aboard a ship"
+        },
+        {
+          "term": "Watch",
+          "definition": "A period of duty, usually of four hours duration"
+        },
+        {
+          "term": "Waterline",
+          "definition": "Line painted on hull showing point to which ship sinks in water when properlytrimmed"
+        },
+        {
+          "term": "Weather Deck",
+          "definition": "Portion of main, forecastle, poop, and upper decks exposed to weather"
+        },
+        {
+          "term": "Yaw",
+          "definition": "Left-to-right movement of a ship’s bow"
+        }
+      ]
+    },
+    "enlisted_ratings": {
+      "section": "U.S. Coast Guard Enlisted Ratings",
+      "items": [
+        {
+          "name": "Aviation Maintenance Technician",
+          "abbreviation": "AMT",
+          "description": "Inspects, services, maintains, troubleshoots, and repairs aircraft engines, auxiliary power units, propellers, rotor systems, power train systems, and associated airframe and systems-specific electrical components. AMTs service, maintain and repair aircraft fuselages; wings; rotor blades; fixed and movable flight control surfaces, and bleeds aircraft air, hydraulic and fuel systems."
+        },
+        {
+          "name": "Aviation Survival Technician",
+          "abbreviation": "AST",
+          "description": "Inspects, services, maintains, troubleshoots, and repairs aircraft and aircrew survival equipment and rescue devices. Provides aircrew survival training to all aviators. ASTs deploy into a myriad of challenging rescues ranging from hurricanes and cliff rescues to emergency medical evacuations from ships at sea."
+        },
+        {
+          "name": "Avionics Electrical Technician",
+          "abbreviation": "AET",
+          "description": "Inspects, services, maintains, troubleshoots, and repairs avionics systems that perform communications, navigation, collision avoidance, target acquisition, and automatic flight-control functions, as well as the electrical control and indication functions of all airframe systems, including hydraulics, flight control, landing gear, fuel, environmental control, power plant, drive train, anti-ice, and fire detection."
+        },
+        {
+          "name": "Boatswain’s Mate",
+          "abbreviation": "BM",
+          "description": "Masters of seamanship and capable of performing almost any task in connection with deck maintenance, small boat operations, navigation, law enforcement, aids to navigation, and supervising all personnel assigned to a ship’s work force or small boat station. BMs are the only rating that has command of cutters and stations outside of the officer corps."
+        },
+        {
+          "name": "Gunner’s Mate",
+          "abbreviation": "GM",
+          "description": "Operates and accounts for weapons ordnance, from 9mm small arms to shipboard 57mm and 76mm Gun Weapon Systems. Responsible for training personnel in proper handling of weapons, ammunition, and pyrotechnics. GMs receive training in electronics, mechanical systems and hydraulics to operate and maintain ordnance and gunnery equipment. GMs also have a long history of direct participation and support of Law Enforcement operations as Boarding Team Members and Boarding Officers."
+        },
+        {
+          "name": "Operations Specialist",
+          "abbreviation": "OS",
+          "description": "Plays a central role in protecting the public from all maritime threats and hazards through command, control, and communications (C3) of boats, cutters, aircraft and personnel. They develop search and rescue plans to save mariners in distress, oversee law enforcement operations, and gather and apply intelligence information while operating the most advanced tactical computer systems in the Coast Guard."
+        },
+        {
+          "name": "Intelligence Specialist",
+          "abbreviation": "IS",
+          "description": "Collects and interprets intelligence from raw information; analyzes communication signals and prepares graphics, overlays, and photo/map composites for mission briefs. ISs maintain intelligence databases, libraries and files."
+        },
+        {
+          "name": "Maritime Enforcement Specialist",
+          "abbreviation": "ME",
+          "description": "Serves as law enforcement professionals in areas such as: inter-agency operations, security and response, security and anti-terrorism force protection, training, and administration."
+        },
+        {
+          "name": "Diver",
+          "abbreviation": "DV",
+          "description": "Operates diving equipment, air supply systems, sonars, underwater power tools, and remotely operated vehicles. Divers conduct searches, recoveries, investigations, and underwater repair in various subsurface conditions from equatorial to arctic temperatures, pristine and contaminated waters, and in unlimited to zero visibility."
+        },
+        {
+          "name": "Damage Controlman",
+          "abbreviation": "DC",
+          "description": "Responsible for ship hulls, emergency equipment, plumbing, welding, chemical biological, and radiological warfare detection, defense and decontamination, and shore side building and housing maintenance."
+        },
+        {
+          "name": "Electricians Mate",
+          "abbreviation": "EM",
+          "description": "Tests, maintains, and repairs propulsion control systems, power distribution systems, lighting systems, motors and controllers, interior communication systems, galley, scullery, and laundry equipment, electric damage control equipment, and deck machinery equipment."
+        },
+        {
+          "name": "Machinery Technician",
+          "abbreviation": "MK",
+          "description": "Operates, maintains, and repairs internal combustion engines, boilers, steam turbines, and main propulsion power transmission equipment; operates, maintains, and repairs auxiliary fireroom, refrigeration, air conditioning, electrical, and machine shop equipment; organizes, leads, and participates in damage control repair parties, and performs maintenance-related administrative functions."
+        },
+        {
+          "name": "Marine Science Technician",
+          "abbreviation": "MST",
+          "description": "Facilitates commerce through waterway management and conducting inspections of marine transportation regulated facilities, intermodal containers, and foreign and domestic vessels, ensuring compliance with federal and international laws, regulations, and treaties. Contingency Planning and Emergency Management Specialists; supporting the prevention, mitigation and management of oil spills, hazardous material releases, natural and man-made disasters and enforces environmental laws and regulations."
+        },
+        {
+          "name": "Electronics Technician",
+          "abbreviation": "ET",
+          "description": "Responsible for the installation, maintenance, repair and management of sophisticated electronic equipment, including command and control systems, shipboard weapons, communications receivers and transmitters, data and voice-encryption equipment, navigation and search radar, tactical electronic detection systems, and electronic navigation equipment."
+        },
+        {
+          "name": "Information Systems Technician",
+          "abbreviation": "IT",
+          "description": "Responsible for establishing and maintaining Coast Guard computer systems, analog and digital voice systems (telephones and voicemail) and installing and maintaining the physical network infrastructure that ties the systems together."
+        },
+        {
+          "name": "Health Services Technician",
+          "abbreviation": "HS",
+          "description": "Performs duties as assistant in the prevention and treatment of disease and injuries in small to large clinics. Services include direct medical care for personnel and families; assisting medical and dental officers; performing diagnostic testing, x-rays, and clinical lab tests; prescribing medications; administering immunizations; performing minor surgical procedures."
+        },
+        {
+          "name": "Culinary Specialist",
+          "abbreviation": "CS",
+          "description": "Chefs that perform all facets of food including baking, sauces, seafood cookery, starch cookery, cake decorating and protein fabrication. Additionally, CSs perform duties of accounting and purchasing, inventory management, nutrition and preparing menus, inspecting galleys and food for safety, sanitation, and health standards."
+        },
+        {
+          "name": "Storekeeper",
+          "abbreviation": "SK",
+          "description": "Responsible for procurements, financial transactions, shipping and receiving, as well as record keeping of general and accountable property throughout the Coast Guard."
+        },
+        {
+          "name": "Yeoman",
+          "abbreviation": "YN",
+          "description": "Performs general clerical administrative and secretarial duties including typing, filing, records management, office publications maintenance, and office equipment operation; maintains personnel service and accounting records."
+        },
+        {
+          "name": "Musician",
+          "abbreviation": "MU",
+          "description": "Highly skilled members that perform in the Coast Guard Band, stationed in New London, CT. Provides musical support during official ceremonies and events, including solos and ensembles. Members perform in ceremonial and concert events nationally and internationally."
+        },
+        {
+          "name": "Public Affairs Specialist",
+          "abbreviation": "PA",
+          "description": "Supervises or participates in the administration of public affairs activities. Serves as the Coast Guard's public-communications experts, arranges and conducts interviews, writes news releases and feature articles, shoots still and video imagery, serves as spokespersons, and maintains websites to raise public awareness of important Coast Guard issues and news stories."
+        },
+        {
+          "name": "Cyber Mission Specialist",
+          "abbreviation": "CMS",
+          "description": "Plays a crucial role in operating a secure cyber space for the Service, protecting the Marine Transportation System (MTS) against malicious actors seeking to identify new ways to exploit cyber space, and countering adversaries’ intent on disrupting Coast Guard operations or negatively impacting national interests. These members will continue to serve in critical positions within CG Cyber Command, US Cyber Command, DHS Cyber Security and elsewhere when required."
+        },
+        {
+          "name": "Investigator",
+          "abbreviation": "IV",
+          "description": "Provides support to Coast Guard law enforcement and intelligence missions. Conducts both criminal and personal background investigations, collects and analyzes intelligence information and provides personal protection services to high-ranking Coast Guard officials and other VIPs."
+        }
+      ]
+    }
+  },
+  "visual_and_identification": {
+    "ranks": {
+      "coast_guard_navy_commissioned": [
+        {
+          "rank": "O-1",
+          "name": "Ensign",
+          "abbreviation": "ENS",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-2",
+          "name": "Lieutenant Junior Grade",
+          "abbreviation": "LTJG",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-3",
+          "name": "Lieutenant",
+          "abbreviation": "LT",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-4",
+          "name": "Lieutenant Commander",
+          "abbreviation": "LCDR",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-5",
+          "name": "Commander",
+          "abbreviation": "CDR",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-6",
+          "name": "Captain",
+          "abbreviation": "CAPT",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-7",
+          "name": "Rear Admiral Lower Half",
+          "abbreviation": "RDML",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-8",
+          "name": "Rear Admiral Upper Half",
+          "abbreviation": "RADM",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-9",
+          "name": "Vice Admiral",
+          "abbreviation": "VADM",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-10",
+          "name": "Admiral",
+          "abbreviation": "ADM",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        }
+      ],
+      "enlisted": [
+        {
+          "rank": "E-1",
+          "name": "Seaman Recruit",
+          "collar_device": "N/A",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-2",
+          "name": "Seaman Apprentice",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-3",
+          "name": "Seaman",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-4",
+          "name": "Petty Officer Third Class",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-5",
+          "name": "Petty Officer Second Class",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-6",
+          "name": "Petty Officer First Class",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-7",
+          "name": "Chief Petty Officer",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-8",
+          "name": "Senior Chief Petty Officer",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "E-9",
+          "name": "Master Chief Petty Officer or\nCommand Master Chief Petty Officer",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "Special",
+          "name": "Chief Petty Officer of the Coast Guard",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        }
+      ],
+      "warrant_officer": [
+        {
+          "image_ref": "IMAGE_PLACEHOLDER_WARRANT_OFFICER_RANKS",
+          "label": "Warrant Officer ranks — label/details to be filled from packet imagery"
+        }
+      ],
+      "marine_corps_army_air_force": [
+        {
+          "rank": "O-1",
+          "name": "Second Lieutenant",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-2",
+          "name": "First Lieutenant",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-3",
+          "name": "Captain",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-4",
+          "name": "Major",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-5",
+          "name": "Lieutenant Colonel",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-6",
+          "name": "Colonel",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-7",
+          "name": "Brigadier General",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-8",
+          "name": "Major General",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-9",
+          "name": "Lieutenant General",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        },
+        {
+          "rank": "O-10",
+          "name": "General",
+          "collar_device": "",
+          "image_ref": "IMAGE_PLACEHOLDER_RANK"
+        }
+      ]
+    },
+    "nautical_flags": {
+      "section": "Nautical Flags",
+      "items": [
+        {
+          "name": "Alfa",
+          "international_meaning": "I have a diver down; keep well clear at slow speed.",
+          "navy_meaning": "I have a diver down; keep well clear at slow speed.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Bravo",
+          "international_meaning": "I am taking in, discharging, or carrying dangerous cargo.",
+          "navy_meaning": "I am taking in, discharging, or carrying dangerous cargo.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Charlie",
+          "international_meaning": "\"Yes\" or \"affirmative\".",
+          "navy_meaning": "\"Yes\" or \"affirmative\".",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Delta",
+          "international_meaning": "I am maneuvering with difficulty; keep clear.",
+          "navy_meaning": "I am maneuvering with difficulty; keep clear.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Echo",
+          "international_meaning": "I am directing my course to starboard.",
+          "navy_meaning": "I am directing my course to starboard.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Foxtrot",
+          "international_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway",
+          "navy_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Golf",
+          "international_meaning": "I require a pilot.",
+          "navy_meaning": "I require a pilot.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Hotel",
+          "international_meaning": "I have a pilot on board.",
+          "navy_meaning": "I have a pilot on board.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "India",
+          "international_meaning": "Coming alongside.",
+          "navy_meaning": "I am directing my course to port.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Juliet",
+          "international_meaning": "I am on fire and have dangerous cargo; keep clear.",
+          "navy_meaning": "I am on fire and have dangerous cargo; keep clear.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Kilo",
+          "international_meaning": "I wish to communicate with you.",
+          "navy_meaning": "I wish to communicate with you.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Lima",
+          "international_meaning": "You should stop your vessel immediately.",
+          "navy_meaning": "You should stop your vessel immediately.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Mike",
+          "international_meaning": "My vessel is stopped; making no way.",
+          "navy_meaning": "My vessel is stopped; making no way.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "November",
+          "international_meaning": "No or negative.",
+          "navy_meaning": "No or negative.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Oscar",
+          "international_meaning": "Man overboard.",
+          "navy_meaning": "Man overboard.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Papa",
+          "international_meaning": "All personnel return to ship; proceeding to sea (Inport).",
+          "navy_meaning": "All personnel return to ship; proceeding to sea (Inport).",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Quebec",
+          "international_meaning": "Boat recall; all boats return to ship.",
+          "navy_meaning": "Ship meets health regs; request clearance into port.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Romeo",
+          "international_meaning": "Preparing to replenish (At sea). Ready duty ship (Inport).",
+          "navy_meaning": "None.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Sierra",
+          "international_meaning": "Conducting flag hoist drill.",
+          "navy_meaning": "Moving astern.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Tango",
+          "international_meaning": "Do not pass ahead of me.",
+          "navy_meaning": "Keep clear; engaged in trawling.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Uniform",
+          "international_meaning": "You are running into danger.",
+          "navy_meaning": "You are running into danger.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Victor",
+          "international_meaning": "I require assistance.",
+          "navy_meaning": "I require assistance.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Whiskey",
+          "international_meaning": "I require medical assistance.",
+          "navy_meaning": "I require medical assistance.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Xray",
+          "international_meaning": "Stop carrying out your intentions and watch for my signals.",
+          "navy_meaning": "",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Yankee",
+          "international_meaning": "Ship has visual communications duty.",
+          "navy_meaning": "I am dragging anchor.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Zulu",
+          "international_meaning": "I require a tug.",
+          "navy_meaning": "I require a tug.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Code/Answer",
+          "international_meaning": "Flag that follows is from the International Code of Signals.",
+          "navy_meaning": "Message is understood. Also, numeric decimal point.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "First substitute",
+          "international_meaning": "Absence of flag officer or unit commander (Inport).",
+          "navy_meaning": "Substitute for the first flag in this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Second substitute",
+          "international_meaning": "Absence of chief of staff (Inport).",
+          "navy_meaning": "Substitute for the second flag in this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Third substitute",
+          "international_meaning": "Absence of commanding officer (Inport).",
+          "navy_meaning": "Substitute for the third flag in this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Fourth substitute",
+          "international_meaning": "Absence of civil or military official whose flag is flying on this ship.",
+          "navy_meaning": "Substitute for the fourth flagin this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        }
+      ]
+    },
+    "lights_and_dayshapes": {
+      "section": "Common Lights and Dayshapes",
+      "items": [
+        {
+          "name": "TO BE LABELED FROM PACKET",
+          "image_ref": "IMAGE_PLACEHOLDER_COMMON_LIGHTS_AND_DAYSHAPES_01"
+        }
+      ]
+    },
+    "cutters": {
+      "section": "Coast Guard Cutters",
+      "items": [
+        {
+          "name": "Coastal Patrol Boat (WPB)",
+          "Class": "Protector",
+          "Length": "87 feet",
+          "Hull Number": "87###",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_01"
+        },
+        {
+          "name": "Patrol Boat (WPB)",
+          "Class": "Island",
+          "Length": "110 feet",
+          "Hull Number": "13##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_02"
+        },
+        {
+          "name": "Fast Response Cutter (WPC)",
+          "Class": "Sentinel",
+          "Length": "154 feet",
+          "Hull Number": "11##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_03"
+        },
+        {
+          "name": "Small Harbor Tug",
+          "Class": "Bay",
+          "Length": "65 feet",
+          "Hull Number": "65###",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_04"
+        },
+        {
+          "name": "Inland Construction Tender",
+          "Class": "Bay",
+          "Length": "140 feet",
+          "Hull Number": "1##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_05"
+        },
+        {
+          "name": "Coastal Buoy Tender (WLM)",
+          "Class": "Bay",
+          "Length": "160 feet",
+          "Hull Number": "8##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_06"
+        },
+        {
+          "name": "Coastal Buoy Tender (WLM)",
+          "Class": "Keeper",
+          "Length": "175 feet",
+          "Hull Number": "5##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_07"
+        },
+        {
+          "name": "Coastal Buoy Tender (WLM)",
+          "Class": "Juniper",
+          "Length": "225 feet",
+          "Hull Number": "2##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_08"
+        },
+        {
+          "name": "Great Lakes Ice Breaker (WLBB)",
+          "Class": "Mackinaw",
+          "Length": "240 feet",
+          "Hull Number": "30",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_09"
+        },
+        {
+          "name": "Polar Ice Breaker (WAGB)",
+          "Class": "Polar",
+          "Length": "399 feet",
+          "Hull Number": "Polar Star\nPolar Sea",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_10"
+        },
+        {
+          "name": "Polar Ice Breaker (WAGB)",
+          "Class": "Healy",
+          "Length": "420 feet",
+          "Hull Number": "20",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_11"
+        },
+        {
+          "name": "Medium Endurance Cutter (WMEC)",
+          "Class": "Reliance",
+          "Length": "210 feet",
+          "Hull Number": "6##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_12"
+        },
+        {
+          "name": "Medium Endurance Cutter (WMEC)",
+          "Class": "Famous",
+          "Length": "270 feet",
+          "Hull Number": "9##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_13"
+        },
+        {
+          "name": "Offshore Patrol Cutter (OPC)",
+          "Class": "Heritage",
+          "Length": "360 feet",
+          "Hull Number": "9##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_14"
+        },
+        {
+          "name": "National Security Cutter (WMSL)",
+          "Class": "Legend",
+          "Length": "418 feet",
+          "Hull Number": "7##",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_15"
+        },
+        {
+          "name": "EAGLE (WIX)",
+          "Class": "Barque",
+          "Length": "295 feet",
+          "Hull Number": "327",
+          "image_ref": "IMAGE_PLACEHOLDER_CUTTER_16"
+        }
+      ]
+    },
+    "small_boats": {
+      "section": "Coast Guard Small Boats",
+      "items": [
+        {
+          "name": "TO BE LABELED FROM PACKET IMAGE",
+          "Length": "26 feet",
+          "Hull Number": "26###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_01"
+        },
+        {
+          "name": "TO BE LABELED FROM PACKET IMAGE",
+          "Length": "26 feet",
+          "Hull Number": "26###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_02"
+        },
+        {
+          "name": "Transportable Port Security Boat",
+          "Length": "32 feet",
+          "Hull Number": "32###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_03"
+        },
+        {
+          "name": "Over the Horizon-IV / Trailerable Aids to Navigation Boat",
+          "Length": "35 feet",
+          "Hull Number": "35###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_04"
+        },
+        {
+          "name": "Buoy Utility Stern Loading",
+          "Length": "49 feet",
+          "Hull Number": "49###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_05"
+        },
+        {
+          "name": "Aids to Navigation Boat",
+          "Length": "55 feet",
+          "Hull Number": "55###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_06"
+        },
+        {
+          "name": "Long Range Interceptor",
+          "Length": "29 feet",
+          "Hull Number": "29###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_07"
+        },
+        {
+          "name": "Defender Class",
+          "Length": "33 feet",
+          "Hull Number": "33###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_08"
+        },
+        {
+          "name": "Response Boat-Medium",
+          "Length": "45 feet",
+          "Hull Number": "45###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_09"
+        },
+        {
+          "name": "Special Purpose Craft Screening Vessel",
+          "Length": "64 feet",
+          "Hull Number": "64###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_10"
+        },
+        {
+          "name": "Motor Life Boat",
+          "Length": "47 feet",
+          "Hull Number": "47###",
+          "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_11"
+        }
+      ]
+    },
+    "aircraft": {
+      "section": "Coast Guard Aircraft",
+      "categories": {
+        "rotary_wing": {
+          "description": "Rotary-Wing Aircraft. These aircraft deploy primarily from land-based Coast Guard Air Stationsor underway cutters to conduct airborne operations supporting all Coast Guard missions. They consist of Medium Range Response (MRR) and Short-Range Response (SRR) helicopters. These aircraft conduct operations supporting all Coast Guard missions",
+          "items": [
+            {
+              "name": "MH-60T Jayhawk",
+              "Length": "65 feet",
+              "Range": "600 NM",
+              "image_ref": "IMAGE_PLACEHOLDER_AIRCRAFT_01"
+            },
+            {
+              "name": "MH-65D/E Dolphin",
+              "Length": "44 feet",
+              "Range": "300 NM",
+              "image_ref": "IMAGE_PLACEHOLDER_AIRCRAFT_02"
+            }
+          ]
+        },
+        "fixed_wing": {
+          "description": "Fixed-Wing Aircraft. These all-weather aircraft deploy primarily from land-based Coast Guard Air Stations to conduct airborne operations. They consist of Long-Range Surveillance (LRS) andMedium Range Surveillance (MRS) aircraft. These aircraft conduct operations supporting all Coast Guard missions and perform mission support activities (e.g., logistics/transport flights)",
+          "items": [
+            {
+              "name": "HC-130J Super Hercules",
+              "Length": "100 feet",
+              "Range": "2,430 NM",
+              "image_ref": "IMAGE_PLACEHOLDER_AIRCRAFT_03"
+            },
+            {
+              "name": "HC-27J Spartan",
+              "Length": "74 feet",
+              "Range": "2,300 NM",
+              "image_ref": "IMAGE_PLACEHOLDER_AIRCRAFT_04"
+            },
+            {
+              "name": "HC-144 CASA Ocean Sentry",
+              "Length": "70 feet",
+              "Range": "2,000 NM",
+              "image_ref": "IMAGE_PLACEHOLDER_AIRCRAFT_05"
+            },
+            {
+              "name": "C-37A/B Gulfstream V",
+              "Length": "96 feet",
+              "Range": "6,300 NM",
+              "image_ref": "IMAGE_PLACEHOLDER_AIRCRAFT_06"
+            }
+          ]
+        }
+      }
+    },
+    "ceremonies": {
+      "section": "Coast Guard Ceremonies",
+      "items": [
+        {
+          "name": "TO BE LABELED FROM PACKET",
+          "image_ref": "IMAGE_PLACEHOLDER_COAST_GUARD_CEREMONIES_01"
+        }
+      ]
+    }
+  },
+  "facts_and_reference": {
+    "flags_and_ensigns": {
+      "section": "Flags & Ensigns",
+      "items": [
+        {
+          "title": "The Coast Guard Ensign"
+        },
+        {
+          "title": "The Coast Guard Ensign was first designed to distinguish Revenue Cutters from pirate ships. It consists of 16 alternating red and white vertical stripes, representing the number of states inthe Union when the ensign was officially adopted. The union of the Ensign contains the armsof the United States in dark blue on a white field. The Arms of the United States is an Eagle with an olive branch in one claw, and with 13 leaves and 13 arrows in the other claw. The shield on the chest of the Eagle contains 13 stripes and the circle above the Eagle contains 13stars, corresponding to the 13 original states when the nation was established. In the 1800s, the Ensign was flown from customhouses. In order to distinguish the Ensign flown on cuttersfrom the Ensign flown on customhouses, President Taft ordered that the Coast Guard emblembe added in blue and white on a line with the lower edge of the union, over the seventh vertical red stripe from the mast with a width of three stripes. (below left)"
+        },
+        {
+          "title": "The Standard"
+        },
+        {
+          "title": "The Standard is the upper left corner of the Coast Guard Ensign which contains the arms ofthe United States. The Standard is used for parades and ceremonies, and it is adorned withthe Coast Guard battle streamers. (above right)"
+        },
+        {
+          "title": "The Jack"
+        },
+        {
+          "title": "The Jack is the upper corner of the National Ensign nearest the mast, the blue rectangle with the 50 stars. Cutters have flown the Jack since the Civil War. The Jack is only flown from the jack staff while at anchor or at pier side."
+        },
+        {
+          "title": "The Commissioning Pennant"
+        },
+        {
+          "title": "The current Commissioning Pennant has 13 white stars on a blue field, 13 vertical red-and-white stripes, and a red swallowtail. This pennant is flown from the top of the mainmast."
+        }
+      ]
+    },
+    "districts": {
+      "section": "Coast Guard Districts",
+      "items": [
+        {
+          "entry": "LANT Area"
+        },
+        {
+          "entry": "– Northeast District, Boston MA"
+        },
+        {
+          "entry": "– East District, Portsmouth VA"
+        },
+        {
+          "entry": "– Southeast District, Miami FL"
+        },
+        {
+          "entry": "– Heartland District, New Orleans LA"
+        },
+        {
+          "entry": "– Great Lakes District, Cleveland OH"
+        },
+        {
+          "entry": "LANT AREA COMMAND- Portsmouth, Virginia"
+        },
+        {
+          "entry": "PAC Area"
+        },
+        {
+          "entry": "– Southwest District, Alameda CA"
+        },
+        {
+          "entry": "– Northwest District, Seattle WA"
+        },
+        {
+          "entry": "– Arctic District, Juneau AK"
+        },
+        {
+          "entry": "– Oceania District, Honolulu HI"
+        },
+        {
+          "entry": "PAC AREA COMMAND- Alameda, California"
+        },
+        {
+          "entry": "COAST GUARD HEADQUARTERS - Washington D.C."
+        }
+      ]
+    },
+    "distress_signals": {
+      "section": "Recognized Distress Signals",
+      "items": [
+        {
+          "signal": "RED STAR SHELLS",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_01"
+        },
+        {
+          "signal": "FOG HORN CONTINUOUS SOUNDING",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_02"
+        },
+        {
+          "signal": "FLAMES ON A VESSEL",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_03"
+        },
+        {
+          "signal": "GUN FIRED AT INTERVALS OF 1 MIN.",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_04"
+        },
+        {
+          "signal": "ORANGE BACKGROUND BLACK BALL AND SQUARE",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_05"
+        },
+        {
+          "signal": "SOS SOS",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_06"
+        },
+        {
+          "signal": "\"MAYDAY\" BY RADIO",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_07"
+        },
+        {
+          "signal": "PARACHUTE RED FLARE",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_08"
+        },
+        {
+          "signal": "DYE MARKER (ANY COLOR)",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_09"
+        },
+        {
+          "signal": "CODE FLAGS NOVEMBER CHARLIE",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_10"
+        },
+        {
+          "signal": "SQUARE FLAG AND BALL",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_11"
+        },
+        {
+          "signal": "WAVE ARMS",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_12"
+        },
+        {
+          "signal": "RADIO-TELEGRAPH ALARM",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_13"
+        },
+        {
+          "signal": "RADIO-TELEPHONE ALARM",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_14"
+        },
+        {
+          "signal": "POSITION INDICATING RADIO BEACON",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_15"
+        },
+        {
+          "signal": "SMOKE",
+          "image_ref": "IMAGE_PLACEHOLDER_DISTRESS_SIGNAL_16"
+        }
+      ]
+    },
+    "damage_control": {
+      "section": "Fundamentals of Damage Control",
+      "items": [
+        {
+          "text": "Conditions of Material Readiness"
+        },
+        {
+          "text": "X - Ray: Provides the least protection. Set when the ship is in no danger of attack. A black X isplaced on all fittings that shall be closed at all times when not in operation."
+        },
+        {
+          "text": "Yoke: Set and maintained at sea and in port during wartime. For peacetime cruising, Yoke may be modified during regular working hours. A black Y is placed on all fittings that shall beclosed for wartime cruising conditions."
+        },
+        {
+          "text": "Zebra: Provides the maximum protection for ship and personnel for battle and emergency situations, such as fire, collision, or General Quarters, and is set when entering or leaving portduring wartime. A Z is placed on all fittings that shall be closed for battle or emergency conditions."
+        },
+        {
+          "text": "Special Classification"
+        },
+        {
+          "text": "Circle Williams: This is classified by a black “W” within a black circle. The fittings are closed only to prevent the spread of Chemical/Biological/Radiological (CBR) contaminationor for defense."
+        },
+        {
+          "text": "Dog Zebra: This classification is indicated by a red Z enclosed by a large black D. It is placedon fittings that must be secured to prevent light escaping outside the ship."
+        },
+        {
+          "text": "Fire Tetrahedron"
+        },
+        {
+          "text": "The fire tetrahedron refers to the four components that are needed for a fire to occur and maintain itself: heat, oxygen, fuel, and chain reaction. When you eliminate any or all of these components, you no longer have a fire tetrahedron and the fire should be extinguished."
+        }
+      ]
+    },
+    "fire_classes": {
+      "sections": [
+        {
+          "class": "A",
+          "items": [
+            {
+              "text": "Class A fires involve wood and wood products, cloth, textiles and fibrous materials, and paper products."
+            },
+            {
+              "text": "Class A fires are extinguished with water in a straight stream or fog pattern. If the fire is deep-seated, Aqueous Film Forming Foam (AFFF) is more effective than seawater and can be used as a wetting agent to rapidly penetrate and extinguish the fire."
+            }
+          ]
+        },
+        {
+          "class": "B",
+          "items": [
+            {
+              "text": "Class B fires involve flammable liquids such as gasoline, diesel fuel, jet fuels, hydraulic fluid, and lube oil."
+            },
+            {
+              "text": "These fires are normally extinguished with AFFF, or potassium bicarbonate (PKP). Class B fires also involve flammable gases which should neverbe extinguished unless there is reasonable certainty that the flow of gas can be secured. Securing the fuel source is the single most important step in controlling a gas fire."
+            }
+          ]
+        },
+        {
+          "class": "C",
+          "items": [
+            {
+              "text": "Class C fires are energized electrical fires."
+            },
+            {
+              "text": "They are attacked at prescribed distances using nonconductive agents such as CO2 or water spray. The most effective tactic is tode-energize and handle the fire as a Class A fire. When fires are not deep seated, clean agentsthat pose no cleanup problem such as CO2 are preferred."
+            }
+          ]
+        },
+        {
+          "class": "D",
+          "items": [
+            {
+              "text": "Class D fires involve combustible metals such as magnesium and titanium."
+            },
+            {
+              "text": "Water in quantity,using fog patterns, is the recommended agent. When water is applied to bufrom a safe distance or from behind shelter. Metal fires on board ships are commonly associated with aircraft wheel structures. If the fire cannot be contained, jettison the object overboard."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "rules_and_procedures": {
+    "etiquette": {
+      "section": "Etiquette",
+      "items": [
+        {
+          "text": "Academy and Military Etiquette"
+        },
+        {
+          "text": "Addressing Officers, Upper-class, and Civilians"
+        },
+        {
+          "text": "Show the proper respect in all relations with officers, upper-class, and civilians. The word “Sir” or “Ma’am” is always used by a junior to a senior. This is not a term of submission, butof respect that should be used at all times."
+        },
+        {
+          "text": "When addressing a senior, say “Mister” or “Miss” Last Name, except when the senior’s rank is Commander (O-5) and above, in which case the rank is substitutedfor “Mister” or “Miss.” For example, “Good morning CDR Johnson, ma’am” or “Good evening CAPT Ray, sir.”"
+        },
+        {
+          "text": "When addressing a group of officers, greet only the highest-ranking officer."
+        },
+        {
+          "text": "If you are covered, render a salute and hold it until all of the officers acknowledge orpass by you."
+        },
+        {
+          "text": "If you wish to pass an officer or an upper-class cadet in the barracks, you are to obtainpermission by asking “By your leave please, Sir/Ma’am?” If you are covered, render asalute to officers both indoors and outdoors."
+        },
+        {
+          "text": "Handshakes shall only be initiated by the senior person."
+        },
+        {
+          "text": "The Academy operates on a four-class system. The use of first names is permitted betweenadjoining upper-class (not 4/c) only in informal settings. During official business, a junior cadet shall not use the first name of a cadet from a more senior class."
+        },
+        {
+          "text": "Entering or Leaving a Superior’s Room or Office"
+        },
+        {
+          "text": "Whenever entering an officer’s/civilian’s office or an upper-class’s room, adhere to thefollowing guidelines:"
+        },
+        {
+          "text": "Knock."
+        },
+        {
+          "text": "Loudly state your name and state your business. For example, “4/c, request permission to come aboard Sir/Ma’am.”"
+        },
+        {
+          "text": "When on duty or at any time under arms or wearing a drill belt, you will remain covered, except in the wardroom, mess hall, or place of worship. When on duty, announce your presence with “4/c , Bravo Company Orderly, requests permission to come aboard, Sir/Ma’am.” When covered, salute upon entering andexiting an officer’s office."
+        },
+        {
+          "text": "When asking to leave a civilian or officer’s office or an upper-class’s room ask,“By your leave, Sir/Ma’am?”"
+        },
+        {
+          "text": "On being excused, turn around and leave, DO NOT about face."
+        }
+      ]
+    },
+    "colors_indoctrination": {
+      "section": "Colors Indoctrination",
+      "items": [
+        {
+          "text": "What are the times for morning and evening colors?"
+        },
+        {
+          "text": "Morning: 0800 Evening: Sunset"
+        },
+        {
+          "text": "What are the three whistles involved in colors aboard your ship (whistle sounds)?"
+        },
+        {
+          "text": "“Attention”"
+        },
+        {
+          "text": "Morning: “To the Colors” Evening: “Retreat”"
+        },
+        {
+          "text": "“Carry on”"
+        },
+        {
+          "text": "What is the procedure for half-masting the national ensign?"
+        },
+        {
+          "text": "Raise the national ensign to the top of the mast"
+        },
+        {
+          "text": "Lower it down to half-mast"
+        },
+        {
+          "text": "What is the proper action to be taken in uniform during colors while covered?"
+        },
+        {
+          "text": "Face flag"
+        },
+        {
+          "text": "Hand salute at Morning: “To the Colors” Evening: “Retreat”"
+        },
+        {
+          "text": "Drop salute at “Carry on”"
+        },
+        {
+          "text": "What is the proper action to be taken in uniform during colors while uncovered?"
+        },
+        {
+          "text": "Face flag"
+        },
+        {
+          "text": "Stand at “attention”"
+        },
+        {
+          "text": "What is the proper action to be taken while not in uniform during colors while uncovered?"
+        },
+        {
+          "text": "Face flag"
+        },
+        {
+          "text": "Place hand over heart (members of the armed forces and veterans may rendermilitary salute)"
+        },
+        {
+          "text": "What is the proper action to be taken while not in uniform during colors while covered?"
+        },
+        {
+          "text": "Face flag"
+        },
+        {
+          "text": "Remove hat"
+        },
+        {
+          "text": "Hold hat in right hand at left side of chest, over the heart"
+        },
+        {
+          "text": "What do you do if you are driving a car and colors go off?"
+        },
+        {
+          "text": "Stop the vehicle"
+        },
+        {
+          "text": "Remain seated at attention until colors is finished"
+        }
+      ]
+    },
+    "shipboard_customs": {
+      "section": "Shipboard Customs",
+      "items": [
+        {
+          "text": "What is the proper action to be taken while boarding a cutter?"
+        },
+        {
+          "text": "Salute the national ensign"
+        },
+        {
+          "text": "Salute the OOD, hold until OOD returns salute"
+        },
+        {
+          "text": "Board the ship"
+        },
+        {
+          "text": "What is the proper action to be taken while leaving a cutter?"
+        },
+        {
+          "text": "Salute the OOD, hold until OOD returns salute"
+        },
+        {
+          "text": "If ensign is flying, salute ensign"
+        },
+        {
+          "text": "Depart the ship"
+        },
+        {
+          "text": "Quarterdeck Customs"
+        },
+        {
+          "text": "Do not be loud or sloppy in its vicinity."
+        },
+        {
+          "text": "Never appear on the quarterdeck unless wearing the UOD or member of a work party."
+        },
+        {
+          "text": "Never smoke on the quarterdeck."
+        },
+        {
+          "text": "Never cross or walk on the quarterdeck except when necessary."
+        },
+        {
+          "text": "Do not lounge in the vicinity of the quarterdeck."
+        },
+        {
+          "text": "Sickbay Customs"
+        },
+        {
+          "text": "Always remove your cover when entering sickbay out of respect for the dead. Maintain quiet atall times and do not smoke in sickbay."
+        },
+        {
+          "text": "Messdeck Customs"
+        },
+        {
+          "text": "Always remove your cover when entering the sickbay, the mess deck, or the wardroom. Never leave your cover on the table, as to respect the men and women that lost their lives on mess decktables in times of war."
+        },
+        {
+          "text": "Bridge Customs"
+        },
+        {
+          "text": "When a member is on the bridge and the Commanding Officer (CO) arrives, the member will call: 'Captain on the Bridge' and salute the CO. Upon the CO departing, the member will call: 'Captain Below' and salute the CO as they leave. All members are responsible to uphold this standard. This protocol is to show respect and can be dispensed of at the CO’s discretion."
+        },
+        {
+          "text": "Divine Services"
+        },
+        {
+          "text": "The ship flies the church pennant above the national ensign when divine services are being held.An announcement is made informing the ship where services will be held. Always remove yourcover in the area of divine services and remain quiet about the decks."
+        }
+      ]
+    },
+    "saluting": {
+      "section": "Saluting",
+      "items": [
+        {
+          "text": "Whom to salute:"
+        },
+        {
+          "text": "All commissioned and warrant officers of the Coast Guard, Navy, Marine Corps, Air Force, and Army."
+        },
+        {
+          "text": "Officers of foreign armed services unless we are at war with them."
+        },
+        {
+          "text": "Officers of the National Oceanic and Atmospheric Administration (NOAA) and the Public HealthServices (USPHS)."
+        },
+        {
+          "text": "If an officer is recognized in civilian attire, a salute shall still be rendered."
+        },
+        {
+          "text": "When to salute:"
+        },
+        {
+          "text": "Six paces away is the general rule, but salute and greet at the same time you would if you were greeting a civilian."
+        },
+        {
+          "text": "Always accompany your salute with a cheerful, respectful greeting."
+        },
+        {
+          "text": "When transiting with a commissioned officer: Do not salute another officer until the officer with you salutes- then salute at the same time your officer does. If you are accompanying acommissioned officer who is saluted by an enlisted member or another cadet, return the salute at the same time your officer does."
+        },
+        {
+          "text": "When conversing with an officer: salute when approaching the officer, then salute the officer again at the end of the conversation."
+        },
+        {
+          "text": "When on Duty:"
+        },
+        {
+          "text": "As a cadet, you stand a variety of duties including “Comp Chomp” during Fourth Class year, and on this duty, you remain covered inside."
+        },
+        {
+          "text": "If approached by an officer while on duty and covered, render the proper salute to them whether or not they are covered as well."
+        }
+      ]
+    },
+    "radio_communication": {
+      "section": "Radios and Messages",
+      "items": [
+        {
+          "text": "The Coast Guardsman’s Manual Ch 21: Communications"
+        },
+        {
+          "text": "Parts of a Message: To whom, from whom, about what (the name of the person/thing being called, the name of the person/thing calling, and the information to be sent). “To who, From who, About what”"
+        },
+        {
+          "text": "Circuit Discipline: To prevent confusion, strict circuit discipline must be maintained."
+        },
+        {
+          "text": "Send only official messages"
+        },
+        {
+          "text": "Keep button in the off position except when actually talking"
+        },
+        {
+          "text": "Use only standard phraseology"
+        },
+        {
+          "text": "Never show anger, impatience, or excitement Transmitting Techniques: The following techniques will ensure good communication:"
+        },
+        {
+          "text": "Listen before transmitting"
+        },
+        {
+          "text": "Do not break in on a message"
+        },
+        {
+          "text": "Speak clearly, distinctly, and slowly, but transmit phrase by phrase, not word by word"
+        },
+        {
+          "text": "Use standard pronunciation, use standard terminology, and always use prescribed procedures"
+        },
+        {
+          "text": "Procedure Words: Procedure words (prowords) are words and phrases used to speed up radio communication."
+        }
+      ]
+    }
+  }
+}

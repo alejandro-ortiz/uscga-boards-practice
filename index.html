@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Practice helm and line-handling commands from the USCGA boards packet.">
-  <meta name="theme-color" content="#4d8580">
+  <meta name="description" content="Study the 2026-2027 USCGA boards packet with focused study, matching, recall, and exact modes.">
+  <meta name="theme-color" content="#080d55">
   <title>USCGA Boards Packet Practice</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -27,7 +27,7 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">READY WHEN YOU ARE</p>
-          <h2>Choose your drill</h2>
+          <h2 id="packetTitle">Choose your drill</h2>
         </div>
         <p class="muted">Questions repeat on purpose. Repetition is the point.</p>
       </div>
@@ -35,9 +35,14 @@
         <label>
           Topic
           <select id="categorySelect">
-            <option value="all">Both command sets</option>
+            <option value="all">Everything</option>
+            <option value="mission">Academy mission</option>
+            <option value="ethos">Coast Guard ethos</option>
+            <option value="sentry">General orders</option>
             <option value="helm">Helm commands</option>
-            <option value="lines">Line handling commands</option>
+            <option value="lines">Line handling</option>
+            <option value="radio">Radio prowords</option>
+            <option value="missions">Coast Guard missions</option>
           </select>
         </label>
         <label>
@@ -49,26 +54,18 @@
           </select>
         </label>
         <label>
-          Difficulty
-          <select id="levelSelect">
-            <option value="1">Level 1 · Recognize</option>
-            <option value="2">Level 2 · Recall</option>
-            <option value="3">Level 3 · Packet exact</option>
-          </select>
-        </label>
-        <label>
-          Study mode
+          Mode
           <select id="modeSelect">
-            <option value="practice">Practice mix</option>
-            <option value="learn">Learn first</option>
-            <option value="review">Review due</option>
-            <option value="exact">Exact recall</option>
-            <option value="contrast">Confusion drill</option>
+            <option value="study">Study</option>
+            <option value="matching">Matching</option>
+            <option value="recall">Recall</option>
+            <option value="exact">Exact</option>
           </select>
         </label>
         <button class="primary-button" id="startButton" type="button">Start practice <span aria-hidden="true">→</span></button>
       </div>
-      <p class="mode-hint" id="modeHint">A balanced mix of recognition, recall, cloze, and true/false questions.</p>
+      <p class="mode-hint" id="modeHint">Browse every packet item with the answer visible. Say it aloud before revealing the next card.</p>
+      <p class="loading-message" id="loadingMessage">Loading packet...</p>
     </section>
 
     <section class="stats-row" aria-label="Practice statistics">
