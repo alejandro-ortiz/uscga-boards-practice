@@ -9,13 +9,14 @@ const modeInfo = {
   recall: { label: 'Recall', hint: 'Type definitions, reverse prompts, and complete missing words from packet sentences.' },
   exact: { label: 'Exact', hint: 'Type the complete packet wording. Spelling, order, and wording matter.' }
 };
-const categoryLabels = { all: 'Everything', mission: 'Academy mission', ethos: 'Coast Guard ethos', sentry: 'General orders', helm: 'Helm commands', lines: 'Line handling', radio: 'Radio prowords', missions: 'Coast Guard missions', flags: 'Nautical flags' };
+const categoryLabels = { all: 'Everything', mission: 'Academy mission', ethos: 'Coast Guard ethos', sentry: 'General orders', helm: 'Helm commands', lines: 'Line handling', radio: 'Radio prowords', missions: 'Coast Guard missions', flags: 'Nautical flags', assets: 'Coast Guard assets' };
 
-function facts() { return state.data.facts.filter((fact) => state.categories.includes(fact.category)); }
+function facts() { return state.data.facts.filter((fact) => state.categories.some((category) => category === fact.category || category === 'assets' && fact.category.startsWith('asset_'))); }
 function shuffle(items) { return [...items].sort(() => Math.random() - 0.5); }
 function getProgress(fact) {
-  progress[fact.id] ||= { seen: 0, correct: 0, incorrect: 0, frontCorrect: 0, backCorrect: 0, exactCorrect: 0, mastery: 0 };
-  const item = progress[fact.id];
+  const progressId = fact.progressId || fact.id;
+  progress[progressId] ||= { seen: 0, correct: 0, incorrect: 0, frontCorrect: 0, backCorrect: 0, exactCorrect: 0, mastery: 0 };
+  const item = progress[progressId];
   if (!Number.isFinite(item.frontCorrect) || !Number.isFinite(item.backCorrect) || !Number.isFinite(item.exactCorrect)) {
     item.seen = 0; item.correct = 0; item.incorrect = 0; item.frontCorrect = 0; item.backCorrect = 0; item.exactCorrect = 0; item.mastery = 0;
   }
@@ -30,7 +31,7 @@ function startSession() {
   state.categories = [...document.querySelectorAll('input[name="practiceSet"]:checked')].map((input) => input.value);
   if (!state.categories.length) { $('modeHint').textContent = 'Choose at least one practice set to begin.'; return; }
   const pool = shuffle(facts());
-  state.questions = state.mode === 'study' ? pool : pool.map((fact) => makeQuestion(fact, pool));
+  state.questions = state.mode === 'study' ? pool : shuffle(pool.flatMap((fact) => fact.asset ? makeAssetQuestions(fact, pool) : [makeQuestion(fact, pool)]));
   state.current = 0; state.score = 0; state.answered = false;
   $('setupPanel').classList.add('hidden'); $('commandProgress').classList.add('hidden'); $('resultsPanel').classList.add('hidden'); $('quizPanel').classList.remove('hidden');
   renderQuestion();
@@ -51,6 +52,25 @@ function makeQuestion(fact, pool) {
   return { ...fact, format: 'fill', prompt: reverse ? fact.back : fact.front, answer: reverse ? fact.front : fact.back, exact: false, direction: reverse ? 'name' : 'meaning' };
 }
 
+function makeAssetQuestions(fact, pool) {
+  const fields = fact.asset.fields; const relations = [
+    ['callSign', 'call sign'], ['class', 'class'], ['length', 'length'], ['hullNumber', 'hull number'], ['range', 'range']
+  ].filter(([key]) => fields[key]);
+  const questions = [];
+  relations.forEach(([key, label]) => {
+    questions.push({ ...fact, id: `${fact.id}-${key}-forward`, progressId: `${fact.id}-${key}-forward`, format: state.mode === 'matching' ? 'choice' : 'fill', assetRelation: true, assetTargetKey: key, sourceLabel: 'name', sourceValue: fields.name, targetLabel: label, targetValue: fields[key], prompt: `What is the ${label} for ${fields.name}?`, promptLabel: state.mode === 'matching' ? `Choose the ${label}` : `Enter the ${label}`, answer: fields[key], direction: 'front', exact: state.mode === 'exact' });
+    questions.push({ ...fact, id: `${fact.id}-${key}-reverse`, progressId: `${fact.id}-${key}-reverse`, format: state.mode === 'matching' ? 'choice' : 'fill', assetRelation: true, assetTargetKey: 'name', sourceLabel: label, sourceValue: fields[key], targetLabel: 'name', targetValue: fields.name, prompt: `Which asset has the ${label} ${fields[key]}?`, promptLabel: state.mode === 'matching' ? 'Choose the asset name' : 'Enter the asset name', answer: fields.name, direction: 'back', exact: state.mode === 'exact' });
+  });
+  questions.push({ ...fact, id: `${fact.id}-image`, progressId: `${fact.id}-image`, format: state.mode === 'matching' ? 'choice' : 'fill', assetRelation: true, assetImagePrompt: true, assetTargetKey: 'name', sourceLabel: 'image', sourceValue: '', targetLabel: 'name', targetValue: fields.name, prompt: 'Which asset is shown?', promptLabel: state.mode === 'matching' ? 'Choose the asset name' : 'Enter the asset name', answer: fields.name, direction: 'front', exact: state.mode === 'exact' });
+  return questions.map((question) => {
+    if (question.format === 'choice') {
+      const alternatives = shuffle(pool.filter((item) => item.asset && item.id !== fact.id && item.asset.fields[question.assetTargetKey])).slice(0, 3).map((item) => item.asset.fields[question.assetTargetKey]);
+      question.choices = shuffle([...new Set([question.answer, ...alternatives.filter(Boolean)])]);
+    }
+    return question;
+  });
+}
+
 function renderQuestion() {
   const question = state.questions[state.current]; state.answered = false;
   $('progressLabel').textContent = state.mode === 'study' ? `Card ${state.current + 1} of ${state.questions.length}` : `Question ${state.current + 1} of ${state.questions.length}`;
@@ -62,15 +82,20 @@ function renderQuestion() {
 }
 
 function renderStudyCard(fact) {
+  if (fact.asset) {
+    const fields = fact.asset.fields; const image = fact.asset.image ? `<img class="study-image" src="${escapeHtml(fact.asset.image)}" alt="${escapeHtml(fields.name)}">` : '';
+    $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(fact.section)}</p><h2 class="question-title">${escapeHtml(fields.name)}</h2>${image}<div class="study-answer asset-details"><span>Asset details</span><p><strong>Call sign:</strong> ${escapeHtml(fields.callSign || '')}<br><strong>Class:</strong> ${escapeHtml(fields.class || '')}<br><strong>Length:</strong> ${escapeHtml(fields.length || '')}<br><strong>Hull number:</strong> ${escapeHtml(fields.hullNumber || '')}<br><strong>Range:</strong> ${escapeHtml(fields.range || '')}</p></div><p class="study-prompt">Read each identifier aloud before continuing.</p>`;
+    $('nextButton').classList.remove('hidden'); $('nextButton').textContent = state.current + 1 < state.questions.length ? 'Next card →' : 'Finish study'; return;
+  }
   const image = fact.image ? `<img class="study-image" src="${escapeHtml(fact.image)}" alt="${escapeHtml(fact.front)} flag">` : '';
   $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(fact.section)}</p><h2 class="question-title">${escapeHtml(fact.front)}</h2>${image}<div class="study-answer"><span>Packet answer</span><p>${escapeHtml(fact.back)}</p></div><p class="study-prompt">Read the answer aloud, then continue when ready.</p>`;
   $('nextButton').classList.remove('hidden'); $('nextButton').textContent = state.current + 1 < state.questions.length ? 'Next card →' : 'Finish study';
 }
 
 function renderTestQuestion(question) {
-  const image = question.image ? `<img class="question-image" src="${escapeHtml(question.image)}" alt="${escapeHtml(question.front)} flag">` : '';
+  const imagePath = question.assetRelation ? question.asset.image : question.image; const image = imagePath ? `<img class="question-image" src="${escapeHtml(imagePath)}" alt="${escapeHtml(question.front || question.answer)}">` : '';
   const response = question.format === 'choice' ? `<div class="answer-grid">${question.choices.map((choice) => `<button class="answer" type="button">${escapeHtml(choice)}</button>`).join('')}</div>` : `<div class="fill-row"><input class="fill-input" id="fillInput" autocomplete="off" placeholder="${question.exact ? 'Type the complete packet wording' : 'Type your answer'}"><button class="submit-button" id="submitAnswer" type="button">Check</button></div>`;
-  const promptLabel = question.format === 'choice' ? question.direction === 'name' ? 'Choose the flag name' : 'Choose the meaning' : question.exact ? 'Type the complete answer' : question.direction === 'name' ? 'Enter the name' : question.direction === 'meaning' ? 'Enter the meaning' : question.direction === 'cloze' ? 'Complete the sentence' : question.section;
+  const promptLabel = question.promptLabel || (question.format === 'choice' ? question.direction === 'name' ? 'Choose the flag name' : 'Choose the meaning' : question.exact ? 'Type the complete answer' : question.direction === 'name' ? 'Enter the name' : question.direction === 'meaning' ? 'Enter the meaning' : question.direction === 'cloze' ? 'Complete the sentence' : question.section);
   $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(promptLabel)}</p><p class="question-section">${escapeHtml(question.section)}</p><h2 class="question-title">${escapeHtml(question.prompt)}</h2>${image}${response}`;
   document.querySelectorAll('.answer').forEach((button) => button.addEventListener('click', () => answerQuestion(button, question)));
   if (question.format === 'fill') {
@@ -88,7 +113,7 @@ function compareText(submitted, expected) {
 function answerQuestion(button, question) {
   if (state.answered) return;
   const submitted = question.format === 'choice' ? button.textContent : button.value;
-  const isCorrect = normalize(submitted) === normalize(question.answer); state.answered = true;
+  const isCorrect = normalize(submitted) === normalize(question.answer); state.answered = true; if (isCorrect) state.score += 1;
   const item = getProgress(question); item.seen += 1; item[isCorrect ? 'correct' : 'incorrect'] += 1; if (isCorrect && question.direction === 'front') item.frontCorrect += 1; if (isCorrect && question.direction === 'back') item.backCorrect += 1; if (isCorrect && question.direction === 'exact') item.exactCorrect += 1; item.mastery = Math.min(5, (item.frontCorrect > 0 ? 1 : 0) + (item.backCorrect > 0 ? 1 : 0) + (item.exactCorrect > 0 ? 2 : 0) + (item.correct >= 3 ? 1 : 0)); if (!isCorrect) item.mastery = Math.max(0, item.mastery - 1); saveProgress();
   stats.answered += 1; stats[isCorrect ? 'correct' : 'missed'] += 1; localStorage.setItem('boards-practice-stats', JSON.stringify(stats)); updateStats();
   document.querySelectorAll('.answer').forEach((option) => { option.disabled = true; if (normalize(option.textContent) === normalize(question.answer)) option.classList.add('correct'); });
@@ -99,14 +124,19 @@ function answerQuestion(button, question) {
 
 function finishSession() { $('quizPanel').classList.add('hidden'); $('resultsPanel').classList.remove('hidden'); $('resultsPanel').innerHTML = `<p class="eyebrow">SESSION COMPLETE</p><div class="results-score">${state.mode === 'study' ? 'Study' : `${Math.round((state.score / state.questions.length) * 100)}%`}</div><p>${state.mode === 'study' ? 'You reviewed the selected packet material.' : `${state.score} of ${state.questions.length} correct.`}</p><button class="primary-button" id="againButton" type="button">Start again</button><button class="secondary-button" id="resultsMenuButton" type="button">Practice sets</button>`; $('againButton').addEventListener('click', startSession); $('resultsMenuButton').addEventListener('click', showMenu); }
 function showMenu() { $('quizPanel').classList.add('hidden'); $('resultsPanel').classList.add('hidden'); $('commandProgress').classList.remove('hidden'); $('setupPanel').classList.remove('hidden'); renderMastery(); }
+function masteryFor(fact) {
+  if (!fact.asset) return getProgress(fact).mastery;
+  const keys = ['callSign-forward', 'callSign-reverse', 'class-forward', 'class-reverse', 'length-forward', 'length-reverse', 'hullNumber-forward', 'hullNumber-reverse', 'range-forward', 'range-reverse', 'image']; const scores = keys.map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery);
+  return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length);
+}
 function renderMastery() {
   if (!state.data) return;
-  const all = state.data.facts; const mastered = all.filter((fact) => getProgress(fact).mastery >= 5).length; const learning = all.filter((fact) => getProgress(fact).mastery > 0 && getProgress(fact).mastery < 5).length;
-  const filter = $('masteryFilter').value; const visible = all.filter((fact) => { const mastery = getProgress(fact).mastery; return filter === 'mastered' ? mastery >= 5 : filter === 'learning' ? mastery > 0 && mastery < 5 : filter === 'needs' ? mastery < 5 : true; });
+  const all = state.data.facts; const mastered = all.filter((fact) => masteryFor(fact) >= 5).length; const learning = all.filter((fact) => masteryFor(fact) > 0 && masteryFor(fact) < 5).length;
+  const filter = $('masteryFilter').value; const visible = all.filter((fact) => { const mastery = masteryFor(fact); return filter === 'mastered' ? mastery >= 5 : filter === 'learning' ? mastery > 0 && mastery < 5 : filter === 'needs' ? mastery < 5 : true; });
   $('masteredCount').textContent = mastered; $('learningCount').textContent = learning; $('dueCount').textContent = all.length - mastered;
-  $('masteryList').innerHTML = visible.map((fact) => { const item = getProgress(fact); return `<div class="mastery-item"><div><strong>${escapeHtml(fact.front)}</strong><small>${escapeHtml(fact.section)} · ${item.mastery >= 5 ? 'Mastered' : item.mastery ? `${item.mastery}/5` : 'New'}</small></div><div class="mastery-bar" role="progressbar" aria-label="${escapeHtml(fact.front)} mastery" aria-valuenow="${item.mastery}" aria-valuemin="0" aria-valuemax="5"><span style="width:${item.mastery * 20}%"></span></div></div>`; }).join('');
+  $('masteryList').innerHTML = visible.map((fact) => { const mastery = masteryFor(fact); return `<div class="mastery-item"><div><strong>${escapeHtml(fact.front)}</strong><small>${escapeHtml(fact.section)} · ${mastery >= 5 ? 'Mastered' : mastery ? `${mastery}/5` : 'New'}</small></div><div class="mastery-bar" role="progressbar" aria-label="${escapeHtml(fact.front)} mastery" aria-valuenow="${mastery}" aria-valuemin="0" aria-valuemax="5"><span style="width:${mastery * 20}%"></span></div></div>`; }).join('');
 }
-function updateStats() { $('answeredStat').textContent = stats.answered; $('accuracyStat').textContent = `${stats.answered ? Math.round((stats.correct / stats.answered) * 100) : 0}%`; $('missedStat').textContent = state.data ? state.data.facts.filter((fact) => getProgress(fact).mastery < 5).length : 0; renderMastery(); }
+function updateStats() { $('answeredStat').textContent = stats.answered; $('accuracyStat').textContent = `${stats.answered ? Math.round((stats.correct / stats.answered) * 100) : 0}%`; $('missedStat').textContent = state.data ? state.data.facts.filter((fact) => masteryFor(fact) < 5).length : 0; renderMastery(); }
 function initialize(data) { state.data = data; data.facts.forEach(getProgress); $('packetTitle').textContent = data.title; $('loadingMessage').textContent = `${data.facts.length} packet items ready.`; $('startButton').disabled = false; renderMastery(); updateStats(); }
 
 $('modeSelect').addEventListener('change', () => { $('modeHint').textContent = modeInfo[$('modeSelect').value].hint; });

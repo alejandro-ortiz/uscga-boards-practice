@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=4ca3805';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=assets-20261005-4';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
@@ -27,5 +27,21 @@ window.loadStudyData = async function () {
     const back = navy && navy !== 'None.' ? international && international !== navy ? `International: ${international} Navy: ${navy}` : navy : international || '';
     facts.push({ id: `flag-${index}`, category: 'flags', section: flagSection.section, front: item.name, back, image: `images/nauticalflags/${flagFiles[item.name] || ''}` });
   });
+  const assetImages = {
+    cutters: ['coastal-patrol-boat.jpg', 'patrol-boat.jpg', 'fast-response-cutter.jpg', 'small-harbor-tug.jpg', 'inland-construction-tender.jpg', 'costal-bouy-tender.jpg', 'costal-bouy-tender.jpg', 'seagoing-bouy-tender.jpg', 'great-lake-ice-breaker.jpg', 'polar-ice-breaker.webp', 'polar-ice-breaker.webp', 'medium-endurance-cutter-class-reliance.png', 'medium-endurance-cuttter-class-famous.jpg', 'offshore-patrol-cutter.jpg', 'national-security-cutter.jpg', 'barque-eagle.webp'],
+    small_boats: ['over-the-horizon-IV.webp', 'trailerable-aids-to-navigation-boat.webp', 'trailerable-port-security-boat.jpg', 'long-range-interceptor.jpg', 'bouy-utility-stern-loading.jpg', 'aids-to-navigation-boat.jpg', 'defender-class.png', 'special-purpose-craft-law-enforcement.png', 'response-boat-medium.jpg', 'special-purpose-craft-screening-vessel.webp', 'motor-life-boat.jpg'],
+    aircraft: ['MH-60T-DE-jayhawk.png', 'MH-65-dolphin.png', 'HC-130J-super-hercules.jpg', 'HC-27J-spartan.jpg', 'HC-144A-CASA-ocean-sentry.jpg', 'C-37-AB-gulfstream-V.jpg']
+  };
+  const assetGroups = [
+    ['asset_cutters', 'Coast Guard Cutters', packet.visual_and_identification.cutters.items, assetImages.cutters],
+    ['asset_small_boats', 'Coast Guard Small Boats', packet.visual_and_identification.small_boats.items, assetImages.small_boats],
+    ['asset_aircraft', 'Coast Guard Aircraft', [...packet.visual_and_identification.aircraft.categories.rotary_wing.items, ...packet.visual_and_identification.aircraft.categories.fixed_wing.items], assetImages.aircraft]
+  ];
+  assetGroups.forEach(([category, section, items, images]) => items.forEach((item, index) => {
+    const match = String(item.name).match(/^(.*?)\s*\(([^)]+)\)$/); const name = match ? match[1].trim() : item.name; const callSign = match ? match[2].trim() : '';
+    const fields = { name, callSign, class: item.Class || '', length: item.Length || '', hullNumber: item['Hull Number'] || '', range: item.Range || '' };
+    const image = images[index] ? `images/assets/${images[index]}` : '';
+    facts.push({ id: `${category}-${index}`, category, section, front: name, back: fields.callSign || fields.class || fields.length || fields.hullNumber, asset: { fields, image } });
+  }));
   return { title: packet.title, facts };
 };

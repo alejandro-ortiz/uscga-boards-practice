@@ -1120,7 +1120,7 @@
           "name": "Polar Ice Breaker (WAGB)",
           "Class": "Polar",
           "Length": "399 feet",
-          "Hull Number": "Polar Star\nPolar Sea",
+          "Hull Number": "10 Polar Star OR 11 Polar Sea",
           "image_ref": "IMAGE_PLACEHOLDER_CUTTER_10"
         },
         {
@@ -1171,13 +1171,13 @@
       "section": "Coast Guard Small Boats",
       "items": [
         {
-          "name": "TO BE LABELED FROM PACKET IMAGE",
+          "name": "Over the Horizon-IV",
           "Length": "26 feet",
           "Hull Number": "26###",
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_01"
         },
         {
-          "name": "TO BE LABELED FROM PACKET IMAGE",
+          "name": "Trailerable Aids to Navigation Boat",
           "Length": "26 feet",
           "Hull Number": "26###",
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_02"
@@ -1189,7 +1189,7 @@
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_03"
         },
         {
-          "name": "Over the Horizon-IV / Trailerable Aids to Navigation Boat",
+          "name": "Long Range Interceptor",
           "Length": "35 feet",
           "Hull Number": "35###",
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_04"
@@ -1207,13 +1207,13 @@
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_06"
         },
         {
-          "name": "Long Range Interceptor",
+          "name": "Defender Class",
           "Length": "29 feet",
           "Hull Number": "29###",
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_07"
         },
         {
-          "name": "Defender Class",
+          "name": "Special Purpose Craft Law Enforcement",
           "Length": "33 feet",
           "Hull Number": "33###",
           "image_ref": "IMAGE_PLACEHOLDER_SMALL_BOAT_08"
