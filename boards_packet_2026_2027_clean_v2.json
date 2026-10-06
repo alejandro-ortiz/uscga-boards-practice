@@ -1082,14 +1082,14 @@
           "image_ref": "IMAGE_PLACEHOLDER_CUTTER_04"
         },
         {
-          "name": "Inland Construction Tender",
+          "name": "Ice Breaking Tug",
           "Class": "Bay",
           "Length": "140 feet",
           "Hull Number": "1##",
           "image_ref": "IMAGE_PLACEHOLDER_CUTTER_05"
         },
         {
-          "name": "Coastal Buoy Tender (WLM)",
+          "name": "Inland Construction Tender",
           "Class": "Bay",
           "Length": "160 feet",
           "Hull Number": "8##",
@@ -1103,7 +1103,7 @@
           "image_ref": "IMAGE_PLACEHOLDER_CUTTER_07"
         },
         {
-          "name": "Coastal Buoy Tender (WLM)",
+          "name": "Seagoing Buoy Tender (WLB)",
           "Class": "Juniper",
           "Length": "225 feet",
           "Hull Number": "2##",
