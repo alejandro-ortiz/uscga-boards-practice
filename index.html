@@ -6,8 +6,8 @@
   <meta name="description" content="Study the USCGA boards packet with focused study, matching, recall, and exact modes.">
   <meta name="theme-color" content="#080d55">
   <title>USCGA Boards Packet Practice</title>
-  <link rel="icon" href="favicon.svg?v=4630042" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=4630042">
+  <link rel="icon" href="favicon.svg?v=20261109e" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20261109e">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-49HTLQLRQ8"></script>
@@ -43,25 +43,43 @@
       <div class="controls">
         <fieldset class="practice-sets">
           <legend>Practice sets</legend>
+          <div class="set-tools"><button type="button" class="chip-button" id="selectAllBtn">Select all</button><button type="button" class="chip-button" id="clearAllBtn">Clear</button></div>
           <label><input type="checkbox" name="practiceSet" value="mission"> Academy mission</label>
           <label><input type="checkbox" name="practiceSet" value="ethos"> Coast Guard ethos</label>
           <label><input type="checkbox" name="practiceSet" value="sentry"> General orders</label>
-          <label><input type="checkbox" name="practiceSet" value="helm" checked> Helm commands</label>
-          <label><input type="checkbox" name="practiceSet" value="lines" checked> Line handling</label>
+          <label><input type="checkbox" name="practiceSet" value="helm"> Helm commands</label>
+          <label><input type="checkbox" name="practiceSet" value="lines"> Line handling</label>
           <label><input type="checkbox" name="practiceSet" value="radio"> Radio prowords</label>
+          <label><input type="checkbox" name="practiceSet" value="radio_proc"> Radio procedures</label>
           <label><input type="checkbox" name="practiceSet" value="missions"> Coast Guard missions</label>
+          <label><input type="checkbox" name="practiceSet" value="districts"> Coast Guard districts</label>
+          <label><input type="checkbox" name="practiceSet" value="etiquette"> Etiquette</label>
+          <label><input type="checkbox" name="practiceSet" value="colors"> Colors indoctrination</label>
+          <label><input type="checkbox" name="practiceSet" value="shipboard"> Shipboard customs</label>
+          <label><input type="checkbox" name="practiceSet" value="saluting"> Saluting</label>
+          <label><input type="checkbox" name="practiceSet" value="damage"> Damage control</label>
+          <label><input type="checkbox" name="practiceSet" value="fires"> Fire classes</label>
+          <label><input type="checkbox" name="practiceSet" value="nautical"> Nautical dictionary</label>
           <label><input type="checkbox" name="practiceSet" value="flags"> Nautical flags</label>
           <label><input type="checkbox" name="practiceSet" value="assets"> Coast Guard assets</label>
         </fieldset>
-        <label>
-          Mode
-          <select id="modeSelect">
-            <option value="study">Study</option>
-            <option value="matching">Matching</option>
-            <option value="recall">Recall</option>
-            <option value="exact">Exact</option>
-          </select>
-        </label>
+        <div class="mode-column">
+          <fieldset class="mode-rail" id="modeRail">
+            <legend>Mode</legend>
+            <label><input type="radio" name="mode" value="study" checked> <span>Study</span><small>Browse with answers shown</small></label>
+            <label><input type="radio" name="mode" value="practice"> <span>Practice</span><small>Mixed drilling, not graded</small></label>
+            <label><input type="radio" name="mode" value="test"> <span>Test</span><small>Graded, pass/fail (90%)</small></label>
+            <label><input type="radio" name="mode" value="review"> <span>Review</span><small>Drill your weak items</small></label>
+          </fieldset>
+          <label class="length-control">Session length
+            <select id="lengthSelect">
+              <option value="all">All</option>
+              <option value="10">10 questions</option>
+              <option value="20">20 questions</option>
+              <option value="30">30 questions</option>
+            </select>
+          </label>
+        </div>
         <button class="primary-button" id="startButton" type="button" disabled>Start practice <span aria-hidden="true">→</span></button>
       </div>
       <p class="mode-hint" id="modeHint">Browse every packet item with the answer visible. Say it aloud before continuing.</p>
@@ -108,7 +126,9 @@
     </section>
     <p class="privacy-note">Progress and preferences stay in this browser. Nothing is uploaded.</p>
   </main>
-  <script src="data.js?v=4630042"></script>
-  <script src="app.js?v=4630042"></script>
+  <script src="usmap.js?v=20261109e"></script>
+  <script src="curriculum.js?v=20261109e"></script>
+  <script src="data.js?v=20261109e"></script>
+  <script src="app.js?v=20261109e"></script>
 </body>
 </html>

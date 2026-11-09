@@ -1008,37 +1008,171 @@
     "nautical_flags": {
       "section": "Nautical Flags",
       "items": [
-        { "name": "Alfa", "navy_meaning": "I have a diver down; keep well clear at slow speed.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Bravo", "navy_meaning": "I am taking in, discharging, or carrying dangerous cargo.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Charlie", "navy_meaning": "\"Yes\" or \"affirmative\".", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Delta", "navy_meaning": "I am maneuvering with difficulty; keep clear.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Echo", "navy_meaning": "I am directing my course to starboard.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Foxtrot", "navy_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Golf", "navy_meaning": "I require a pilot.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Hotel", "navy_meaning": "I have a pilot on board.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "India", "international_meaning": "Coming alongside.", "navy_meaning": "I am directing my course to port.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Juliet", "navy_meaning": "I am on fire and have dangerous cargo; keep clear.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Kilo", "navy_meaning": "I wish to communicate with you.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Lima", "navy_meaning": "You should stop your vessel immediately.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Mike", "navy_meaning": "My vessel is stopped; making no way.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "November", "navy_meaning": "No or negative.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Oscar", "navy_meaning": "Man overboard.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Papa", "navy_meaning": "All personnel return to ship; proceeding to sea (Inport).", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Quebec", "international_meaning": "Boat recall; all boats return to ship.", "navy_meaning": "Ship meets health regs; request clearance into port.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Romeo", "international_meaning": "Preparing to replenish (At sea). Ready duty ship (Inport).", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Sierra", "international_meaning": "Conducting flag hoist drill.", "navy_meaning": "Moving astern.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Tango", "international_meaning": "Do not pass ahead of me.", "navy_meaning": "Keep clear; engaged in trawling.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Uniform", "navy_meaning": "You are running into danger.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Victor", "navy_meaning": "I require assistance.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Whiskey", "navy_meaning": "I require medical assistance.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Xray", "international_meaning": "Stop carrying out your intentions and watch for my signals.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Yankee", "international_meaning": "Ship has visual communications duty.", "navy_meaning": "I am dragging anchor.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Zulu", "navy_meaning": "I require a tug.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Code/Answer", "international_meaning": "Flag that follows is from the International Code of Signals.", "navy_meaning": "Message is understood. Also, numeric decimal point.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "First substitute", "international_meaning": "Absence of flag officer or unit commander (Inport).", "navy_meaning": "Substitute for the first flag in this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Second substitute", "international_meaning": "Absence of chief of staff (Inport).", "navy_meaning": "Substitute for the second flag in this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Third substitute", "international_meaning": "Absence of commanding officer (Inport).", "navy_meaning": "Substitute for the third flag in this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" },
-        { "name": "Fourth substitute", "international_meaning": "Absence of civil or military official whose flag is flying on this ship.", "navy_meaning": "Substitute for the fourth flagin this hoist.", "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG" }
+        {
+          "name": "Alfa",
+          "navy_meaning": "I have a diver down; keep well clear at slow speed.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Bravo",
+          "navy_meaning": "I am taking in, discharging, or carrying dangerous cargo.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Charlie",
+          "navy_meaning": "\"Yes\" or \"affirmative\".",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Delta",
+          "navy_meaning": "I am maneuvering with difficulty; keep clear.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Echo",
+          "navy_meaning": "I am directing my course to starboard.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Foxtrot",
+          "navy_meaning": "I am disabled; communicate with me. On aircraft carriers: Flight Operations underway",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Golf",
+          "navy_meaning": "I require a pilot.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Hotel",
+          "navy_meaning": "I have a pilot on board.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "India",
+          "international_meaning": "Coming alongside.",
+          "navy_meaning": "I am directing my course to port.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Juliet",
+          "navy_meaning": "I am on fire and have dangerous cargo; keep clear.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Kilo",
+          "navy_meaning": "I wish to communicate with you.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Lima",
+          "navy_meaning": "You should stop your vessel immediately.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Mike",
+          "navy_meaning": "My vessel is stopped; making no way.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "November",
+          "navy_meaning": "No or negative.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Oscar",
+          "navy_meaning": "Man overboard.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Papa",
+          "navy_meaning": "All personnel return to ship; proceeding to sea (Inport).",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Quebec",
+          "international_meaning": "Boat recall; all boats return to ship.",
+          "navy_meaning": "Ship meets health regs; request clearance into port.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Romeo",
+          "international_meaning": "Preparing to replenish (At sea). Ready duty ship (Inport).",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Sierra",
+          "international_meaning": "Conducting flag hoist drill.",
+          "navy_meaning": "Moving astern.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Tango",
+          "international_meaning": "Do not pass ahead of me.",
+          "navy_meaning": "Keep clear; engaged in trawling.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Uniform",
+          "navy_meaning": "You are running into danger.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Victor",
+          "navy_meaning": "I require assistance.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Whiskey",
+          "navy_meaning": "I require medical assistance.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Xray",
+          "international_meaning": "Stop carrying out your intentions and watch for my signals.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Yankee",
+          "international_meaning": "Ship has visual communications duty.",
+          "navy_meaning": "I am dragging anchor.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Zulu",
+          "navy_meaning": "I require a tug.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Code/Answer",
+          "international_meaning": "Flag that follows is from the International Code of Signals.",
+          "navy_meaning": "Message is understood. Also, numeric decimal point.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "First substitute",
+          "international_meaning": "Absence of flag officer or unit commander (Inport).",
+          "navy_meaning": "Substitute for the first flag in this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Second substitute",
+          "international_meaning": "Absence of chief of staff (Inport).",
+          "navy_meaning": "Substitute for the second flag in this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Third substitute",
+          "international_meaning": "Absence of commanding officer (Inport).",
+          "navy_meaning": "Substitute for the third flag in this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        },
+        {
+          "name": "Fourth substitute",
+          "international_meaning": "Absence of civil or military official whose flag is flying on this ship.",
+          "navy_meaning": "Substitute for the fourth flagin this hoist.",
+          "image_ref": "IMAGE_PLACEHOLDER_NAUTICAL_FLAG"
+        }
       ]
     },
     "lights_and_dayshapes": {
@@ -1816,6 +1950,334 @@
         },
         {
           "text": "Procedure Words: Procedure words (prowords) are words and phrases used to speed up radio communication."
+        }
+      ]
+    }
+  },
+  "study_additions": {
+    "curated": {
+      "customs": {
+        "category": "customs",
+        "label": "Coast Guard customs",
+        "groups": [
+          {
+            "section": "Etiquette",
+            "page": 26,
+            "items": [
+              {
+                "front": "How do you address a senior whose rank is below Commander (O-5)?",
+                "back": "Use “Mister” or “Miss” and the last name, with “Sir” or “Ma’am” (e.g., “Good morning Mister Smith, sir”)."
+              },
+              {
+                "front": "How do you address a senior who is a Commander (O-5) or above?",
+                "back": "Substitute the rank for “Mister” or “Miss” (e.g., “Good morning CDR Johnson, ma’am” or “Good evening CAPT Ray, sir”)."
+              },
+              {
+                "front": "When addressing a group of officers, whom do you greet?",
+                "back": "Greet only the highest-ranking officer."
+              },
+              {
+                "front": "If you are covered and salute a group of officers, how long do you hold it?",
+                "back": "Hold the salute until all of the officers acknowledge or pass by you."
+              },
+              {
+                "front": "How do you ask to pass an officer or upper-class cadet in the barracks?",
+                "back": "Ask “By your leave please, Sir/Ma’am?” If covered, render a salute to officers both indoors and outdoors."
+              },
+              {
+                "front": "Who initiates a handshake?",
+                "back": "Handshakes shall only be initiated by the senior person."
+              },
+              {
+                "front": "What are the steps for entering a superior’s room or office?",
+                "back": "1. Knock. 2. Loudly state your name and your business (“4/c ___, request permission to come aboard, Sir/Ma’am”). 3. When on duty/under arms, remain covered (except wardroom, mess hall, place of worship) and salute entering and exiting. 4. To leave, ask “By your leave, Sir/Ma’am?” 5. On being excused, turn around and leave—do NOT about face."
+              },
+              {
+                "front": "What does the four-class system say about using first names?",
+                "back": "First names are permitted only between adjoining upper-class (not 4/c) in informal settings. During official business, a junior shall not use the first name of a cadet from a more senior class."
+              }
+            ],
+            "category": "etiquette"
+          },
+          {
+            "section": "Colors Indoctrination",
+            "page": 27,
+            "items": [
+              {
+                "front": "What are the times for morning and evening colors?",
+                "back": "Morning: 0800. Evening: Sunset."
+              },
+              {
+                "front": "What are the three whistles involved in colors aboard your ship?",
+                "back": "1. “Attention”  2. Morning: “To the Colors” / Evening: “Retreat”  3. “Carry on”."
+              },
+              {
+                "front": "What is the procedure for half-masting the national ensign?",
+                "back": "Raise the national ensign to the top of the mast, then lower it to half-mast."
+              },
+              {
+                "front": "In uniform during colors while COVERED, what is the proper action?",
+                "back": "Face the flag; hand salute at “To the Colors” (evening “Retreat”); drop the salute at “Carry on.”"
+              },
+              {
+                "front": "In uniform during colors while UNCOVERED, what is the proper action?",
+                "back": "Face the flag and stand at “attention.”"
+              },
+              {
+                "front": "NOT in uniform during colors while UNCOVERED, what is the proper action?",
+                "back": "Face the flag and place your hand over your heart (members of the armed forces and veterans may render a military salute)."
+              },
+              {
+                "front": "NOT in uniform during colors while COVERED, what is the proper action?",
+                "back": "Face the flag, remove your hat, and hold the hat in your right hand at the left side of your chest, over the heart."
+              },
+              {
+                "front": "What do you do if you are driving a car and colors go off?",
+                "back": "Stop the vehicle and remain seated at attention until colors is finished."
+              }
+            ],
+            "category": "colors"
+          },
+          {
+            "section": "Shipboard Customs",
+            "page": 28,
+            "items": [
+              {
+                "front": "What is the proper action while boarding a cutter?",
+                "back": "1. Salute the national ensign. 2. Salute the OOD and hold until the OOD returns the salute. 3. Board the ship."
+              },
+              {
+                "front": "What is the proper action while leaving a cutter?",
+                "back": "1. Salute the OOD and hold until the OOD returns the salute. 2. If the ensign is flying, salute the ensign. 3. Depart the ship."
+              },
+              {
+                "front": "What are the Quarterdeck customs?",
+                "back": "Do not be loud or sloppy in its vicinity; never appear on it unless wearing the UOD or a member of a work party; never smoke on it; never cross or walk on it except when necessary; do not lounge in its vicinity."
+              },
+              {
+                "front": "What are the Sickbay customs?",
+                "back": "Always remove your cover when entering sickbay (out of respect for the dead), maintain quiet at all times, and do not smoke."
+              },
+              {
+                "front": "What are the Messdeck customs?",
+                "back": "Remove your cover when entering; never leave your cover on the table, to respect the men and women who lost their lives on mess deck tables in times of war."
+              },
+              {
+                "front": "What are the Bridge customs when the CO arrives and departs?",
+                "back": "On arrival, call “Captain on the Bridge” and salute the CO. On departure, call “Captain Below” and salute. It can be dispensed of at the CO’s discretion."
+              },
+              {
+                "front": "What is the custom for Divine Services?",
+                "back": "The ship flies the church pennant above the national ensign while services are held. Remove your cover in the area of divine services and remain quiet about the decks."
+              }
+            ],
+            "category": "shipboard"
+          },
+          {
+            "section": "Saluting",
+            "page": 29,
+            "items": [
+              {
+                "front": "Whom do you salute?",
+                "back": "All commissioned and warrant officers of the Coast Guard, Navy, Marine Corps, Air Force, and Army; officers of foreign armed services (unless at war with them); officers of NOAA and the USPHS; and any officer recognized in civilian attire."
+              },
+              {
+                "front": "When do you salute (the distance rule)?",
+                "back": "Six paces away is the general rule—salute and greet at the same time you would greet a civilian, always with a cheerful, respectful greeting."
+              },
+              {
+                "front": "When transiting WITH a commissioned officer, when do you salute?",
+                "back": "Do not salute another officer until the officer with you salutes—then salute at the same time. If an enlisted member or cadet salutes your officer, return it at the same time your officer does."
+              },
+              {
+                "front": "When conversing with an officer, when do you salute?",
+                "back": "Salute when approaching the officer, and salute again at the end of the conversation."
+              },
+              {
+                "front": "On duty and covered, if approached by an officer, what do you do?",
+                "back": "Render the proper salute to them whether or not they are covered as well."
+              }
+            ],
+            "category": "saluting"
+          }
+        ]
+      },
+      "radio_procedures": {
+        "category": "radio_proc",
+        "label": "Radio procedures",
+        "groups": [
+          {
+            "section": "Radios and Messages",
+            "page": 36,
+            "items": [
+              {
+                "front": "What are the three parts of a message?",
+                "back": "To whom, from whom, about what—the name of the person/thing being called, the name of the person/thing calling, and the information to be sent. (“To who, From who, About what.”)"
+              },
+              {
+                "front": "What is circuit discipline, and what does it require?",
+                "back": "Strict discipline to prevent confusion: send only official messages; keep the button in the off position except when actually talking; use only standard phraseology; never show anger, impatience, or excitement."
+              },
+              {
+                "front": "What are the transmitting techniques for good communication?",
+                "back": "Listen before transmitting; do not break in on a message; speak clearly, distinctly, and slowly—phrase by phrase, not word by word; use standard pronunciation, standard terminology, and always use prescribed procedures."
+              },
+              {
+                "front": "What are procedure words (prowords)?",
+                "back": "Words and phrases used to speed up radio communication."
+              }
+            ]
+          }
+        ]
+      },
+      "damage_control": {
+        "category": "damage",
+        "label": "Damage control & firefighting",
+        "groups": [
+          {
+            "section": "Fundamentals of Damage Control",
+            "page": 34,
+            "items": [
+              {
+                "front": "Condition X-Ray",
+                "back": "Provides the LEAST protection. Set when the ship is in no danger of attack. A black X is placed on all fittings that shall be closed at all times when not in operation."
+              },
+              {
+                "front": "Condition Yoke",
+                "back": "Set and maintained at sea and in port during wartime (may be modified for peacetime cruising during regular working hours). A black Y is placed on all fittings closed for wartime cruising conditions."
+              },
+              {
+                "front": "Condition Zebra",
+                "back": "Provides the MAXIMUM protection for ship and personnel for battle and emergency situations (fire, collision, General Quarters) and when entering or leaving port during wartime. A Z is placed on all fittings closed for battle or emergency conditions."
+              },
+              {
+                "front": "Circle William",
+                "back": "A black “W” within a black circle. Fittings are closed only to prevent the spread of Chemical/Biological/Radiological (CBR) contamination or for defense."
+              },
+              {
+                "front": "Dog Zebra",
+                "back": "A red Z enclosed by a large black D. Placed on fittings that must be secured to prevent light escaping outside the ship."
+              },
+              {
+                "front": "What is the fire tetrahedron?",
+                "back": "The four components needed for a fire to occur and maintain itself: heat, oxygen, fuel, and chain reaction. Eliminate any or all of these and the fire is extinguished."
+              }
+            ],
+            "category": "damage"
+          },
+          {
+            "section": "Four Classes of Fires",
+            "page": 35,
+            "items": [
+              {
+                "front": "Class A fires — what they involve and how they are extinguished",
+                "back": "Involve wood and wood products, cloth, textiles and fibrous materials, and paper products. Extinguished with water in a straight stream or fog pattern; if deep-seated, AFFF (Aqueous Film Forming Foam) is more effective and can be used as a wetting agent."
+              },
+              {
+                "front": "Class B fires — what they involve and how they are extinguished",
+                "back": "Involve flammable liquids such as gasoline, diesel, jet fuels, hydraulic fluid, and lube oil. Normally extinguished with AFFF or potassium bicarbonate (PKP). For flammable gases, securing the fuel source is the single most important step."
+              },
+              {
+                "front": "Class C fires — what they involve and how they are extinguished",
+                "back": "Energized electrical fires. Attacked at prescribed distances using nonconductive agents such as CO2 or water spray. The most effective tactic is to de-energize and handle it as a Class A fire."
+              },
+              {
+                "front": "Class D fires — what they involve and how they are extinguished",
+                "back": "Involve combustible metals such as magnesium and titanium. Water in quantity using fog patterns, from a safe distance, is recommended; commonly associated with aircraft wheel structures. If it cannot be contained, jettison the object overboard."
+              }
+            ],
+            "category": "fires"
+          }
+        ]
+      }
+    },
+    "districts": {
+      "section": "Coast Guard Districts",
+      "page": 30,
+      "viewBox": "8 6 920 585",
+      "areas": {
+        "LANT": {
+          "name": "Atlantic Area (LANT)",
+          "command_hq": "Portsmouth, Virginia"
+        },
+        "PAC": {
+          "name": "Pacific Area (PAC)",
+          "command_hq": "Alameda, California"
+        }
+      },
+      "headquarters": "Coast Guard Headquarters — Washington, D.C.",
+      "items": [
+        {
+          "num": 1,
+          "name": "Northeast District",
+          "hq": "Boston, MA",
+          "area": "LANT",
+          "x": 874,
+          "y": 159
+        },
+        {
+          "num": 2,
+          "name": "East District",
+          "hq": "Portsmouth, VA",
+          "area": "LANT",
+          "x": 795,
+          "y": 292
+        },
+        {
+          "num": 3,
+          "name": "Southeast District",
+          "hq": "Miami, FL",
+          "area": "LANT",
+          "x": 719,
+          "y": 556
+        },
+        {
+          "num": 4,
+          "name": "Heartland District",
+          "hq": "New Orleans, LA",
+          "area": "LANT",
+          "x": 585,
+          "y": 478
+        },
+        {
+          "num": 5,
+          "name": "Great Lakes District",
+          "hq": "Cleveland, OH",
+          "area": "LANT",
+          "x": 705,
+          "y": 210
+        },
+        {
+          "num": 6,
+          "name": "Southwest District",
+          "hq": "Alameda, CA",
+          "area": "PAC",
+          "x": 78,
+          "y": 252
+        },
+        {
+          "num": 7,
+          "name": "Northwest District",
+          "hq": "Seattle, WA",
+          "area": "PAC",
+          "x": 96,
+          "y": 52
+        },
+        {
+          "num": 8,
+          "name": "Arctic District",
+          "hq": "Juneau, AK",
+          "area": "PAC",
+          "x": 150,
+          "y": 520
+        },
+        {
+          "num": 9,
+          "name": "Oceania District",
+          "hq": "Honolulu, HI",
+          "area": "PAC",
+          "x": 287,
+          "y": 545
         }
       ]
     }

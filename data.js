@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=4630042';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=20261109e';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
@@ -43,5 +43,24 @@ window.loadStudyData = async function () {
     const image = images[index] ? `images/assets/${images[index]}` : '';
     facts.push({ id: `${category}-${index}`, category, section, front: name, back: fields.callSign || fields.class || fields.length || fields.hullNumber, asset: { fields, image } });
   }));
+
+  // Basic Nautical Dictionary (packet pp. 20-22) — 88 term/definition pairs.
+  add('nautical', packet.term_definitions.nautical_dictionary.section, packet.term_definitions.nautical_dictionary.items, 'term', 'definition');
+
+  // Authored Q&A study sets (customs pp. 26-29, radio procedures p. 36, damage control & fires pp. 34-35).
+  const slug = (value) => String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  Object.values(packet.study_additions.curated).forEach((set) => set.groups.forEach((group) => {
+    const category = group.category || set.category;
+    group.items.forEach((item, index) => facts.push({ id: `${category}-${slug(group.section)}-${index}`, category, section: group.section, front: item.front, back: item.back }));
+  }));
+
+  // Coast Guard Districts (packet p. 30) — interactive map plus number/name/HQ/area recall.
+  const districts = packet.study_additions.districts;
+  facts.push({ id: 'districts-map', category: 'districts', section: districts.section, front: 'Coast Guard Districts map', back: 'Nine districts in two areas: LANT (1–5) and PAC (6–9).', districtsMap: districts });
+  districts.items.forEach((dist) => facts.push({ id: `district-${dist.num}`, category: 'districts', section: districts.section, front: dist.name, back: `District ${dist.num} · HQ ${dist.hq} · ${dist.area} Area` }));
+  facts.push({ id: 'district-lant-cmd', category: 'districts', section: districts.section, front: 'LANT Area Command headquarters', back: districts.areas.LANT.command_hq });
+  facts.push({ id: 'district-pac-cmd', category: 'districts', section: districts.section, front: 'PAC Area Command headquarters', back: districts.areas.PAC.command_hq });
+  facts.push({ id: 'district-hq', category: 'districts', section: districts.section, front: 'Coast Guard Headquarters', back: districts.headquarters.replace(/^.*—\s*/, '') });
+
   return { title: packet.title, facts };
 };
