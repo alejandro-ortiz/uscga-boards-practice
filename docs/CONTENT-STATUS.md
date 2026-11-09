@@ -33,7 +33,7 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 37–42 | Coast Guard Cutters | ✅ | `assets` (with images) |
 | 43–46 | Coast Guard Small Boats | ✅ | `assets` (with images) |
 | 47–49 | Coast Guard Aircraft | ✅ | `assets` (with images) |
-| 50–64 | Chapter 2 — Appearance and Grooming | ⬜ | Not captured (large; tables + policy text) |
+| 50–64 | Chapter 2 — Appearance and Grooming | ⏸ | **Deferred by owner** — skip for now (large policy tables) |
 | 65 | References | ⬜ | n/a |
 
 ## Added in this round (pages 20–22, 26–36, 30)
@@ -64,7 +64,14 @@ Each packet section is its own separate study set (one checkbox each):
 
 ## Remaining to reach "everything"
 
-Priority order suggestion: Enlisted Ratings (10–12) and Ranks (6–9) → Flags & Ensigns (16–17)
-and Distress Signals (33, need images) → Lights & Dayshapes (18–19, need images) →
-Chapter 2 Appearance & Grooming (50–64, large). Follow "How to add a new study set" in
-`DEVELOPMENT.md` for each.
+Text-based content is now complete. Only two sections remain, and **both are visual** — cadets
+identify an image — so they need image assets before wiring (the signal/light pictures), the way
+`flags` and `assets` already carry images:
+
+- **Distress Signals (p. 33)** — 16 signals; owner wants these **verbatim**. Signal names are in
+  `facts_and_reference.distress_signals`; needs the signal images.
+- **Lights & Dayshapes (pp. 18–19)** — needs the light/dayshape images.
+
+**Chapter 2 — Appearance & Grooming (pp. 50–64) is deferred by the owner** and intentionally skipped.
+
+Follow "How to add a new study set" in `DEVELOPMENT.md` once images are available.
