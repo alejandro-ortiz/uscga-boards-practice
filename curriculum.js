@@ -44,6 +44,7 @@ window.CURRICULUM = {
     ratings:    { unit: 'Organization & Missions', recognition: true }, // short identifiers → test by recognition
     ranks:      { unit: 'Organization & Missions', recognition: true },
     flags:      { unit: 'Visual Identification' },
+    ensigns:    { unit: 'Visual Identification' },
     assets:     { unit: 'Visual Identification' },
     damage:     { unit: 'Damage Control & Firefighting' },
     fires:      { unit: 'Damage Control & Firefighting' }

@@ -2189,6 +2189,34 @@
             "category": "fires"
           }
         ]
+      },
+      "ensigns": {
+        "category": "ensigns",
+        "label": "Flags & Ensigns",
+        "groups": [
+          {
+            "section": "Flags & Ensigns",
+            "page": 16,
+            "items": [
+              {
+                "front": "The Coast Guard Ensign",
+                "back": "Sixteen alternating red and white vertical stripes (the number of states in the Union when it was adopted); the union contains the Arms of the United States in dark blue on a white field. Originally designed to distinguish Revenue Cutters from pirate ships. President Taft ordered the Coast Guard emblem added over the seventh vertical red stripe from the mast to distinguish cutters from customhouses."
+              },
+              {
+                "front": "The Standard",
+                "back": "The upper-left corner of the Coast Guard Ensign, containing the Arms of the United States. It is used for parades and ceremonies and is adorned with the Coast Guard battle streamers."
+              },
+              {
+                "front": "The Jack",
+                "back": "The upper corner of the National Ensign nearest the mast — the blue rectangle with the 50 stars. Cutters have flown the Jack since the Civil War, and it is only flown from the jackstaff while at anchor or pier side."
+              },
+              {
+                "front": "The Commissioning Pennant",
+                "back": "Has 13 white stars on a blue field, 13 vertical red-and-white stripes, and a red swallowtail. It is flown from the top of the mainmast."
+              }
+            ]
+          }
+        ]
       }
     },
     "districts": {

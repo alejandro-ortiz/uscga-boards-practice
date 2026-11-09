@@ -14,7 +14,7 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 9 | Enlisted Ranks | ✅ | `ranks` — recognition |
 | 10–12 | U.S. Coast Guard Enlisted Ratings | ✅ | `ratings` — recognition; duties shown in Study |
 | 13–15 | Nautical Flags | ✅ | `flags` (with images) |
-| 16–17 | Flags & Ensigns | 🟡 | JSON: `facts_and_reference.flags_and_ensigns` (8) |
+| 16–17 | Flags & Ensigns | ✅ | `ensigns` — Ensign, Standard, Jack, Commissioning Pennant |
 | 18–19 | Common Lights and Dayshapes | 🟡 | JSON: `lights_and_dayshapes` (needs images) |
 | 20–22 | Basic Nautical Dictionary | ✅ | `nautical` (88 terms) — **added** |
 | 23–24 | Helm Commands | ✅ | `helm` |
