@@ -51,6 +51,21 @@ Mastery (0–5) and stats are stored per-fact in `localStorage`; the mastery pan
 collapsible per-category rows. Nothing is uploaded.
 See `ROADMAP.md` for product direction and what's next.
 
+### Section flags (`curriculum.js`) and fact fields
+
+- `verbatim: true` — Test types the answer word-for-word (exact). Used for mission, ethos, sentry,
+  distress signals.
+- `recognition: true` — Test uses multiple choice instead of keyword-recall. Use for short
+  identifiers (ranks, ratings) and image-based "identify this" sets (lights & dayshapes). Assets are
+  recognition automatically.
+- Otherwise a section is **keyword-recall**: typed answer graded on ≥70% of key terms.
+
+Optional fields on a fact (set in `data.js`):
+- `image` — path shown on the study card and test question (flags, assets, lights).
+- `detail` — extra text shown only in Study (e.g. rating duties, the full lights/dayshape rule),
+  while `back` stays a short answer for recognition choices.
+- `asset` / `districtsMap` — the special multi-field (ships/boats/aircraft) and map cards.
+
 ## How to add a new study set
 
 A "study set" = one `category` = one checkbox. Adding one touches **four** places:

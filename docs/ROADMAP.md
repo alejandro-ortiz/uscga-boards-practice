@@ -45,16 +45,21 @@ The keyword grader (`keywordScore` in `app.js`) derives key terms from the answe
   flat 268-item list.
 - **Session length** control (All / 10 / 20 / 30).
 
+- **Phase 4 — Content completion (all but grooming).** Ranks, Enlisted Ratings, Flags & Ensigns,
+  Lights & Dayshapes (self-authored COLREGS SVGs in `images/lights/`), and Distress Signals
+  (verbatim, transcribed from the packet page). Added a `recognition` section flag for
+  identifier/visual content. Deck ≈ 348 items. Only **Chapter 2 grooming** remains, and it is
+  deferred by the owner.
+
 ### ▶ Next (in priority order)
-1. **Content completion** — wire the remaining packet (enlisted ratings, ranks, flags & ensigns,
-   distress signals [verbatim], lights & dayshapes, Chapter 2 grooming), with images where needed.
-2. **Keyword-list overrides** — let a section or item specify explicit `keywords` in the JSON to
+1. **Keyword-list overrides** — let a section or item specify explicit `keywords` in the JSON to
    override the auto-derived terms where the heuristic is too strict/loose.
-3. **Exact-mode leniency** — ignore trivial punctuation/case so verbatim grading fails only on real
-   wording errors.
-4. **Progress export/import** — back up / move a browser's progress (JSON download + restore).
-5. **Mobile polish pass** — the picker, mastery groups, and results on a phone.
-6. **Due-based review scheduling** — spacing intervals on top of Smart Review.
+2. **Exact-mode leniency** — ignore trivial punctuation/case so verbatim grading fails only on real
+   wording errors (helps the verbatim Distress Signals especially).
+3. **Progress export/import** — back up / move a browser's progress (JSON download + restore).
+4. **Mobile polish pass** — the picker, mastery groups, and results on a phone.
+5. **Due-based review scheduling** — spacing intervals on top of Smart Review.
+6. **Chapter 2 grooming** — when the owner un-defers it (large policy tables; extractable text).
 
 ### Deliberately NOT doing (for now)
 - A unit/week "course" structure or guided curriculum path — the owner wants element-pick to stay

@@ -2,7 +2,7 @@
 
 A browser-only study tool for studying the United States Coast Guard Academy boards packet.
 
-It includes the Academy mission, Coast Guard ethos, General Orders of the Sentry, helm commands, line-handling commands, radio prowords and procedures, Coast Guard missions, Coast Guard customs (etiquette, colors, shipboard customs, saluting), damage control and the four classes of fires, the basic nautical dictionary, nautical flags with images, Coast Guard assets with images, and an interactive Coast Guard districts map.
+It covers the full boards packet except the Chapter 2 appearance and grooming standards: the Academy mission, Coast Guard ethos, General Orders of the Sentry, helm and line-handling commands, radio prowords and procedures, Coast Guard missions, customs and courtesies (etiquette, colors, shipboard customs, saluting), damage control and the four classes of fires, the basic nautical dictionary, officer and enlisted ranks, enlisted ratings, nautical flags, flags and ensigns, common lights and dayshapes, recognized distress signals, Coast Guard assets, and an interactive Coast Guard districts map.
 
 See [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) for architecture and how to add more sets, and [`docs/CONTENT-STATUS.md`](docs/CONTENT-STATUS.md) for the full packet page map and what is still to be added.
 
