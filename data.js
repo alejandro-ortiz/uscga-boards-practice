@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=20261109h';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=0f90667';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
