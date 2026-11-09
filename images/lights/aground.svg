@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" role="img" aria-label="aground lights and dayshape">
+<rect x="8" y="10" width="120" height="132" rx="8" fill="#eceff4" stroke="#c7ccd8"/>
+<rect x="152" y="10" width="120" height="132" rx="8" fill="#0b0b10"/>
+<circle cx="68" cy="42" r="11" fill="#15151b"/><circle cx="68" cy="74" r="11" fill="#15151b"/><circle cx="68" cy="106" r="11" fill="#15151b"/>
+<line x1="212" y1="18" x2="212" y2="132" stroke="#3a3a46" stroke-width="3"/><circle cx="212" cy="48" r="9" fill="#ffffff" stroke="#000" stroke-width="1"/><circle cx="212" cy="74" r="9" fill="#d62828" stroke="#000" stroke-width="1"/><circle cx="212" cy="100" r="9" fill="#d62828" stroke="#000" stroke-width="1"/>
+<text x="68" y="154" text-anchor="middle" font-family="Arial" font-size="11" fill="#6f7786">Dayshape</text>
+<text x="212" y="154" text-anchor="middle" font-family="Arial" font-size="11" fill="#6f7786">Lights</text>
+</svg>

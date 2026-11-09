@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=20261109g';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=20261109h';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
@@ -71,6 +71,14 @@ window.loadStudyData = async function () {
   ranks.coast_guard_navy_commissioned.forEach((item, index) => facts.push({ id: `rank-o-${index}`, category: 'ranks', section: 'Commissioned Officer Ranks (Coast Guard / Navy)', front: item.name, back: `${item.rank} · ${item.abbreviation}` }));
   ranks.enlisted.forEach((item, index) => facts.push({ id: `rank-e-${index}`, category: 'ranks', section: 'Enlisted Ranks', front: item.name.replace(/\s+/g, ' '), back: item.rank === 'Special' ? 'E-9 (special)' : item.rank }));
   ranks.marine_corps_army_air_force.forEach((item, index) => facts.push({ id: `rank-s-${index}`, category: 'ranks', section: 'Officer Ranks (Army / Marine Corps / Air Force)', front: `${item.name} (Army / USMC / Air Force)`, back: item.rank }));
+
+  // Common Lights and Dayshapes (packet p. 18) — recognition with COLREGS diagrams.
+  const lights = packet.study_additions.lights;
+  lights.items.forEach((item, index) => facts.push({ id: `lights-${index}`, category: 'lights', section: lights.section, front: item.name, back: item.summary, detail: item.detail, image: `images/lights/${item.image}` }));
+
+  // Recognized Distress Signals (packet p. 33) — verbatim.
+  const distress = packet.study_additions.distress;
+  distress.items.forEach((item, index) => facts.push({ id: `distress-${index}`, category: 'distress', section: distress.section, front: item.front, back: item.back }));
 
   return { title: packet.title, facts };
 };

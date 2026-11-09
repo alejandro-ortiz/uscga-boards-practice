@@ -2308,6 +2308,122 @@
           "y": 545
         }
       ]
+    },
+    "lights": {
+      "section": "Common Lights and Dayshapes",
+      "page": 18,
+      "items": [
+        {
+          "name": "Fishing Vessel",
+          "image": "fishing.svg",
+          "summary": "Red over white; two cones, apexes together",
+          "detail": "Dayshape: two cones with their apexes together. Lights: all-round RED over WHITE, plus sidelights and a sternlight when making way through the water."
+        },
+        {
+          "name": "Trawling Vessel",
+          "image": "trawling.svg",
+          "summary": "Green over white; two cones, apexes together",
+          "detail": "Dayshape: two cones with their apexes together. Lights: all-round GREEN over WHITE, plus sidelights and a sternlight when making way."
+        },
+        {
+          "name": "Vessel Not Under Command",
+          "image": "nuc.svg",
+          "summary": "Red over red; two balls",
+          "detail": "Dayshape: two balls in a vertical line. Lights: two all-round RED (red over red); sidelights and sternlight only when making way. Mnemonic: “red over red, the captain is dead.”"
+        },
+        {
+          "name": "Sailing Vessel",
+          "image": "sailing.svg",
+          "summary": "Sidelights + stern (optional red over green); cone point-down",
+          "detail": "Lights: sidelights and a sternlight; may also show optional all-round RED over GREEN at the masthead (“red over green, sailing machine”). Dayshape: a cone, point down, when proceeding under sail and power."
+        },
+        {
+          "name": "Vessel At Anchor",
+          "image": "anchor.svg",
+          "summary": "All-round white; one ball",
+          "detail": "Dayshape: one ball forward. Lights: an all-round WHITE light (vessels 50 m or longer show a second, lower white light aft)."
+        },
+        {
+          "name": "Vessel Aground",
+          "image": "aground.svg",
+          "summary": "Red over red + anchor light; three balls",
+          "detail": "Dayshape: three balls in a vertical line. Lights: the anchor light(s) plus two all-round RED (red over red)."
+        }
+      ]
+    },
+    "distress": {
+      "section": "Recognized Distress Signals",
+      "page": 33,
+      "items": [
+        {
+          "front": "Rockets or shells throwing red stars",
+          "back": "Red star shells"
+        },
+        {
+          "front": "A continuously sounding fog horn",
+          "back": "Fog horn continuous sounding"
+        },
+        {
+          "front": "Flames on the vessel",
+          "back": "Flames on a vessel"
+        },
+        {
+          "front": "A gun or other explosive fired at intervals of about a minute",
+          "back": "Gun fired at intervals of 1 min"
+        },
+        {
+          "front": "An orange background showing a black ball and square",
+          "back": "Orange background black ball and square"
+        },
+        {
+          "front": "The signal SOS sent in Morse code",
+          "back": "SOS"
+        },
+        {
+          "front": "The spoken word “Mayday” sent by radio",
+          "back": "Mayday by radio"
+        },
+        {
+          "front": "A rocket parachute flare showing a red light",
+          "back": "Parachute red flare"
+        },
+        {
+          "front": "Dye marker of any color on the water",
+          "back": "Dye marker (any color)"
+        },
+        {
+          "front": "The code flags November over Charlie",
+          "back": "Code flags November Charlie"
+        },
+        {
+          "front": "A square flag together with a ball",
+          "back": "Square flag and ball"
+        },
+        {
+          "front": "Slowly raising and lowering outstretched arms",
+          "back": "Wave arms"
+        },
+        {
+          "front": "An Inmarsat satellite distress alert",
+          "back": "Inmarsat"
+        },
+        {
+          "front": "A Digital Selective Calling (DSC) distress alert",
+          "back": "Digital selective calling"
+        },
+        {
+          "front": "An activated emergency position-indicating radio beacon",
+          "back": "Position indicating radio beacon"
+        },
+        {
+          "front": "Orange smoke",
+          "back": "Smoke"
+        },
+        {
+          "front": "A high-intensity white light flashing (inland waters only)",
+          "back": "High intensity white flashing light (inland only)"
+        }
+      ]
     }
   }
 }

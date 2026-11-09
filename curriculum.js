@@ -45,6 +45,7 @@ window.CURRICULUM = {
     ranks:      { unit: 'Organization & Missions', recognition: true },
     flags:      { unit: 'Visual Identification' },
     ensigns:    { unit: 'Visual Identification' },
+    lights:     { unit: 'Visual Identification', recognition: true }, // identify vessel from lights/dayshape
     assets:     { unit: 'Visual Identification' },
     damage:     { unit: 'Damage Control & Firefighting' },
     fires:      { unit: 'Damage Control & Firefighting' }

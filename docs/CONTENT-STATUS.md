@@ -15,7 +15,7 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 10–12 | U.S. Coast Guard Enlisted Ratings | ✅ | `ratings` — recognition; duties shown in Study |
 | 13–15 | Nautical Flags | ✅ | `flags` (with images) |
 | 16–17 | Flags & Ensigns | ✅ | `ensigns` — Ensign, Standard, Jack, Commissioning Pennant |
-| 18–19 | Common Lights and Dayshapes | 🟡 | JSON: `lights_and_dayshapes` (needs images) |
+| 18–19 | Common Lights and Dayshapes | ✅ | `lights` — recreated COLREGS SVG diagrams (6 vessels) |
 | 20–22 | Basic Nautical Dictionary | ✅ | `nautical` (88 terms) — **added** |
 | 23–24 | Helm Commands | ✅ | `helm` |
 | 25 | Line Handling Commands | ✅ | `lines` |
@@ -25,7 +25,7 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 29 | Saluting | ✅ | `saluting` — **added** |
 | 30 | Coast Guard Districts | ✅ | `districts` + interactive map — **added** |
 | 31–33 | 11 Missions of the U.S. Coast Guard | ✅ | `missions` |
-| 33 | Recognized Distress Signals | 🟡 | JSON: `facts_and_reference.distress_signals` (16, needs images) |
+| 33 | Recognized Distress Signals | ✅ | `distress` — verbatim (17, incl. inland flashing light) |
 | 34 | Fundamentals of Damage Control | ✅ | `damage` — **added** |
 | 35 | Four Classes of Fires | ✅ | `fires` — **added** |
 | 36 | Radios and Messages — prowords | ✅ | `radio` |
@@ -64,14 +64,14 @@ Each packet section is its own separate study set (one checkbox each):
 
 ## Remaining to reach "everything"
 
-Text-based content is now complete. Only two sections remain, and **both are visual** — cadets
-identify an image — so they need image assets before wiring (the signal/light pictures), the way
-`flags` and `assets` already carry images:
+All packet content is now wired **except Chapter 2 — Appearance & Grooming (pp. 50–64)**,
+which is **deferred by the owner**.
 
-- **Distress Signals (p. 33)** — 16 signals; owner wants these **verbatim**. Signal names are in
-  `facts_and_reference.distress_signals`; needs the signal images.
-- **Lights & Dayshapes (pp. 18–19)** — needs the light/dayshape images.
-
-**Chapter 2 — Appearance & Grooming (pp. 50–64) is deferred by the owner** and intentionally skipped.
-
-Follow "How to add a new study set" in `DEVELOPMENT.md` once images are available.
+Notes:
+- **Lights & Dayshapes** images are self-authored SVGs in `images/lights/` built to the COLREGS
+  standard (the packet pages are images with no extractable text). Day panel = dayshapes, night
+  panel = all-round lights + sidelights.
+- **Distress Signals** were transcribed from the packet page (p. 33), not the old
+  `facts_and_reference.distress_signals` array, whose captions were wrong (it listed
+  "radio-telegraph/telephone alarm" where the packet shows Inmarsat / Digital Selective Calling).
+  Graded verbatim per the owner; swap to recognition by removing `verbatim` in `curriculum.js`.
