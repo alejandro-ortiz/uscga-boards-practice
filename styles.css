@@ -147,3 +147,9 @@ body.dark-mode { --ink: #e9ebf5; --muted: #aeb4c8; --line: #343b68; --paper: #09
 .dark-mode .verdict-pass { color: #5fcfa3; }
 .dark-mode .verdict-fail { color: #f0896b; }
 @media (max-width: 680px) { .mastery-group__items { grid-template-columns: 1fr; } .mastery-group__bar { width: 60px; } }
+
+/* Study "details" block (e.g. rating duties) */
+.study-detail { max-width: 760px; margin: 14px 0; padding: 16px 18px; background: rgba(231, 234, 241, .55); border: 1px solid var(--line); border-radius: 7px; }
+.study-detail span { color: var(--muted); font: 700 10px Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.study-detail p { margin: 8px 0 0; font: 15px/1.55 Arial, sans-serif; }
+.dark-mode .study-detail { background: rgba(22, 29, 79, .6); }

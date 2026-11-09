@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=20261109e';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=20261109f';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
@@ -61,6 +61,16 @@ window.loadStudyData = async function () {
   facts.push({ id: 'district-lant-cmd', category: 'districts', section: districts.section, front: 'LANT Area Command headquarters', back: districts.areas.LANT.command_hq });
   facts.push({ id: 'district-pac-cmd', category: 'districts', section: districts.section, front: 'PAC Area Command headquarters', back: districts.areas.PAC.command_hq });
   facts.push({ id: 'district-hq', category: 'districts', section: districts.section, front: 'Coast Guard Headquarters', back: districts.headquarters.replace(/^.*—\s*/, '') });
+
+  // U.S. Coast Guard Enlisted Ratings (packet pp. 10-12) — name ↔ abbreviation, duties shown in study.
+  const ratings = packet.term_definitions.enlisted_ratings;
+  ratings.items.forEach((item, index) => facts.push({ id: `ratings-${index}`, category: 'ratings', section: ratings.section, front: item.name, back: item.abbreviation, detail: item.description }));
+
+  // Officer & Enlisted Ranks (packet pp. 6-9) — name ↔ pay grade / abbreviation.
+  const ranks = packet.visual_and_identification.ranks;
+  ranks.coast_guard_navy_commissioned.forEach((item, index) => facts.push({ id: `rank-o-${index}`, category: 'ranks', section: 'Commissioned Officer Ranks (Coast Guard / Navy)', front: item.name, back: `${item.rank} · ${item.abbreviation}` }));
+  ranks.enlisted.forEach((item, index) => facts.push({ id: `rank-e-${index}`, category: 'ranks', section: 'Enlisted Ranks', front: item.name.replace(/\s+/g, ' '), back: item.rank === 'Special' ? 'E-9 (special)' : item.rank }));
+  ranks.marine_corps_army_air_force.forEach((item, index) => facts.push({ id: `rank-s-${index}`, category: 'ranks', section: 'Officer Ranks (Army / Marine Corps / Air Force)', front: `${item.name} (Army / USMC / Air Force)`, back: item.rank }));
 
   return { title: packet.title, facts };
 };

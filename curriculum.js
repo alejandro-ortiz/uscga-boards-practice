@@ -41,6 +41,8 @@ window.CURRICULUM = {
     radio_proc: { unit: 'Communications' },
     missions:   { unit: 'Organization & Missions' },
     districts:  { unit: 'Organization & Missions' },
+    ratings:    { unit: 'Organization & Missions', recognition: true }, // short identifiers → test by recognition
+    ranks:      { unit: 'Organization & Missions', recognition: true },
     flags:      { unit: 'Visual Identification' },
     assets:     { unit: 'Visual Identification' },
     damage:     { unit: 'Damage Control & Firefighting' },

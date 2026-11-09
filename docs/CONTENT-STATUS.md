@@ -10,9 +10,9 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 3 | Mission of the USCG Academy | ✅ | `mission` |
 | 4 | The Coast Guard Ethos | ✅ | `ethos` |
 | 5 | General Orders of the Sentry | ✅ | `sentry` |
-| 6–8 | Commissioned Officer Ranks (CG/Navy + other services) | 🟡 | JSON: `visual_and_identification.ranks` |
-| 9 | Enlisted Ranks | 🟡 | JSON: `ranks.enlisted` |
-| 10–12 | U.S. Coast Guard Enlisted Ratings | 🟡 | JSON: `term_definitions.enlisted_ratings` (23) |
+| 6–8 | Commissioned Officer Ranks (CG/Navy + other services) | ✅ | `ranks` — recognition (name ↔ grade/abbrev) |
+| 9 | Enlisted Ranks | ✅ | `ranks` — recognition |
+| 10–12 | U.S. Coast Guard Enlisted Ratings | ✅ | `ratings` — recognition; duties shown in Study |
 | 13–15 | Nautical Flags | ✅ | `flags` (with images) |
 | 16–17 | Flags & Ensigns | 🟡 | JSON: `facts_and_reference.flags_and_ensigns` (8) |
 | 18–19 | Common Lights and Dayshapes | 🟡 | JSON: `lights_and_dayshapes` (needs images) |

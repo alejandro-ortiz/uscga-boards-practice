@@ -9,7 +9,7 @@ const modeInfo = {
   test: { label: 'Test', hint: 'Graded test. Verbatim sections are typed word-for-word; the rest pass on ~70% of the key terms. Need 90% overall to pass.' },
   review: { label: 'Review', hint: 'Drills your weakest items first (across your selected sets, or everything if none are selected). Set a session length to keep it focused.' }
 };
-const categoryLabels = { all: 'Everything', mission: 'Academy mission', ethos: 'Coast Guard ethos', sentry: 'General orders', helm: 'Helm commands', lines: 'Line handling', radio: 'Radio prowords', radio_proc: 'Radio procedures', missions: 'Coast Guard missions', districts: 'Coast Guard districts', etiquette: 'Etiquette', colors: 'Colors indoctrination', shipboard: 'Shipboard customs', saluting: 'Saluting', damage: 'Damage control', fires: 'Fire classes', nautical: 'Nautical dictionary', flags: 'Nautical flags', assets: 'Coast Guard assets' };
+const categoryLabels = { all: 'Everything', mission: 'Academy mission', ethos: 'Coast Guard ethos', sentry: 'General orders', helm: 'Helm commands', lines: 'Line handling', radio: 'Radio prowords', radio_proc: 'Radio procedures', missions: 'Coast Guard missions', districts: 'Coast Guard districts', ratings: 'Enlisted ratings', ranks: 'Ranks', etiquette: 'Etiquette', colors: 'Colors indoctrination', shipboard: 'Shipboard customs', saluting: 'Saluting', damage: 'Damage control', fires: 'Fire classes', nautical: 'Nautical dictionary', flags: 'Nautical flags', assets: 'Coast Guard assets' };
 
 function facts() { return state.data.facts.filter((fact) => state.categories.some((category) => category === fact.category || category === 'assets' && fact.category.startsWith('asset_'))); }
 function shuffle(items) { return [...items].sort(() => Math.random() - 0.5); }
@@ -95,6 +95,7 @@ function makeTestQuestions(fact, pool) {
   const cfg = CURRICULUM.for(fact.category);
   if (fact.asset) return makeAssetQuestions(fact, pool, 'matching');
   if (cfg.verbatim) return [{ ...fact, format: 'fill', prompt: fact.front, answer: fact.back, exact: true, direction: 'exact' }];
+  if (cfg.recognition) return [makeQuestion(fact, pool, 'matching')];
   return [{ ...fact, format: 'fill', prompt: fact.front, answer: fact.back, exact: false, keywordGrade: true, direction: 'meaning', promptLabel: 'Answer in your own words (key points count)' }];
 }
 
@@ -162,7 +163,8 @@ function renderStudyCard(fact) {
     $('nextButton').classList.remove('hidden'); $('nextButton').textContent = state.current + 1 < state.questions.length ? 'Next card →' : 'Finish study'; return;
   }
   const image = fact.image ? `<img class="study-image" src="${escapeHtml(fact.image)}" alt="${escapeHtml(fact.front)} flag">` : '';
-  $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(fact.section)}</p><h2 class="question-title">${escapeHtml(fact.front)}</h2>${image}<div class="study-answer"><span>Packet answer</span><p>${escapeHtml(fact.back)}</p></div><p class="study-prompt">Read the answer aloud, then continue when ready.</p>`;
+  const detail = fact.detail ? `<div class="study-detail"><span>Details</span><p>${escapeHtml(fact.detail)}</p></div>` : '';
+  $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(fact.section)}</p><h2 class="question-title">${escapeHtml(fact.front)}</h2>${image}<div class="study-answer"><span>Packet answer</span><p>${escapeHtml(fact.back)}</p></div>${detail}<p class="study-prompt">Read the answer aloud, then continue when ready.</p>`;
   $('nextButton').classList.remove('hidden'); $('nextButton').textContent = state.current + 1 < state.questions.length ? 'Next card →' : 'Finish study';
 }
 
