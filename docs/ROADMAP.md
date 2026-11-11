@@ -71,11 +71,29 @@ grading ignores punctuation/whitespace (still exact words, in order).
   answers were short (e.g. rating abbreviations), aborting the whole session build so "Start" did
   nothing until the randomness happened to avoid it. Cloze now only fires when there's a long-enough
   word to blank, in the non-reversed direction.
+- **Mastery model fixed.** Mastery (0–5) now climbs with each correct recall and dips on a miss, so
+  **every** question type can reach "Mastered". The old breadth formula awarded points for
+  front/back/verbatim answers, so recognition-only sets (ranks, ratings, assets) only ever had one
+  direction and were permanently capped at 2/5 — the dashboard could never show them mastered and
+  the "to review" count never dropped. Verbatim recall counts double. Also fixed `masteryFor` for
+  assets, which averaged over a fixed 11-key list so assets missing fields (no hull number/range)
+  could never average to 5.
+- **Grouped practice-set picker.** The ~23 sets are now grouped by curriculum **unit** (topic) into
+  cards, each with a one-click tri-state header that selects/clears the whole topic. Generated from
+  the data + `curriculum.js` so it stays in sync. Easier to scan and select on desktop and phone.
+- **Distress-signal visuals.** The 17 recognized distress signals now each show a self-authored SVG
+  depiction (`images/distress/`, order matches the packet list), redrawn to match the packet p.33
+  "Recognized Distress Signals" chart — the orange flag with black square & ball, red star shells,
+  parachute red flare, N-over-C code flags, blue pistol, yellow air horn, wave-arms, etc. No captions
+  or identifying text appear on any image, so the user is tested on visual recognition, not reading a
+  label. Previously the set was text-only; the images simply didn't exist.
 
 ### ▶ Next (in priority order)
-1. **Mobile polish pass** — continue refining the picker, mastery groups, and results on a phone.
-2. **Progress export/import** — back up / move a browser's progress (JSON download + restore).
-3. **Section-test tracking** — record per-section test history over time.
+1. **Progress export/import** — back up / move a browser's progress (JSON download + restore);
+   progress is `localStorage`-only, so it's trapped per-browser/device today.
+2. **Section-test tracking** — record per-section test history over time.
+3. **Mobile polish** — picker is now grouped by topic (desktop + phone); continue refining mastery
+   groups and the results screen on a phone as needed.
 4. **Chapter 2 grooming** — when the owner un-defers it (large policy tables; extractable text).
 
 ### Deliberately NOT doing (for now)

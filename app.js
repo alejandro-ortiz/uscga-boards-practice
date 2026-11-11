@@ -239,7 +239,13 @@ function answerQuestion(button, question) {
   state.answered = true; if (isCorrect) state.score += 1;
   state.results.push({ category: question.category, correct: isCorrect });
   if (!isCorrect) state.missed.push({ section: question.section, prompt: question.prompt, answer: question.answer });
-  const item = getProgress(question); item.seen += 1; item[isCorrect ? 'correct' : 'incorrect'] += 1; if (isCorrect && question.direction === 'front') item.frontCorrect += 1; if (isCorrect && question.direction === 'back') item.backCorrect += 1; if (isCorrect && question.direction === 'exact') item.exactCorrect += 1; item.mastery = Math.min(5, (item.frontCorrect > 0 ? 1 : 0) + (item.backCorrect > 0 ? 1 : 0) + (item.exactCorrect > 0 ? 2 : 0) + (item.correct >= 3 ? 1 : 0)); if (!isCorrect) item.mastery = Math.max(0, item.mastery - 1); saveProgress();
+  const item = getProgress(question); item.seen += 1; item[isCorrect ? 'correct' : 'incorrect'] += 1; if (isCorrect && question.direction === 'front') item.frontCorrect += 1; if (isCorrect && question.direction === 'back') item.backCorrect += 1; if (isCorrect && question.direction === 'exact') item.exactCorrect += 1;
+  // Mastery (0-5) climbs with each correct recall and dips on a miss, so every question type can reach
+  // "Mastered". (The old breadth formula awarded points for answering front/back/verbatim, so
+  // recognition-only items — ranks, ratings, assets — had just one direction and were capped at 2/5,
+  // never counting as mastered.) Verbatim recall, the hardest demonstration, counts double.
+  const verbatimHit = isCorrect && question.exact && CURRICULUM.for(question.category).verbatim;
+  item.mastery = Math.max(0, Math.min(5, (item.mastery || 0) + (isCorrect ? (verbatimHit ? 2 : 1) : -1))); saveProgress();
   stats.answered += 1; stats[isCorrect ? 'correct' : 'missed'] += 1; localStorage.setItem('boards-practice-stats', JSON.stringify(stats)); updateStats();
   document.querySelectorAll('.answer').forEach((option) => { option.disabled = true; if (normalize(option.textContent) === normalize(question.answer)) option.classList.add('correct'); });
   if (question.format === 'fill') $('fillInput').disabled = true;
@@ -272,7 +278,12 @@ function showMenu() { $('quizPanel').classList.add('hidden'); $('resultsPanel').
 function masteryFor(fact) {
   if (fact.rating) { const scores = ['name', 'abbr', 'def'].map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery); return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length); }
   if (!fact.asset) return getProgress(fact).mastery;
-  const keys = ['callSign-forward', 'callSign-reverse', 'class-forward', 'class-reverse', 'length-forward', 'length-reverse', 'hullNumber-forward', 'hullNumber-reverse', 'range-forward', 'range-reverse', 'image']; const scores = keys.map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery);
+  // Average only the sub-questions this asset actually has. makeAssetQuestions only emits a relation
+  // when the field is present, so averaging over a fixed key list left absent fields stuck at 0 and
+  // an asset could never reach "Mastered". Keys here must match the progressIds there.
+  const fields = fact.asset.fields; const keys = ['image'];
+  ['callSign', 'class', 'length', 'hullNumber', 'range'].forEach((key) => { if (fields[key]) keys.push(`${key}-forward`, `${key}-reverse`); });
+  const scores = keys.map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery);
   return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length);
 }
 function renderMastery() {
@@ -296,11 +307,41 @@ function renderMastery() {
   $('masteryList').innerHTML = html || '<p class="muted">No items match this filter.</p>';
 }
 function updateStats() { $('answeredStat').textContent = stats.answered; $('accuracyStat').textContent = `${stats.answered ? Math.round((stats.correct / stats.answered) * 100) : 0}%`; $('missedStat').textContent = state.data ? state.data.facts.filter((fact) => !fact.districtsMap && masteryFor(fact) < 5).length : 0; renderMastery(); }
-function initialize(data) { state.data = data; data.facts.forEach(getProgress); $('packetTitle').textContent = data.title; $('loadingMessage').textContent = `${data.facts.length} packet items ready.`; $('startButton').disabled = false; renderMastery(); updateStats(); }
+// Build the practice-set picker grouped by curriculum unit (topic). With ~23 sets a flat list is hard
+// to scan; grouping them and giving each topic header a one-click select toggle makes picking faster.
+function buildPicker() {
+  const seen = new Set(); const cats = [];
+  state.data.facts.forEach((fact) => { const cat = fact.category.startsWith('asset_') ? 'assets' : fact.category; if (!seen.has(cat)) { seen.add(cat); cats.push(cat); } });
+  const byUnit = {};
+  cats.forEach((cat) => { const unit = CURRICULUM.for(cat).unit || 'Reference'; (byUnit[unit] ||= []).push(cat); });
+  const order = [...(CURRICULUM.units || []), 'Reference'].filter((unit) => byUnit[unit]);
+  $('practiceSetGroups').innerHTML = order.map((unit) => {
+    const items = byUnit[unit];
+    const boxes = items.map((cat) => `<label><input type="checkbox" name="practiceSet" value="${escapeHtml(cat)}"> ${escapeHtml(categoryLabels[cat] || cat)}</label>`).join('');
+    return `<div class="set-group"><button type="button" class="set-group__head" aria-pressed="false"><span class="set-group__box" aria-hidden="true"></span><span class="set-group__name">${escapeHtml(unit)}</span><span class="set-group__count">${items.length}</span></button><div class="set-group__items">${boxes}</div></div>`;
+  }).join('');
+  syncPickerGroups();
+}
+// Reflect each group header's state: filled check when all of its sets are on, a dash when some are.
+function syncPickerGroups() {
+  document.querySelectorAll('.set-group').forEach((group) => {
+    const boxes = [...group.querySelectorAll('input[name="practiceSet"]')]; const on = boxes.filter((box) => box.checked).length;
+    group.classList.toggle('is-all', on > 0 && on === boxes.length); group.classList.toggle('is-some', on > 0 && on < boxes.length);
+    group.querySelector('.set-group__head').setAttribute('aria-pressed', on > 0 && on === boxes.length ? 'true' : 'false');
+  });
+}
+function initialize(data) { state.data = data; buildPicker(); data.facts.forEach(getProgress); $('packetTitle').textContent = data.title; $('loadingMessage').textContent = `${data.facts.length} packet items ready.`; $('startButton').disabled = false; renderMastery(); updateStats(); }
 
 $('modeRail').addEventListener('change', () => { $('modeHint').textContent = modeInfo[document.querySelector('input[name="mode"]:checked').value].hint; });
-$('selectAllBtn').addEventListener('click', () => document.querySelectorAll('input[name="practiceSet"]').forEach((input) => { input.checked = true; }));
-$('clearAllBtn').addEventListener('click', () => document.querySelectorAll('input[name="practiceSet"]').forEach((input) => { input.checked = false; }));
+$('selectAllBtn').addEventListener('click', () => { document.querySelectorAll('input[name="practiceSet"]').forEach((input) => { input.checked = true; }); syncPickerGroups(); });
+$('clearAllBtn').addEventListener('click', () => { document.querySelectorAll('input[name="practiceSet"]').forEach((input) => { input.checked = false; }); syncPickerGroups(); });
+// One click on a topic header selects or clears that whole group; box changes refresh the header state.
+$('practiceSetGroups').addEventListener('change', syncPickerGroups);
+$('practiceSetGroups').addEventListener('click', (event) => {
+  const head = event.target.closest('.set-group__head'); if (!head) return;
+  const boxes = [...head.closest('.set-group').querySelectorAll('input[name="practiceSet"]')]; const allOn = boxes.every((box) => box.checked);
+  boxes.forEach((box) => { box.checked = !allOn; }); syncPickerGroups();
+});
 $('startButton').addEventListener('click', startSession); $('menuButton').addEventListener('click', showMenu); $('nextButton').addEventListener('click', () => state.current + 1 < state.questions.length ? (state.current += 1, renderQuestion()) : finishSession());
 $('backButton').addEventListener('click', () => { if (state.mode === 'study' && state.current > 0) { state.current -= 1; renderQuestion(); } });
 $('masteryFilter').addEventListener('change', renderMastery);

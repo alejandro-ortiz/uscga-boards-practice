@@ -75,6 +75,18 @@ body.dark-mode { --ink: #e9ebf5; --muted: #aeb4c8; --line: #343b68; --paper: #09
 .chip-button { padding: 5px 11px; color: var(--teal-dark); background: transparent; border: 1px solid var(--line); border-radius: 999px; font: 700 10px Arial, sans-serif; letter-spacing: .04em; text-transform: uppercase; }
 .chip-button:hover { background: rgba(8, 13, 85, .08); }
 .dark-mode .chip-button { color: var(--teal); }
+.set-groups { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+.set-group { min-width: 0; padding: 7px 10px 9px; border: 1px solid var(--line); border-radius: 7px; }
+.set-group__head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 3px 0 7px; background: transparent; border: 0; cursor: pointer; }
+.set-group__head:focus-visible { outline: 3px solid rgba(8, 13, 85, .22); outline-offset: 2px; border-radius: 4px; }
+.set-group__box { position: relative; flex: 0 0 auto; width: 15px; height: 15px; border: 1.5px solid var(--line); border-radius: 4px; transition: background .12s; }
+.set-group.is-all .set-group__box, .set-group.is-some .set-group__box { background: var(--teal); border-color: var(--teal); }
+.set-group.is-all .set-group__box::after { content: ''; position: absolute; left: 4px; top: 1px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.set-group.is-some .set-group__box::after { content: ''; position: absolute; left: 3px; right: 3px; top: 6px; height: 2px; background: #fff; }
+.set-group__name { flex: 1 1 auto; text-align: left; color: var(--ink); font: 700 10px Arial, sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+.set-group__count { flex: 0 0 auto; color: var(--muted); font: 700 10px Arial, sans-serif; }
+.set-group__items { display: grid; gap: 7px; }
+@media (max-width: 680px) { .set-groups { grid-template-columns: 1fr; } }
 
 /* Graded test results */
 .results-score.is-pass { color: #2f7d5b; }

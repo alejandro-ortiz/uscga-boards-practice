@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=e4bb789';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=dev-mastery';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
@@ -117,9 +117,11 @@ window.loadStudyData = async function () {
   const lights = packet.study_additions.lights;
   lights.items.forEach((item, index) => facts.push({ id: `lights-${index}`, category: 'lights', section: lights.section, front: item.name, back: item.summary, detail: item.detail, image: `images/lights/${item.image}` }));
 
-  // Recognized Distress Signals (packet p. 33) — verbatim.
+  // Recognized Distress Signals (packet p. 33) — verbatim. Each carries a self-authored SVG
+  // depiction (images/distress/, order matches the packet list) so the signal can be recognized visually.
   const distress = packet.study_additions.distress;
-  distress.items.forEach((item, index) => facts.push({ id: `distress-${index}`, category: 'distress', section: distress.section, front: item.front, back: item.back }));
+  const distressImages = ['red-star-shells', 'fog-horn', 'flames', 'gun-intervals', 'orange-flag', 'sos-morse', 'mayday-radio', 'parachute-flare', 'dye-marker', 'november-charlie', 'square-flag-ball', 'wave-arms', 'inmarsat', 'dsc', 'epirb', 'orange-smoke', 'white-flashing-light'];
+  distress.items.forEach((item, index) => facts.push({ id: `distress-${index}`, category: 'distress', section: distress.section, front: item.front, back: item.back, image: distressImages[index] ? `images/distress/${distressImages[index]}.svg` : undefined }));
 
   return { title: packet.title, facts };
 };

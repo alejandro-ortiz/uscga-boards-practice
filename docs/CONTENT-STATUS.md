@@ -26,7 +26,7 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 29 | Saluting | ✅ | `saluting` — **added** |
 | 30 | Coast Guard Districts | ✅ | `districts` + interactive map — **added** |
 | 31–33 | 11 Missions of the U.S. Coast Guard | ✅ | `missions` |
-| 33 | Recognized Distress Signals | ✅ | `distress` — verbatim (17, incl. inland flashing light) |
+| 33 | Recognized Distress Signals | ✅ | `distress` — verbatim (17, incl. inland flashing light); each shows a self-authored SVG (`images/distress/`) |
 | 34 | Fundamentals of Damage Control | ✅ | `damage` — **added** |
 | 35 | Four Classes of Fires | ✅ | `fires` — **added** |
 | 36 | Radios and Messages — prowords | ✅ | `radio` |
