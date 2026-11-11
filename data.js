@@ -5,21 +5,28 @@ window.loadStudyData = async function () {
   if (!response.ok) throw new Error(`Could not load packet data: ${response.status}`);
   const packet = await response.json();
   const facts = [];
-  const add = (category, section, items, frontKey, backKey, transform = (value) => value) => {
+  const add = (category, section, items, frontKey, backKey, transform = (value) => value, extra = {}) => {
     items.forEach((item, index) => {
       const front = transform(item[frontKey], item);
       const back = transform(item[backKey], item);
-      if (front && back) facts.push({ id: `${category}-${index}`, category, section, front, back });
+      if (front && back) facts.push({ id: `${category}-${index}`, category, section, front, back, ...extra });
     });
   };
   const sections = packet.matching;
-  add('mission', sections.academy_mission.section, sections.academy_mission.items, 'title', 'meaning');
+  // Only the mission statement itself is tested — the origin/composition (who composed it, when) is not needed.
+  add('mission', sections.academy_mission.section, sections.academy_mission.items.filter((item) => item.title === 'Mission'), 'title', 'meaning');
   sections.coast_guard_ethos.items.forEach((item) => facts.push({ id: 'ethos-full', category: 'ethos', section: sections.coast_guard_ethos.section, front: 'The Coast Guard Ethos', back: item.phrase }));
   sections.general_orders_of_the_sentry.items.forEach((item) => facts.push({ id: `sentry-${item.number}`, category: 'sentry', section: sections.general_orders_of_the_sentry.section, front: `General Order ${item.number}`, back: item.order }));
-  add('helm', sections.helm_commands.section, sections.helm_commands.items, 'command', 'action');
-  add('lines', sections.line_handling_commands.section, sections.line_handling_commands.items, 'command', 'action');
-  add('radio', sections.radio_prowords.section, sections.radio_prowords.items, 'proword', 'meaning');
-  sections.coast_guard_missions.items.forEach((item, index) => facts.push({ id: `mission-${index + 2}`, category: 'missions', section: sections.coast_guard_missions.section, front: item.mission, back: item.activities.join(' ') }));
+  // Helm/line commands and prowords: keyword "what does it mean" plus a verbatim "type the exact term"
+  // question (termSet, handled by makeTermQuestions in app.js). The exact half is skipped for terms that
+  // can't be typed word-for-word (slashes/placeholders, e.g. "RIGHT/LEFT ### DEGREES RUDDER").
+  add('helm', sections.helm_commands.section, sections.helm_commands.items, 'command', 'action', undefined, { termSet: true });
+  add('lines', sections.line_handling_commands.section, sections.line_handling_commands.items, 'command', 'action', undefined, { termSet: true });
+  add('radio', sections.radio_prowords.section, sections.radio_prowords.items, 'proword', 'meaning', undefined, { termSet: true });
+  // The 11 missions each fall under one of the three maritime roles (packet pp. 31-33). Knowing which
+  // role a mission belongs to is the key fact tested; the activities become study detail.
+  const missionRole = { 'Search and Rescue': 'Maritime Safety', 'Marine Safety': 'Maritime Safety', 'Ports, Waterways, and Coastal Security': 'Maritime Security', 'Drug Interdiction': 'Maritime Security', 'Migrant Interdiction': 'Maritime Security', 'Defense Readiness': 'Maritime Security', 'Ice Operations': 'Maritime Stewardship', 'Aids to Navigation and Waterways Management': 'Maritime Stewardship', 'Marine Environmental Protection': 'Maritime Stewardship', 'Living Marine Resources': 'Maritime Stewardship', 'Other Law Enforcement': 'Maritime Stewardship' };
+  sections.coast_guard_missions.items.forEach((item, index) => { const name = item.mission.replace(/\s+/g, ' ').trim(); facts.push({ id: `mission-${index + 2}`, category: 'missions', section: sections.coast_guard_missions.section, front: name, back: missionRole[name] || '', detail: item.activities.join(' '), roleChoice: true }); });
   const flagFiles = { Alfa: 'alpha.png', Bravo: 'bravo.png', Charlie: 'charlie.png', Delta: 'delta.png', Echo: 'echo.png', Foxtrot: 'foxtrot.png', Golf: 'golf.png', Hotel: 'hotel.png', India: 'india.png', Juliet: 'juliet.png', Kilo: 'kilo.png', Lima: 'lima.png', Mike: 'mike.png', November: 'november.png', Oscar: 'oscar.png', Papa: 'papa.png', Quebec: 'quebec.png', Romeo: 'romeo.png', Sierra: 'sierra.png', Tango: 'tango.png', Uniform: 'uniform.png', Victor: 'victor.png', Whiskey: 'whisky.png', Xray: 'xray.png', Yankee: 'yankee.png', Zulu: 'zulu.png', 'Code/Answer': 'code-answer.webp', 'First substitute': 'first-substitute.webp', 'Second substitute': 'second-substitute.webp', 'Third substitute': 'third-substitute.webp', 'Fourth substitute': 'fourth-substitute.webp' };
   const flagSection = packet.visual_and_identification.nautical_flags;
   flagSection.items.forEach((item, index) => {
@@ -54,13 +61,14 @@ window.loadStudyData = async function () {
     group.items.forEach((item, index) => facts.push({ id: `${category}-${slug(group.section)}-${index}`, category, section: group.section, front: item.front, back: item.back }));
   }));
 
-  // Coast Guard Districts (packet p. 30) — interactive map plus number/name/HQ/area recall.
+  // Coast Guard Districts (packet p. 30) — the interactive coverage map is the lead study slide; recall
+  // is name <-> location (HQ) and name <-> area (LANT/PAC). District numbers are NOT tested.
   const districts = packet.study_additions.districts;
-  facts.push({ id: 'districts-map', category: 'districts', section: districts.section, front: 'Coast Guard Districts map', back: 'Nine districts in two areas: LANT (1–5) and PAC (6–9).', districtsMap: districts });
-  districts.items.forEach((dist) => facts.push({ id: `district-${dist.num}`, category: 'districts', section: districts.section, front: dist.name, back: `District ${dist.num} · HQ ${dist.hq} · ${dist.area} Area` }));
-  facts.push({ id: 'district-lant-cmd', category: 'districts', section: districts.section, front: 'LANT Area Command headquarters', back: districts.areas.LANT.command_hq });
-  facts.push({ id: 'district-pac-cmd', category: 'districts', section: districts.section, front: 'PAC Area Command headquarters', back: districts.areas.PAC.command_hq });
-  facts.push({ id: 'district-hq', category: 'districts', section: districts.section, front: 'Coast Guard Headquarters', back: districts.headquarters.replace(/^.*—\s*/, '') });
+  facts.push({ id: 'districts-map', category: 'districts', section: districts.section, front: 'Coast Guard Districts map', back: 'Nine districts in two areas: Atlantic (LANT) and Pacific (PAC).', districtsMap: districts });
+  districts.items.forEach((dist) => facts.push({ id: `district-${dist.num}`, category: 'districts', section: districts.section, front: dist.name, back: `${dist.hq} · ${dist.area} Area`, detail: `${dist.name} — headquarters ${dist.hq}; ${dist.area} Area.`, hq: dist.hq, area: dist.area, districtQ: true }));
+  facts.push({ id: 'district-lant-cmd', category: 'districts', section: districts.section, front: 'LANT Area Command headquarters', back: districts.areas.LANT.command_hq, districtQ: true });
+  facts.push({ id: 'district-pac-cmd', category: 'districts', section: districts.section, front: 'PAC Area Command headquarters', back: districts.areas.PAC.command_hq, districtQ: true });
+  facts.push({ id: 'district-hq', category: 'districts', section: districts.section, front: 'Coast Guard Headquarters', back: districts.headquarters.replace(/^.*—\s*/, ''), districtQ: true });
 
   // U.S. Coast Guard Enlisted Ratings (packet pp. 10-12) — identify the rating name AND abbreviation
   // from the specialty mark, plus a keyword-graded definition. Marks are public-domain U.S. Government

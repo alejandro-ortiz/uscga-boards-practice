@@ -7,29 +7,29 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 
 | Pages | Packet section | Status | Set / notes |
 |------:|----------------|--------|-------------|
-| 3 | Mission of the USCG Academy | ✅ | `mission` |
+| 3 | Mission of the USCG Academy | ✅ | `mission` — the mission statement (verbatim); origin/composition not tested |
 | 4 | The Coast Guard Ethos | ✅ | `ethos` |
 | 5 | General Orders of the Sentry | ✅ | `sentry` |
 | 6–7 | Commissioned Officer Ranks (CG/Navy) + Warrant Officers | ✅ | `ranks` — **insignia recognition** (CG shoulder boards; identify the rank) |
 | 8 | Commissioned Officer Ranks (Army/USMC/Air Force) | ✅ | `ranks` — insignia recognition (joint collar devices) |
 | 9 | Enlisted Ranks (Coast Guard) | ✅ | `ranks` — insignia recognition (E-4→E-9 + CPOCG collar devices; E-1→E-3 text) |
 | 10–12 | U.S. Coast Guard Enlisted Ratings | ✅ | `ratings` — **specialty-mark recognition**: identify name + abbreviation from the mark, plus a keyword-graded definition (23 marks) |
-| 13–15 | Nautical Flags | ✅ | `flags` (with images) |
-| 16–17 | Flags & Ensigns | ✅ | `ensigns` — Ensign, Standard, Jack, Commissioning Pennant |
+| 13–15 | Nautical Flags | ✅ | `flags` (with images) — **recognition** (multiple choice) |
+| 16–17 | Flags & Ensigns | ✅ | `ensigns` — Ensign, Standard, Jack, Commissioning Pennant — **recognition** (multiple choice) |
 | 18–19 | Common Lights and Dayshapes | ✅ | `lights` — recreated COLREGS SVG diagrams (6 vessels) |
 | 20–22 | Basic Nautical Dictionary | ✅ | `nautical` (88 terms) — **added** |
-| 23–24 | Helm Commands | ✅ | `helm` |
-| 25 | Line Handling Commands | ✅ | `lines` |
+| 23–24 | Helm Commands | ✅ | `helm` — keyword "what it means" + verbatim "type the exact command" (skipped for slash/placeholder commands) |
+| 25 | Line Handling Commands | ✅ | `lines` — keyword "what it means" + verbatim "type the exact command" |
 | 26 | Etiquette | ✅ | `etiquette` — **added** |
 | 27 | Coast Guard Ceremonies / Colors Indoctrination | ✅ | `colors` — **added** |
 | 28 | Shipboard Customs | ✅ | `shipboard` — **added** |
 | 29 | Saluting | ✅ | `saluting` — **added** |
-| 30 | Coast Guard Districts | ✅ | `districts` + interactive map — **added** |
-| 31–33 | 11 Missions of the U.S. Coast Guard | ✅ | `missions` |
-| 33 | Recognized Distress Signals | ✅ | `distress` — image recognition (17, incl. inland flashing light); show the self-authored SVG (`images/distress/`), identify the signal (keyword-graded) |
+| 30 | Coast Guard Districts | ✅ | `districts` — coverage-shaded map is the only study card; recall name ↔ HQ/area (mixed MC + typed), **numbers not tested** |
+| 31–33 | 11 Missions of the U.S. Coast Guard | ✅ | `missions` — role each falls under (Safety/Security/Stewardship, 3-choice) **plus** typed keyword recall of its activities |
+| 33 | Recognized Distress Signals | ✅ | `distress` — image recognition (17, incl. inland flashing light); show the self-authored SVG (`images/distress/`), type the signal **verbatim** (packet chart label) |
 | 34 | Fundamentals of Damage Control | ✅ | `damage` — **added** |
 | 35 | Four Classes of Fires | ✅ | `fires` — **added** |
-| 36 | Radios and Messages — prowords | ✅ | `radio` |
+| 36 | Radios and Messages — prowords | ✅ | `radio` — keyword "what it means" + verbatim "type the exact proword" |
 | 36 | Radios and Messages — procedures | ✅ | `radio_proc` — **added** |
 | 37–42 | Coast Guard Cutters | ✅ | `assets` (with images) |
 | 43–46 | Coast Guard Small Boats | ✅ | `assets` (with images) |

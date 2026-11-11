@@ -71,9 +71,11 @@ function startSession() {
   // Practice / Review question type per fact: verbatim sections ask for full wording, others mix recognition + typing.
   const practiceMode = (fact) => CURRICULUM.for(fact.category).verbatim ? 'exact' : Math.random() < 0.5 ? 'matching' : 'recall';
   let questions;
-  if (state.mode === 'study') questions = pool;
+  // In study mode the districts set is just the one map slide (every district's name, HQ, and area is
+  // on its legend) — the individual district cards only exist to be quizzed, not browsed.
+  if (state.mode === 'study') questions = pool.filter((fact) => fact.category !== 'districts' || fact.districtsMap);
   else if (state.mode === 'test') questions = pool.flatMap((fact) => makeTestQuestions(fact, pool));
-  else questions = pool.flatMap((fact) => fact.districtsMap ? [] : fact.asset ? makeAssetQuestions(fact, pool, practiceMode(fact)) : fact.rating ? makeRatingQuestions(fact, pool) : fact.imageRecognition ? [makeImageRecallQuestion(fact)] : fact.insignia ? [makeInsigniaQuestion(fact, pool)] : [makeQuestion(fact, pool, practiceMode(fact))]);
+  else questions = pool.flatMap((fact) => fact.districtsMap ? [] : fact.asset ? makeAssetQuestions(fact, pool, practiceMode(fact)) : fact.rating ? makeRatingQuestions(fact, pool) : fact.roleChoice ? makeMissionQuestions(fact) : fact.districtQ ? [makeDistrictQuestion(fact, pool)] : fact.termSet ? makeTermQuestions(fact) : fact.imageRecognition ? [makeImageRecallQuestion(fact)] : fact.insignia ? [makeInsigniaQuestion(fact, pool)] : [makeQuestion(fact, pool, practiceMode(fact))]);
   if (state.mode === 'test' || (state.mode !== 'study' && state.mode !== 'review')) questions = shuffle(questions);
   const cap = $('lengthSelect').value;
   if (cap !== 'all') questions = questions.slice(0, Number(cap));
@@ -127,18 +129,62 @@ function makeRatingQuestions(fact, pool) {
   ];
 }
 
-// Image-only recognition (distress signals): show the depiction and ask the user to name the signal.
-// The describing text is deliberately NOT shown — that would give the answer away — so this tests
-// visual recognition. The packet wording is graded on key terms so a correct identification isn't
-// failed over exact phrasing.
+// Coast Guard missions: each of the 11 (1) falls under one of three maritime roles and (2) has its own
+// key activities. Two questions per mission — a role multiple-choice and a typed keyword recall of the
+// activities — so cadets still learn the keywords, not just the category. Mastery averages the two.
+const MARITIME_ROLES = ['Maritime Safety', 'Maritime Security', 'Maritime Stewardship'];
+function makeMissionQuestions(fact) {
+  return [
+    { ...fact, id: `${fact.id}-role`, progressId: `${fact.id}-role`, format: 'choice', prompt: `Which maritime role does "${fact.front}" fall under?`, promptLabel: 'Choose the role', answer: fact.back, choices: shuffle([...MARITIME_ROLES]), direction: 'meaning' },
+    { ...fact, id: `${fact.id}-act`, progressId: `${fact.id}-act`, format: 'fill', prompt: `What are the key activities and functions of ${fact.front}?`, promptLabel: 'Answer in your own words (key points count)', answer: fact.detail, keywordGrade: true, direction: 'meaning' }
+  ];
+}
+
+// Coast Guard districts: numbers are not tested. Each district is quizzed on its HQ (location) and its
+// area (LANT/PAC), as a mix of multiple-choice and typed questions picked at random. Nothing here is
+// keyword-graded — typed answers are verbatim (city + state abbreviation, or the district name), since
+// cadets need those exactly. Area Command / HQ facts (no `hq` field) are a multiple-choice city pick.
+const AREA_NAMES = { LANT: 'Atlantic Area (LANT)', PAC: 'Pacific Area (PAC)' };
+function makeDistrictQuestion(fact, pool) {
+  if (!fact.hq) {
+    const others = shuffle(pool.filter((item) => item.category === 'districts' && !item.districtsMap && !item.hq && item.id !== fact.id)).slice(0, 3).map((item) => item.back);
+    return { ...fact, format: 'choice', prompt: `What is the ${fact.front}?`, promptLabel: 'Choose the city', answer: fact.back, choices: shuffle([...new Set([fact.back, ...others])]), direction: 'meaning' };
+  }
+  const otherHqs = () => shuffle(pool.filter((item) => item.hq && item.id !== fact.id)).slice(0, 3).map((item) => item.hq);
+  const variants = [
+    () => ({ ...fact, format: 'choice', prompt: `Where is the ${fact.front} headquartered?`, promptLabel: 'Choose the headquarters', answer: fact.hq, choices: shuffle([...new Set([fact.hq, ...otherHqs()])]), direction: 'meaning' }),
+    () => ({ ...fact, format: 'fill', prompt: `What is the ${fact.front}'s headquarters?`, promptLabel: 'Type the city and state abbreviation (e.g., Boston, MA)', answer: fact.hq, exact: true, direction: 'exact' }),
+    () => ({ ...fact, format: 'choice', prompt: `Which area is the ${fact.front} in?`, promptLabel: 'Choose the area', answer: AREA_NAMES[fact.area], choices: shuffle(Object.values(AREA_NAMES)), direction: 'meaning' }),
+    () => ({ ...fact, format: 'fill', prompt: `Which district is headquartered in ${fact.hq}?`, promptLabel: 'Type the district name (e.g., Northeast District)', answer: fact.front, exact: true, direction: 'exact' })
+  ];
+  return variants[Math.floor(Math.random() * variants.length)]();
+}
+
+// Image-only recognition (distress signals): show the depiction and have the user name the signal,
+// typed word-for-word (the `back` is the packet chart label, e.g. "Red star shells"). The describing
+// text is deliberately NOT shown — that would give the answer away.
 function makeImageRecallQuestion(fact) {
-  return { ...fact, format: 'fill', prompt: 'Which distress signal is this?', promptLabel: 'Identify the signal from the image (key points count)', answer: fact.front, keywordGrade: true, exact: false, direction: 'meaning' };
+  return { ...fact, format: 'fill', prompt: 'Which distress signal is this?', promptLabel: 'Type the signal, word-for-word', answer: fact.back, exact: true, direction: 'exact' };
+}
+
+// Helm/line commands and prowords. Every item gets a keyword "what does it mean" question; terms that
+// can be typed verbatim (no slash/placeholder/line break) also get an exact "type the exact term"
+// question. Mastery averages whichever sub-questions exist.
+const termIsExact = (front) => !/[/#]|\n/.test(front);
+const termNoun = (category) => category === 'radio' ? 'proword' : category === 'lines' ? 'line-handling command' : 'helm command';
+function makeTermQuestions(fact) {
+  const questions = [{ ...fact, id: `${fact.id}-mean`, progressId: `${fact.id}-mean`, format: 'fill', prompt: fact.front, promptLabel: 'Answer in your own words (key points count)', answer: fact.back, keywordGrade: true, direction: 'meaning' }];
+  if (termIsExact(fact.front)) questions.push({ ...fact, id: `${fact.id}-term`, progressId: `${fact.id}-term`, format: 'fill', prompt: fact.back, promptLabel: `Type the exact ${termNoun(fact.category)}`, answer: fact.front, exact: true, direction: 'exact' });
+  return questions;
 }
 
 // Graded test questions: verbatim sections are typed word-for-word; assets are recognition;
 // everything else is a typed answer graded on key terms (see keywordScore / answerQuestion).
 function makeTestQuestions(fact, pool) {
   if (fact.districtsMap) return [];
+  if (fact.roleChoice) return makeMissionQuestions(fact);
+  if (fact.districtQ) return [makeDistrictQuestion(fact, pool)];
+  if (fact.termSet) return makeTermQuestions(fact);
   if (fact.imageRecognition) return [makeImageRecallQuestion(fact)];
   const cfg = CURRICULUM.for(fact.category);
   if (fact.asset) return makeAssetQuestions(fact, pool, 'matching');
@@ -178,25 +224,44 @@ function renderQuestion() {
   if (state.mode === 'study') renderStudyCard(question); else renderTestQuestion(question);
 }
 
+// States that make up each district's coverage area, approximated from the packet's district map
+// (p. 30). Used only to shade the map so the learner can see where each district reaches.
+const DISTRICT_STATES = {
+  1: ['me', 'nh', 'vt', 'ma', 'ri', 'ct', 'ny'],
+  2: ['nj', 'pa', 'de', 'md', 'dc', 'va', 'wv', 'nc', 'sc'],
+  3: ['ga', 'fl'],
+  4: ['nd', 'sd', 'ne', 'ks', 'ok', 'tx', 'ia', 'mo', 'ar', 'la', 'ms', 'al', 'tn', 'ky', 'co', 'nm'],
+  5: ['mn', 'wi', 'il', 'in', 'mi', 'oh'],
+  6: ['ca', 'nv', 'az', 'ut'],
+  7: ['wa', 'or', 'id', 'mt', 'wy'],
+  8: ['ak'],
+  9: ['hi']
+};
+const DISTRICT_COLORS = { 1: '#e06666', 2: '#f6b26b', 3: '#93c47d', 4: '#c27ba0', 5: '#ffd966', 6: '#76a5af', 7: '#b4a7d6', 8: '#6fa8dc', 9: '#a2a2a2' };
+
 function renderDistrictMap(map) {
   const base = window.US_MAP || { viewBox: '8 6 920 585', states: [] };
-  const states = base.states.map((state) => `<path class="map-state" d="${state.d}"></path>`).join('');
-  const markers = map.items.map((dist) => `<g class="map-marker map-marker--${dist.area.toLowerCase()}" data-num="${dist.num}" tabindex="0" role="button" aria-label="District ${dist.num}, ${escapeHtml(dist.name)}, headquarters ${escapeHtml(dist.hq)}"><circle cx="${dist.x}" cy="${dist.y}" r="15"></circle><text x="${dist.x}" y="${dist.y}" dy="0.35em" text-anchor="middle">${dist.num}</text><title>${escapeHtml(dist.name)} (${escapeHtml(dist.hq)})</title></g>`).join('');
-  const legendRows = (area) => map.items.filter((dist) => dist.area === area).map((dist) => `<button class="district-legend__row" type="button" data-num="${dist.num}"><span class="district-chip district-chip--${area.toLowerCase()}">${dist.num}</span><span class="district-legend__text"><strong>${escapeHtml(dist.name)}</strong><small>${escapeHtml(dist.hq)}</small></span></button>`).join('');
+  const stateDist = {};
+  Object.entries(DISTRICT_STATES).forEach(([num, ids]) => ids.forEach((id) => { stateDist[id] = num; }));
+  const states = base.states.map((state) => { const num = stateDist[state.id]; return `<path class="map-state" data-dist="${num || ''}" style="fill:${num ? DISTRICT_COLORS[num] : '#e7eaf3'}" d="${state.d}"></path>`; }).join('');
+  // No numbers on the map — a small HQ dot plus the district's name. Names are tested, numbers are not.
+  const markers = map.items.map((dist) => { const label = dist.name.replace(/\s*District$/, ''); return `<g class="map-marker map-marker--${dist.area.toLowerCase()}" data-num="${dist.num}" tabindex="0" role="button" aria-label="${escapeHtml(dist.name)}, headquarters ${escapeHtml(dist.hq)}, ${dist.area} Area"><text class="map-label" x="${dist.x}" y="${dist.y - 12}" text-anchor="middle">${escapeHtml(label)}</text><circle cx="${dist.x}" cy="${dist.y}" r="6"></circle><title>${escapeHtml(dist.name)} (${escapeHtml(dist.hq)})</title></g>`; }).join('');
+  const legendRows = (area) => map.items.filter((dist) => dist.area === area).map((dist) => `<button class="district-legend__row" type="button" data-num="${dist.num}"><span class="district-swatch" style="background:${DISTRICT_COLORS[dist.num]}"></span><span class="district-legend__text"><strong>${escapeHtml(dist.name)}</strong><small>${escapeHtml(dist.hq)}</small></span></button>`).join('');
   $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(map.section)}</p><h2 class="question-title">Nine districts in two areas</h2>
     <div class="district-map">
-      <div class="district-map__figure"><svg viewBox="${base.viewBox}" role="img" aria-label="Map of the nine U.S. Coast Guard districts"><g class="map-states">${states}</g><g class="map-markers">${markers}</g></svg></div>
+      <div class="district-map__figure"><svg viewBox="${base.viewBox}" role="img" aria-label="Map of the U.S. Coast Guard districts, shaded by coverage area"><g class="map-states">${states}</g><g class="map-markers">${markers}</g></svg></div>
       <div class="district-legend">
         <div class="district-legend__group"><h3>${escapeHtml(map.areas.LANT.name)}</h3>${legendRows('LANT')}<p class="district-legend__cmd">Area Command: ${escapeHtml(map.areas.LANT.command_hq)}</p></div>
         <div class="district-legend__group"><h3>${escapeHtml(map.areas.PAC.name)}</h3>${legendRows('PAC')}<p class="district-legend__cmd">Area Command: ${escapeHtml(map.areas.PAC.command_hq)}</p></div>
         <p class="district-legend__hq">${escapeHtml(map.headquarters)}</p>
       </div>
     </div>
-    <p class="district-readout" id="districtReadout" aria-live="polite">Tap a number or a district name to highlight it.</p>`;
+    <p class="district-readout" id="districtReadout" aria-live="polite">Tap a district name or its spot on the map to highlight it.</p>`;
   const highlight = (num) => {
     const dist = map.items.find((item) => String(item.num) === String(num));
     document.querySelectorAll('.map-marker, .district-legend__row').forEach((node) => node.classList.toggle('is-active', node.dataset.num === String(num)));
-    if (dist) $('districtReadout').innerHTML = `<strong>District ${dist.num} · ${escapeHtml(dist.name)}</strong> — HQ ${escapeHtml(dist.hq)} · ${escapeHtml(dist.area)} Area`;
+    document.querySelectorAll('.map-state').forEach((node) => node.classList.toggle('is-active', node.dataset.dist === String(num)));
+    if (dist) $('districtReadout').innerHTML = `<strong>${escapeHtml(dist.name)}</strong> — HQ ${escapeHtml(dist.hq)} · ${escapeHtml(dist.area)} Area`;
   };
   document.querySelectorAll('.map-marker').forEach((node) => { node.addEventListener('click', () => highlight(node.dataset.num)); node.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); highlight(node.dataset.num); } }); });
   document.querySelectorAll('.district-legend__row').forEach((node) => node.addEventListener('click', () => highlight(node.dataset.num)));
@@ -286,6 +351,8 @@ function finishSession() {
 function showMenu() { $('quizPanel').classList.add('hidden'); $('resultsPanel').classList.add('hidden'); $('commandProgress').classList.remove('hidden'); $('setupPanel').classList.remove('hidden'); renderMastery(); }
 function masteryFor(fact) {
   if (fact.rating) { const scores = ['name', 'abbr', 'def'].map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery); return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length); }
+  if (fact.roleChoice) { const scores = ['role', 'act'].map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery); return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length); }
+  if (fact.termSet) { const keys = termIsExact(fact.front) ? ['mean', 'term'] : ['mean']; const scores = keys.map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery); return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length); }
   if (!fact.asset) return getProgress(fact).mastery;
   // Average only the sub-questions this asset actually has. makeAssetQuestions only emits a relation
   // when the field is present, so averaging over a fixed key list left absent fields stuck at 0 and

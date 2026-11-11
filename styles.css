@@ -40,7 +40,8 @@ body.dark-mode { --ink: #e9ebf5; --muted: #aeb4c8; --line: #343b68; --paper: #09
 .district-map__figure { padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
 .district-map svg { display: block; width: 100%; height: auto; }
 .map-state { fill: #e7eaf3; stroke: #fff; stroke-width: 1; }
-.map-markers text { fill: #fff; font: 700 15px Arial, sans-serif; pointer-events: none; }
+.map-state.is-active { stroke: var(--ink); stroke-width: 2.5; }
+.map-label { fill: #15306b; font: 700 15px Arial, sans-serif; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
 .map-marker { cursor: pointer; }
 .map-marker circle { stroke: #fff; stroke-width: 2; transform-box: fill-box; transform-origin: center; transition: transform .12s ease; }
 .map-marker--lant circle { fill: var(--teal); }
@@ -53,9 +54,7 @@ body.dark-mode { --ink: #e9ebf5; --muted: #aeb4c8; --line: #343b68; --paper: #09
 .district-legend__row { display: flex; align-items: center; gap: 10px; width: 100%; margin: 2px 0; padding: 6px 8px; text-align: left; background: transparent; border: 1px solid transparent; border-radius: 6px; }
 .district-legend__row:hover { background: rgba(8, 13, 85, .06); }
 .district-legend__row.is-active { border-color: var(--line); background: rgba(8, 13, 85, .09); }
-.district-chip { display: grid; place-items: center; width: 24px; height: 24px; flex: none; color: #fff; font: 700 12px Arial, sans-serif; border-radius: 50%; }
-.district-chip--lant { background: var(--teal); }
-.district-chip--pac { background: var(--coral); }
+.district-swatch { width: 18px; height: 18px; flex: none; border-radius: 4px; border: 1px solid rgba(0, 0, 0, .18); }
 .district-legend__text { display: grid; min-width: 0; }
 .district-legend__text strong { color: var(--ink); font-size: 13px; }
 .district-legend__text small { color: var(--muted); font-size: 11px; }
@@ -63,8 +62,8 @@ body.dark-mode { --ink: #e9ebf5; --muted: #aeb4c8; --line: #343b68; --paper: #09
 .district-legend__hq { margin: 2px 0 0; color: var(--ink); font: 700 11px Arial, sans-serif; }
 .district-readout { max-width: 880px; margin: 14px 0 0; padding: 12px 15px; color: var(--ink); background: #eef0f7; border-left: 4px solid var(--coral); border-radius: 7px; font: 14px/1.45 Arial, sans-serif; }
 .dark-mode .district-map__figure { background: #0f1442; }
-.dark-mode .map-state { fill: #27306a; stroke: #0f1442; }
-.dark-mode .map-markers text { fill: #fff; }
+.dark-mode .map-state { fill: #27306a; stroke: rgba(255, 255, 255, .35); }
+.dark-mode .map-label { fill: #fff; stroke: #0f1442; }
 .dark-mode .district-readout { background: rgba(22, 29, 79, .9); }
 .dark-mode .district-legend__row:hover { background: rgba(255, 255, 255, .06); }
 .dark-mode .district-legend__row.is-active { background: rgba(255, 255, 255, .09); }

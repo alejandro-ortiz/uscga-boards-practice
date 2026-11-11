@@ -27,7 +27,7 @@ window.CURRICULUM = {
     mission:    { unit: 'Core Knowledge',        verbatim: true },
     ethos:      { unit: 'Core Knowledge',        verbatim: true },
     sentry:     { unit: 'Core Knowledge',        verbatim: true },
-    distress:   { unit: 'Visual Identification', recognition: true }, // identify the signal from its image
+    distress:   { unit: 'Visual Identification', verbatim: true }, // identify the signal from its image, typed word-for-word
 
     // Keywords / understanding (verbatim defaults to false).
     etiquette:  { unit: 'Customs & Courtesies' },
@@ -39,12 +39,12 @@ window.CURRICULUM = {
     nautical:   { unit: 'Seamanship & Commands' },
     radio:      { unit: 'Communications' },
     radio_proc: { unit: 'Communications' },
-    missions:   { unit: 'Organization & Missions' },
-    districts:  { unit: 'Organization & Missions' },
+    missions:   { unit: 'Organization & Missions' }, // role (3-choice) + typed keyword recall per mission
+    districts:  { unit: 'Organization & Missions' }, // name <-> HQ/area, mixed MC + typed; numbers not tested
     ratings:    { unit: 'Organization & Missions', recognition: true }, // short identifiers → test by recognition
     ranks:      { unit: 'Organization & Missions', recognition: true },
-    flags:      { unit: 'Visual Identification' },
-    ensigns:    { unit: 'Visual Identification' },
+    flags:      { unit: 'Visual Identification', recognition: true }, // identify the flag (multiple choice)
+    ensigns:    { unit: 'Visual Identification', recognition: true },
     lights:     { unit: 'Visual Identification', recognition: true }, // identify vessel from lights/dayshape
     assets:     { unit: 'Visual Identification' },
     damage:     { unit: 'Damage Control & Firefighting' },

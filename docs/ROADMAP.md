@@ -94,6 +94,25 @@ grading ignores punctuation/whitespace (still exact words, in order).
   packet description, graded on key terms (≥70%), not verbatim. Facts carry an `imageRecognition` flag
   (`makeImageRecallQuestion` in app.js); `curriculum.js` marks distress `recognition: true`. Study mode
   still shows everything for browsing.
+- **Mission scope trimmed.** The Academy Mission set drops the origin/composition card (who composed
+  it, when) — only the mission statement itself is tested.
+- **Missions → role + keywords.** Each of the 11 Coast Guard missions gets two questions
+  (`makeMissionQuestions`, `roleChoice` flag; mastery averages both): a 3-choice "which maritime role?"
+  (Safety / Security / Stewardship, packet pp. 31–33; e.g. Drug Interdiction → Maritime Security) and a
+  typed keyword recall of its activities, so cadets still learn each mission's key terms.
+- **Districts reworked.** District **numbers are no longer tested** — recall is name ↔ HQ (location) and
+  name ↔ area (LANT/PAC), as a **mix of multiple-choice and typed** questions (`makeDistrictQuestion`,
+  `districtQ` flag). The "what is the HQ?" typed question is **verbatim** — city *and* state abbreviation
+  required (e.g., "Boston, MA"). In **study** mode the set is only the "Nine districts in two areas" map slide (every
+  name/HQ/area is on its legend; the individual cards exist only to be quizzed). The map now **shades
+  each district's coverage** with a name label (no numbers), from `DISTRICT_STATES` in app.js
+  (state→district approximated from the packet p.30 map — verify).
+- **Grading pass across the visual + command sets.** Nautical flags and Flags & Ensigns moved to
+  **recognition** (multiple choice). Distress signals are now typed **verbatim** (the packet chart label,
+  e.g. "Red star shells"), not keyword. Helm commands, line-handling commands, and prowords (`termSet`
+  flag, `makeTermQuestions`) now get a keyword "what does it mean" question **plus** a verbatim "type the
+  exact command/proword" question — the exact half is skipped for terms that can't be typed word-for-word
+  (slashes/placeholders like "RIGHT/LEFT ### DEGREES RUDDER"). Mastery averages whichever halves exist.
 
 ### ▶ Next (in priority order)
 1. **Progress export/import** — back up / move a browser's progress (JSON download + restore);
