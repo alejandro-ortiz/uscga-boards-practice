@@ -20,6 +20,15 @@ h1 { margin-bottom: 0; font-size: clamp(36px, 6vw, 62px); line-height: .98; font
 .theme-button, .menu-button, .secondary-button { padding: 10px 13px; color: var(--teal-dark); background: transparent; border: 1px solid var(--line); border-radius: 6px; font: 700 11px Arial, sans-serif; }.theme-button:hover, .menu-button:hover, .secondary-button:hover { background: rgba(8, 13, 85, .08); }
 .setup-panel, .quiz-panel, .results-panel { background: rgba(255, 255, 255, .84); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 10px; }.setup-panel { padding: 30px; border-top: 4px solid var(--teal); }
 .section-heading { display: flex; justify-content: space-between; gap: 24px; align-items: end; }.muted { color: var(--muted); font: 14px/1.5 Arial, sans-serif; max-width: 320px; margin-bottom: 2px; }.mode-hint, .loading-message { margin: 14px 0 0; color: var(--muted); font: 12px/1.45 Arial, sans-serif; }.loading-message.error-message { color: #9a3328; }
+.how-to { margin: 18px 0 0; background: rgba(8, 13, 85, .04); border: 1px solid var(--line); border-radius: 8px; }
+.how-to > summary { cursor: pointer; padding: 11px 15px; color: var(--ink); font: 700 13px Arial, sans-serif; }
+.how-to > summary:hover { color: var(--teal-dark); }
+.how-to[open] > summary { border-bottom: 1px solid var(--line); }
+.how-to__list { margin: 0; padding: 12px 18px 14px 34px; }
+.how-to__list li { margin: 5px 0; color: var(--muted); font: 13px/1.5 Arial, sans-serif; }
+.how-to__list strong { color: var(--ink); }
+.mastery-note { max-width: none; margin: 14px 0 0; }
+.dark-mode .how-to { background: rgba(255, 255, 255, .04); }
 .controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: start; margin-top: 28px; }.practice-sets { display: grid; grid-template-columns: 1fr 1fr; grid-column: span 3; gap: 9px 14px; min-width: 0; margin: 0; padding: 14px; border: 1px solid var(--line); border-radius: 7px; }.practice-sets legend { padding: 0 5px; color: var(--muted); font: 700 11px Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }.practice-sets label { display: flex; align-items: center; gap: 8px; font: 12px Arial, sans-serif; letter-spacing: 0; text-transform: none; }.practice-sets input { accent-color: var(--teal); }
 label { display: grid; gap: 8px; color: var(--muted); font: 700 11px Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; } select { width: 100%; padding: 13px 14px; color: var(--ink); background: #fbfcfb; border: 1px solid var(--line); border-radius: 6px; }
 .primary-button, .next-button, .submit-button { border: 0; padding: 14px 20px; color: white; background: var(--teal); font: 700 13px Arial, sans-serif; border-radius: 6px; }.primary-button:hover, .next-button:hover { background: var(--teal-dark); }.primary-button:disabled { cursor: wait; opacity: .55; }.controls .primary-button { grid-column: 1 / -1; justify-self: start; }
@@ -41,7 +50,7 @@ body.dark-mode { --ink: #e9ebf5; --muted: #aeb4c8; --line: #343b68; --paper: #09
 .district-map svg { display: block; width: 100%; height: auto; }
 .map-state { fill: #e7eaf3; stroke: #fff; stroke-width: 1; }
 .map-state.is-active { stroke: var(--ink); stroke-width: 2.5; }
-.map-label { fill: #15306b; font: 700 15px Arial, sans-serif; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+.map-label { fill: #15306b; font: 700 18px Arial, sans-serif; paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round; pointer-events: none; }
 .map-marker { cursor: pointer; }
 .map-marker circle { stroke: #fff; stroke-width: 2; transform-box: fill-box; transform-origin: center; transition: transform .12s ease; }
 .map-marker--lant circle { fill: var(--teal); }

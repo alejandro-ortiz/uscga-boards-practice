@@ -406,7 +406,15 @@ function syncPickerGroups() {
     group.querySelector('.set-group__head').setAttribute('aria-pressed', on > 0 && on === boxes.length ? 'true' : 'false');
   });
 }
-function initialize(data) { state.data = data; buildPicker(); data.facts.forEach(getProgress); $('packetTitle').textContent = data.title; $('loadingMessage').textContent = `${data.facts.length} packet items ready.`; $('startButton').disabled = false; renderMastery(); updateStats(); }
+// Remember whether the "How it works" intro is collapsed, so returning users see it folded away.
+function setupHowTo() {
+  const howTo = $('howTo');
+  if (!howTo) return;
+  try { if (localStorage.getItem('boards-howto-collapsed') === '1') howTo.open = false; } catch (error) { /* storage blocked */ }
+  howTo.addEventListener('toggle', () => { try { localStorage.setItem('boards-howto-collapsed', howTo.open ? '0' : '1'); } catch (error) { /* storage blocked */ } });
+}
+
+function initialize(data) { state.data = data; buildPicker(); setupHowTo(); data.facts.forEach(getProgress); $('packetTitle').textContent = data.title; $('loadingMessage').textContent = `${data.facts.length} packet items ready.`; $('startButton').disabled = false; renderMastery(); updateStats(); }
 
 $('modeRail').addEventListener('change', () => { $('modeHint').textContent = modeInfo[document.querySelector('input[name="mode"]:checked').value].hint; });
 $('selectAllBtn').addEventListener('click', () => { document.querySelectorAll('input[name="practiceSet"]').forEach((input) => { input.checked = true; }); syncPickerGroups(); });
