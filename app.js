@@ -24,6 +24,10 @@ function getProgress(fact) {
 }
 function saveProgress() { localStorage.setItem('boards-command-progress', JSON.stringify(progress)); }
 function normalize(value) { return value.toLowerCase().replace(/\s+/g, ' ').trim(); }
+// Verbatim grading leniency: still requires the exact words in order, but ignores punctuation,
+// apostrophes and stray whitespace so a right answer never fails on a trailing period or a comma.
+function normalizeExact(value) { return normalize(value).replace(/[’']/g, '').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim(); }
+function exactWord(value) { return normalize(value).replace(/[’']/g, '').replace(/[^a-z0-9]/g, ''); }
 function escapeHtml(value) { return value.replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character])); }
 
 // Keyword grading for non-verbatim test answers: pass on ~70% of the key terms, word order aside.
@@ -40,12 +44,19 @@ function keyTerms(text) {
   });
   return terms;
 }
-function keywordScore(submitted, expected) {
-  const terms = keyTerms(expected);
-  if (!terms.length) return { matched: 0, total: 0, ratio: 1, missed: [] };
+function keywordScore(submitted, expected, explicit) {
   const givenStems = new Set(keyTerms(submitted));
   const givenFlat = normalize(submitted).replace(/[^a-z0-9]/g, '');
   const hit = (term) => givenStems.has(term) || (term.length >= 4 && givenFlat.includes(term));
+  // Explicit keyword list (from a fact's `keywords`) overrides the auto-derived terms. Each entry
+  // may be a phrase; it counts as matched only when every key word in it is present.
+  if (Array.isArray(explicit) && explicit.length) {
+    const missed = [];
+    const matched = explicit.filter((kw) => { const parts = keyTerms(kw); const ok = parts.length > 0 && parts.every(hit); if (!ok) missed.push(kw); return ok; });
+    return { matched: matched.length, total: explicit.length, ratio: matched.length / explicit.length, missed };
+  }
+  const terms = keyTerms(expected);
+  if (!terms.length) return { matched: 0, total: 0, ratio: 1, missed: [] };
   const matched = terms.filter(hit);
   return { matched: matched.length, total: terms.length, ratio: matched.length / terms.length, missed: terms.filter((term) => !hit(term)) };
 }
@@ -62,7 +73,7 @@ function startSession() {
   let questions;
   if (state.mode === 'study') questions = pool;
   else if (state.mode === 'test') questions = pool.flatMap((fact) => makeTestQuestions(fact, pool));
-  else questions = pool.flatMap((fact) => fact.districtsMap ? [] : fact.asset ? makeAssetQuestions(fact, pool, practiceMode(fact)) : [makeQuestion(fact, pool, practiceMode(fact))]);
+  else questions = pool.flatMap((fact) => fact.districtsMap ? [] : fact.asset ? makeAssetQuestions(fact, pool, practiceMode(fact)) : fact.rating ? makeRatingQuestions(fact, pool) : fact.insignia ? [makeInsigniaQuestion(fact, pool)] : [makeQuestion(fact, pool, practiceMode(fact))]);
   if (state.mode === 'test' || (state.mode !== 'study' && state.mode !== 'review')) questions = shuffle(questions);
   const cap = $('lengthSelect').value;
   if (cap !== 'all') questions = questions.slice(0, Number(cap));
@@ -80,12 +91,40 @@ function makeQuestion(fact, pool, mode = state.mode) {
   }
   if (mode === 'exact') return { ...fact, format: 'fill', prompt: fact.front, answer: fact.back, exact: true, direction: 'exact' };
   const reverse = Math.random() > 0.5;
-  if (Math.random() < 0.35) {
-    const words = fact.back.split(' ').filter((word) => word.replace(/[^a-z]/gi, '').length > 4);
-    const blank = words[Math.floor(Math.random() * Math.min(words.length, 5))] || words[0];
-    return { ...fact, format: 'fill', prompt: reverse ? fact.front : fact.back.replace(blank, '_____'), answer: reverse ? fact.back : blank.replace(/[^a-z0-9-]/gi, ''), exact: reverse, direction: reverse ? 'meaning' : 'cloze' };
+  // Cloze (fill-the-blank) only works when the answer has a long-enough word to blank out, and only
+  // in the non-reversed direction. Short answers (e.g. a rating abbreviation) skip to a plain prompt.
+  const clozeWords = fact.back.split(' ').filter((word) => word.replace(/[^a-z]/gi, '').length > 4);
+  if (!reverse && clozeWords.length && Math.random() < 0.35) {
+    const blank = clozeWords[Math.floor(Math.random() * Math.min(clozeWords.length, 5))];
+    return { ...fact, format: 'fill', prompt: fact.back.replace(blank, '_____'), answer: blank.replace(/[^a-z0-9-]/gi, ''), exact: false, direction: 'cloze' };
   }
   return { ...fact, format: 'fill', prompt: reverse ? fact.back : fact.front, answer: reverse ? fact.front : fact.back, exact: false, direction: reverse ? 'name' : 'meaning' };
+}
+
+// Insignia recognition: show the rank insignia image and pick the rank it belongs to.
+// Distractors are drawn from the same insignia group (e.g. other Coast Guard officers) so the
+// choices are plausible and the student is distinguishing devices, not service tables.
+function makeInsigniaQuestion(fact, pool) {
+  const pick = (list) => shuffle(list.filter((item) => item.insignia && item.front !== fact.front));
+  const sameGroup = pick(pool.filter((item) => item.insigniaGroup === fact.insigniaGroup));
+  const otherGroups = pick(pool.filter((item) => item.insigniaGroup !== fact.insigniaGroup));
+  const distractors = []; // prefer same-group ranks, then top up from the rest
+  for (const item of [...sameGroup, ...otherGroups]) { if (distractors.length >= 3) break; if (!distractors.includes(item.front)) distractors.push(item.front); }
+  const choices = shuffle([...new Set([fact.front, ...distractors])]);
+  return { ...fact, format: 'choice', prompt: 'Which rank wears this insignia?', promptLabel: 'Identify the rank', answer: fact.front, choices, direction: 'front', insigniaPrompt: true };
+}
+
+// Enlisted ratings: identify the rating name AND abbreviation from its specialty mark, then recall
+// what the rating does (keyword-graded). Three questions per rating; distractors are other ratings.
+function makeRatingQuestions(fact, pool) {
+  const others = pool.filter((item) => item.rating && item.front !== fact.front);
+  const nameChoices = shuffle([...new Set([fact.front, ...shuffle(others).slice(0, 3).map((item) => item.front)])]);
+  const abbrChoices = shuffle([...new Set([fact.back, ...shuffle(others).slice(0, 3).map((item) => item.back)])]);
+  return [
+    { ...fact, id: `${fact.id}-name`, progressId: `${fact.id}-name`, format: 'choice', prompt: 'Which rating wears this specialty mark?', promptLabel: 'Identify the rating', answer: fact.front, choices: nameChoices, direction: 'front', insigniaPrompt: true },
+    { ...fact, id: `${fact.id}-abbr`, progressId: `${fact.id}-abbr`, format: 'choice', prompt: 'Which abbreviation goes with this specialty mark?', promptLabel: 'Identify the abbreviation', answer: fact.back, choices: abbrChoices, direction: 'back', insigniaPrompt: true },
+    { ...fact, id: `${fact.id}-def`, progressId: `${fact.id}-def`, format: 'fill', prompt: `What does a ${fact.front} (${fact.back}) do?`, promptLabel: 'Answer in your own words (key points count)', answer: fact.detail, keywordGrade: true, direction: 'meaning' }
+  ];
 }
 
 // Graded test questions: verbatim sections are typed word-for-word; assets are recognition;
@@ -94,6 +133,8 @@ function makeTestQuestions(fact, pool) {
   if (fact.districtsMap) return [];
   const cfg = CURRICULUM.for(fact.category);
   if (fact.asset) return makeAssetQuestions(fact, pool, 'matching');
+  if (fact.rating) return makeRatingQuestions(fact, pool);
+  if (fact.insignia) return [makeInsigniaQuestion(fact, pool)];
   if (cfg.verbatim) return [{ ...fact, format: 'fill', prompt: fact.front, answer: fact.back, exact: true, direction: 'exact' }];
   if (cfg.recognition) return [makeQuestion(fact, pool, 'matching')];
   return [{ ...fact, format: 'fill', prompt: fact.front, answer: fact.back, exact: false, keywordGrade: true, direction: 'meaning', promptLabel: 'Answer in your own words (key points count)' }];
@@ -162,7 +203,7 @@ function renderStudyCard(fact) {
     $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(fact.section)}</p><h2 class="question-title">${escapeHtml(fields.name)}</h2>${image}<div class="study-answer asset-details"><span>Asset details</span><p><strong>Call sign:</strong> ${escapeHtml(fields.callSign || '')}<br><strong>Class:</strong> ${escapeHtml(fields.class || '')}<br><strong>Length:</strong> ${escapeHtml(fields.length || '')}<br><strong>Hull number:</strong> ${escapeHtml(fields.hullNumber || '')}<br><strong>Range:</strong> ${escapeHtml(fields.range || '')}</p></div><p class="study-prompt">Read each identifier aloud before continuing.</p>`;
     $('nextButton').classList.remove('hidden'); $('nextButton').textContent = state.current + 1 < state.questions.length ? 'Next card →' : 'Finish study'; return;
   }
-  const image = fact.image ? `<img class="study-image" src="${escapeHtml(fact.image)}" alt="${escapeHtml(fact.front)} flag">` : '';
+  const image = fact.image ? `<img class="study-image" src="${escapeHtml(fact.image)}" alt="${escapeHtml(fact.front)}">` : '';
   const detail = fact.detail ? `<div class="study-detail"><span>Details</span><p>${escapeHtml(fact.detail)}</p></div>` : '';
   $('questionArea').innerHTML = `<p class="question-kicker">${escapeHtml(fact.section)}</p><h2 class="question-title">${escapeHtml(fact.front)}</h2>${image}<div class="study-answer"><span>Packet answer</span><p>${escapeHtml(fact.back)}</p></div>${detail}<p class="study-prompt">Read the answer aloud, then continue when ready.</p>`;
   $('nextButton').classList.remove('hidden'); $('nextButton').textContent = state.current + 1 < state.questions.length ? 'Next card →' : 'Finish study';
@@ -185,14 +226,15 @@ function renderTestQuestion(question) {
 
 function compareText(submitted, expected) {
   const given = submitted.trim().split(/\s+/); const target = expected.trim().split(/\s+/);
-  return [...target.map((word, index) => normalize(given[index] || '') === normalize(word) ? `<span class="match">${escapeHtml(word)}</span>` : `<mark>${escapeHtml(word)}</mark>`), ...given.slice(target.length).map((word) => `<mark class="extra">${escapeHtml(word)}</mark>`)].join(' ');
+  return [...target.map((word, index) => exactWord(given[index] || '') === exactWord(word) ? `<span class="match">${escapeHtml(word)}</span>` : `<mark>${escapeHtml(word)}</mark>`), ...given.slice(target.length).map((word) => `<mark class="extra">${escapeHtml(word)}</mark>`)].join(' ');
 }
 
 function answerQuestion(button, question) {
   if (state.answered) return;
   const submitted = question.format === 'choice' ? button.textContent : button.value;
   let keywords = null, isCorrect;
-  if (question.keywordGrade) { keywords = keywordScore(submitted, question.answer); isCorrect = keywords.ratio >= CURRICULUM.keywordThreshold; }
+  if (question.keywordGrade) { keywords = keywordScore(submitted, question.answer, question.keywords); isCorrect = keywords.ratio >= CURRICULUM.keywordThreshold; }
+  else if (question.exact) { isCorrect = normalizeExact(submitted) === normalizeExact(question.answer); }
   else { isCorrect = normalize(submitted) === normalize(question.answer); }
   state.answered = true; if (isCorrect) state.score += 1;
   state.results.push({ category: question.category, correct: isCorrect });
@@ -228,6 +270,7 @@ function finishSession() {
 }
 function showMenu() { $('quizPanel').classList.add('hidden'); $('resultsPanel').classList.add('hidden'); $('commandProgress').classList.remove('hidden'); $('setupPanel').classList.remove('hidden'); renderMastery(); }
 function masteryFor(fact) {
+  if (fact.rating) { const scores = ['name', 'abbr', 'def'].map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery); return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length); }
   if (!fact.asset) return getProgress(fact).mastery;
   const keys = ['callSign-forward', 'callSign-reverse', 'class-forward', 'class-reverse', 'length-forward', 'length-reverse', 'hullNumber-forward', 'hullNumber-reverse', 'range-forward', 'range-reverse', 'image']; const scores = keys.map((key) => getProgress({ id: `${fact.id}-${key}` }).mastery);
   return Math.round(scores.reduce((total, score) => total + score, 0) / scores.length);

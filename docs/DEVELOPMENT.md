@@ -56,14 +56,31 @@ See `ROADMAP.md` for product direction and what's next.
 - `verbatim: true` — Test types the answer word-for-word (exact). Used for mission, ethos, sentry,
   distress signals.
 - `recognition: true` — Test uses multiple choice instead of keyword-recall. Use for short
-  identifiers (ranks, ratings) and image-based "identify this" sets (lights & dayshapes). Assets are
+  identifiers (ratings) and image-based "identify this" sets (lights & dayshapes). Assets are
   recognition automatically.
-- Otherwise a section is **keyword-recall**: typed answer graded on ≥70% of key terms.
+- Otherwise a section is **keyword-recall**: typed answer graded on ≥70% of key terms. The grader
+  derives the key terms from the answer automatically; a fact may instead pin its own list with the
+  `keywords` field (below) when the heuristic is too strict/loose.
+- Verbatim (exact) grading ignores punctuation, apostrophes and stray whitespace — it still requires
+  the exact words in order, but a trailing period or comma never fails a correct answer
+  (`normalizeExact` in `app.js`).
 
 Optional fields on a fact (set in `data.js`):
-- `image` — path shown on the study card and test question (flags, assets, lights).
+- `image` — path shown on the study card and test question (flags, assets, lights, rank insignia).
 - `detail` — extra text shown only in Study (e.g. rating duties, the full lights/dayshape rule),
   while `back` stays a short answer for recognition choices.
+- `keywords` — an explicit list of required key terms (phrases allowed) that overrides the
+  auto-derived terms for keyword-recall grading. A phrase counts as matched only when every key word
+  in it is present.
+- `insignia: true` + `insigniaGroup` — marks an image-recognition fact (rank insignia): the quiz
+  shows the insignia image and asks for the rank, with distractors drawn from the same
+  `insigniaGroup` (e.g. `cg_officer`, `joint_officer`, `cg_warrant`, `cg_enlisted`). See
+  `makeInsigniaQuestion` in `app.js` and `images/ranks/`.
+- `rating: true` — marks an enlisted-rating fact (specialty mark). In Practice/Test it expands to
+  **three** questions via `makeRatingQuestions`: identify the name from the mark, identify the
+  abbreviation from the mark, and define the duties (typed, keyword-graded via `keywords`). Study
+  shows the mark + name + abbreviation + full duties. Images in `images/ratings/` (named by
+  lowercase abbreviation). Mastery averages the three sub-questions (like `asset`).
 - `asset` / `districtsMap` — the special multi-field (ships/boats/aircraft) and map cards.
 
 ## How to add a new study set
@@ -99,16 +116,14 @@ A "study set" = one `category` = one checkbox. Adding one touches **four** place
 
 Then bump the cache-busting version (below) and reload.
 
-### Content that is already in the JSON but not yet surfaced
+### JSON hygiene
 
-These are extracted and ready to wire with the steps above when you want them:
-
-- `term_definitions.enlisted_ratings` (23) — enlisted ratings + abbreviations
-- `visual_and_identification.ranks` — officer/enlisted/warrant/other-service rank tables
-- `visual_and_identification.lights_and_dayshapes`, `ceremonies`
-- `facts_and_reference.flags_and_ensigns`, `distress_signals`
-- `rules_and_procedures.*` raw text (etiquette, colors, shipboard, saluting, radio) — note the
-  **authored Q&A versions** of these now live in `study_additions.curated` and are what the app uses.
+Everything in the packet JSON is now wired and used by `data.js`. The earlier duplicate/mangled
+extraction blocks (`facts_and_reference.*`, `rules_and_procedures.*`,
+`visual_and_identification.lights_and_dayshapes`, `visual_and_identification.ceremonies`) were
+removed once their clean replacements landed in `study_additions.*` / `study_additions.curated`.
+If you re-extract the packet, keep that convention: authored Q&A and corrected content lives under
+`study_additions`, and `data.js` should read only paths that are actually surfaced.
 
 See `CONTENT-STATUS.md` for the full packet page map and what is / isn't live.
 

@@ -10,9 +10,10 @@ Status legend: ✅ **Live** (wired to a checkbox) · 🟡 **In JSON, not wired**
 | 3 | Mission of the USCG Academy | ✅ | `mission` |
 | 4 | The Coast Guard Ethos | ✅ | `ethos` |
 | 5 | General Orders of the Sentry | ✅ | `sentry` |
-| 6–8 | Commissioned Officer Ranks (CG/Navy + other services) | ✅ | `ranks` — recognition (name ↔ grade/abbrev) |
-| 9 | Enlisted Ranks | ✅ | `ranks` — recognition |
-| 10–12 | U.S. Coast Guard Enlisted Ratings | ✅ | `ratings` — recognition; duties shown in Study |
+| 6–7 | Commissioned Officer Ranks (CG/Navy) + Warrant Officers | ✅ | `ranks` — **insignia recognition** (CG shoulder boards; identify the rank) |
+| 8 | Commissioned Officer Ranks (Army/USMC/Air Force) | ✅ | `ranks` — insignia recognition (joint collar devices) |
+| 9 | Enlisted Ranks (Coast Guard) | ✅ | `ranks` — insignia recognition (E-4→E-9 + CPOCG collar devices; E-1→E-3 text) |
+| 10–12 | U.S. Coast Guard Enlisted Ratings | ✅ | `ratings` — **specialty-mark recognition**: identify name + abbreviation from the mark, plus a keyword-graded definition (23 marks) |
 | 13–15 | Nautical Flags | ✅ | `flags` (with images) |
 | 16–17 | Flags & Ensigns | ✅ | `ensigns` — Ensign, Standard, Jack, Commissioning Pennant |
 | 18–19 | Common Lights and Dayshapes | ✅ | `lights` — recreated COLREGS SVG diagrams (6 vessels) |
@@ -55,10 +56,16 @@ Each packet section is its own separate study set (one checkbox each):
 
 ## Known data-quality notes
 
-- The pre-existing `facts_and_reference.districts` and `facts_and_reference.damage_control`
-  arrays in the JSON were mangled during the original extraction (district numbers stripped;
-  section headers stored as items). The app now uses the clean `study_additions.*` data instead.
-  Those old arrays are left in place but unused; they can be deleted in a future cleanup.
+- **Resolved:** the mangled/duplicate extraction blocks (`facts_and_reference.*`,
+  `rules_and_procedures.*`, `visual_and_identification.lights_and_dayshapes` / `ceremonies`) have
+  been **removed** from the JSON now that the clean versions live in `study_additions.*`. The file
+  dropped from ~101 KB to ~80 KB and `data.js` reads only live paths.
+- Rank insignia images are public-domain U.S. Government works from Wikimedia Commons; see
+  `images/ranks/CREDITS.md` for provenance. E-1/E-2/E-3 have no distinct device in the packet and
+  are studied as text.
+- Enlisted rating specialty marks (23) are public-domain U.S. Government works from Wikimedia
+  Commons; see `images/ratings/CREDITS.md`. Each rating generates three questions (identify the
+  name, identify the abbreviation, define the duties — keyword-graded).
 - Mission names in `matching.coast_guard_missions` contain a line break in
   "Ports, Waterways, and Coastal\nSecurity" — cosmetic only.
 

@@ -21,6 +21,8 @@ Configured in `curriculum.js`:
 
 The keyword grader (`keywordScore` in `app.js`) derives key terms from the answer automatically
 (drops stopwords/short words, stems lightly, keeps numbers), so no per-item authoring is required.
+A fact may override those with an explicit `keywords` list when the heuristic needs help. Verbatim
+grading ignores punctuation/whitespace (still exact words, in order).
 
 ## Status
 
@@ -51,19 +53,37 @@ The keyword grader (`keywordScore` in `app.js`) derives key terms from the answe
   identifier/visual content. Deck ≈ 348 items. Only **Chapter 2 grooming** remains, and it is
   deferred by the owner.
 
+### ✅ Done (this round)
+- **Keyword-list overrides + verbatim leniency** (test-trust hardening). A fact can pin explicit
+  `keywords`; verbatim grading ignores punctuation/whitespace (exact words, order preserved).
+- **Rank insignia — visual recognition.** The Ranks set now shows the insignia image and asks for
+  the rank: CG/Navy officer shoulder boards (O-1→O-10), CG warrant officers (CWO2→4), joint
+  Army/USMC/AF collar devices (O-1→O-10), and CG enlisted collar devices (E-4→E-9 + CPOCG). Images
+  are public-domain U.S. Government works (`images/ranks/`, see `CREDITS.md`). Distractors stay
+  within an `insigniaGroup`. E-1→E-3 remain text (no device in the packet).
+- **Dead-JSON cleanup.** Removed the unused mangled/duplicate blocks from the packet JSON
+  (~101 KB → ~80 KB); `data.js` reads only live paths.
+- **Enlisted ratings — specialty-mark recognition.** The 23 ratings now show the specialty mark and
+  ask you to identify the **name** and the **abbreviation** from it, plus a keyword-graded
+  **definition** of the rating's duties. Marks are public-domain U.S. Government works
+  (`images/ratings/`, see `CREDITS.md`). Replaces the old name↔abbreviation text pairs.
+- **Practice start-button crash fixed.** A fill-in-the-blank (cloze) question crashed when a set's
+  answers were short (e.g. rating abbreviations), aborting the whole session build so "Start" did
+  nothing until the randomness happened to avoid it. Cloze now only fires when there's a long-enough
+  word to blank, in the non-reversed direction.
+
 ### ▶ Next (in priority order)
-1. **Keyword-list overrides** — let a section or item specify explicit `keywords` in the JSON to
-   override the auto-derived terms where the heuristic is too strict/loose.
-2. **Exact-mode leniency** — ignore trivial punctuation/case so verbatim grading fails only on real
-   wording errors (helps the verbatim Distress Signals especially).
-3. **Progress export/import** — back up / move a browser's progress (JSON download + restore).
-4. **Mobile polish pass** — the picker, mastery groups, and results on a phone.
-5. **Due-based review scheduling** — spacing intervals on top of Smart Review.
-6. **Chapter 2 grooming** — when the owner un-defers it (large policy tables; extractable text).
+1. **Mobile polish pass** — continue refining the picker, mastery groups, and results on a phone.
+2. **Progress export/import** — back up / move a browser's progress (JSON download + restore).
+3. **Section-test tracking** — record per-section test history over time.
+4. **Chapter 2 grooming** — when the owner un-defers it (large policy tables; extractable text).
 
 ### Deliberately NOT doing (for now)
 - A unit/week "course" structure or guided curriculum path — the owner wants element-pick to stay
   the core interaction.
+- **Time-based spaced repetition / due dates** — considered and set aside: the owner is wary of
+  calendar scheduling given holiday breaks and exam-heavy weeks. Review stays weakness-first
+  (lowest mastery), with no due-date pressure.
 
 ## Where things live
 

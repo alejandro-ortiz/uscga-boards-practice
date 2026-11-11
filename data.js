@@ -1,4 +1,4 @@
-window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=0f90667';
+window.PACKET_DATA_URL = 'boards_packet_2026_2027_clean_v2.json?v=dev-ratings';
 
 window.loadStudyData = async function () {
   const response = await fetch(window.PACKET_DATA_URL);
@@ -62,15 +62,56 @@ window.loadStudyData = async function () {
   facts.push({ id: 'district-pac-cmd', category: 'districts', section: districts.section, front: 'PAC Area Command headquarters', back: districts.areas.PAC.command_hq });
   facts.push({ id: 'district-hq', category: 'districts', section: districts.section, front: 'Coast Guard Headquarters', back: districts.headquarters.replace(/^.*—\s*/, '') });
 
-  // U.S. Coast Guard Enlisted Ratings (packet pp. 10-12) — name ↔ abbreviation, duties shown in study.
+  // U.S. Coast Guard Enlisted Ratings (packet pp. 10-12) — identify the rating name AND abbreviation
+  // from the specialty mark, plus a keyword-graded definition. Marks are public-domain U.S. Government
+  // works (see images/ratings/CREDITS.md). Keywords below are the core duties from each packet entry.
   const ratings = packet.term_definitions.enlisted_ratings;
-  ratings.items.forEach((item, index) => facts.push({ id: `ratings-${index}`, category: 'ratings', section: ratings.section, front: item.name, back: item.abbreviation, detail: item.description }));
+  const ratingKeywords = {
+    AMT: ['aircraft', 'engines', 'maintain', 'repair', 'airframe'],
+    AST: ['survival', 'rescue', 'aircrew', 'equipment', 'training'],
+    AET: ['avionics', 'communications', 'navigation', 'electrical', 'flight'],
+    BM: ['seamanship', 'deck', 'boat', 'navigation', 'law enforcement'],
+    GM: ['weapons', 'ordnance', 'ammunition', 'gunnery', 'boarding'],
+    OS: ['command', 'control', 'communications', 'rescue', 'law enforcement'],
+    IS: ['intelligence', 'collects', 'analyzes', 'briefs', 'databases'],
+    ME: ['law enforcement', 'security', 'anti-terrorism', 'response', 'protection'],
+    DV: ['diving', 'underwater', 'searches', 'recoveries', 'repair'],
+    DC: ['hulls', 'emergency', 'welding', 'decontamination', 'plumbing'],
+    EM: ['propulsion', 'power', 'lighting', 'motors', 'machinery'],
+    MK: ['engines', 'boilers', 'propulsion', 'refrigeration', 'machinery'],
+    MST: ['inspections', 'vessels', 'facilities', 'environmental', 'regulations'],
+    ET: ['electronic', 'communications', 'navigation', 'radar', 'weapons'],
+    IT: ['computer', 'voice', 'network', 'infrastructure', 'systems'],
+    HS: ['medical', 'treatment', 'diagnostic', 'medications', 'immunizations'],
+    CS: ['food', 'baking', 'cookery', 'menus', 'sanitation'],
+    SK: ['procurements', 'financial', 'shipping', 'receiving', 'property'],
+    YN: ['clerical', 'administrative', 'typing', 'filing', 'records'],
+    MU: ['perform', 'band', 'musical', 'ceremonies', 'ensembles'],
+    PA: ['interviews', 'news', 'imagery', 'spokespersons', 'websites'],
+    CMS: ['cyber', 'secure', 'protecting', 'adversaries', 'operations'],
+    IV: ['criminal', 'background', 'intelligence', 'enforcement', 'protection']
+  };
+  ratings.items.forEach((item, index) => {
+    const ab = item.abbreviation;
+    facts.push({ id: `ratings-${index}`, category: 'ratings', section: ratings.section, front: item.name, back: ab, detail: item.description, image: `images/ratings/${ab.toLowerCase()}.png`, rating: true, insigniaGroup: 'cg_rating', keywords: ratingKeywords[ab] });
+  });
 
-  // Officer & Enlisted Ranks (packet pp. 6-9) — name ↔ pay grade / abbreviation.
+  // Officer, Warrant & Enlisted Ranks (packet pp. 6-9) — identify the rank from its insignia image.
+  // Images are public-domain U.S. Government insignia (see images/ranks/CREDITS.md).
   const ranks = packet.visual_and_identification.ranks;
-  ranks.coast_guard_navy_commissioned.forEach((item, index) => facts.push({ id: `rank-o-${index}`, category: 'ranks', section: 'Commissioned Officer Ranks (Coast Guard / Navy)', front: item.name, back: `${item.rank} · ${item.abbreviation}` }));
-  ranks.enlisted.forEach((item, index) => facts.push({ id: `rank-e-${index}`, category: 'ranks', section: 'Enlisted Ranks', front: item.name.replace(/\s+/g, ' '), back: item.rank === 'Special' ? 'E-9 (special)' : item.rank }));
-  ranks.marine_corps_army_air_force.forEach((item, index) => facts.push({ id: `rank-s-${index}`, category: 'ranks', section: 'Officer Ranks (Army / Marine Corps / Air Force)', front: `${item.name} (Army / USMC / Air Force)`, back: item.rank }));
+  const rankImg = (file) => `images/ranks/${file}`;
+  ranks.coast_guard_navy_commissioned.forEach((item, index) => facts.push({ id: `rank-o-${index}`, category: 'ranks', section: 'Commissioned Officer Ranks (Coast Guard / Navy)', front: item.name, back: `${item.rank} · ${item.abbreviation}`, image: rankImg(`cg-o${index + 1}.png`), insignia: true, insigniaGroup: 'cg_officer', detail: `Pay grade ${item.rank} · ${item.abbreviation}. Shown: U.S. Coast Guard shoulder board.` }));
+  ranks.warrant_officer.forEach((item, index) => facts.push({ id: `rank-w-${index}`, category: 'ranks', section: 'Warrant Officer Ranks (Coast Guard)', front: item.name, back: item.abbreviation, image: rankImg(`cg-${item.abbreviation.toLowerCase()}.png`), insignia: true, insigniaGroup: 'cg_warrant', detail: `${item.rank} · ${item.abbreviation}. Shown: U.S. Coast Guard shoulder board.` }));
+  const enlistedImg = { 3: 'cg-e4.png', 4: 'cg-e5.png', 5: 'cg-e6.png', 6: 'cg-e7.png', 7: 'cg-e8.png', 8: 'cg-e9.png', 9: 'cg-cpocg.png' };
+  ranks.enlisted.forEach((item, index) => {
+    const name = item.rank === 'E-9' ? 'Master Chief Petty Officer' : item.name.replace(/\s+/g, ' ');
+    const grade = item.rank === 'Special' ? 'E-9 · Chief Petty Officer of the Coast Guard' : item.rank;
+    const base = { id: `rank-e-${index}`, category: 'ranks', section: 'Enlisted Ranks (Coast Guard)', front: name, back: grade };
+    const file = enlistedImg[index];
+    if (file) facts.push({ ...base, image: rankImg(file), insignia: true, insigniaGroup: 'cg_enlisted', detail: `Pay grade ${grade}${item.rank === 'E-9' ? ' (or Command Master Chief Petty Officer)' : ''}. Shown: U.S. Coast Guard collar device.` });
+    else facts.push(base); // E-1 / E-2 / E-3 have no distinct device in the packet
+  });
+  ranks.marine_corps_army_air_force.forEach((item, index) => facts.push({ id: `rank-s-${index}`, category: 'ranks', section: 'Commissioned Officer Ranks (Army / Marine Corps / Air Force)', front: item.name, back: item.rank, image: rankImg(`joint-o${index + 1}.png`), insignia: true, insigniaGroup: 'joint_officer', detail: `Pay grade ${item.rank}. Shown: collar device (shared by Army, Marine Corps, and Air Force).` }));
 
   // Common Lights and Dayshapes (packet p. 18) — recognition with COLREGS diagrams.
   const lights = packet.study_additions.lights;
