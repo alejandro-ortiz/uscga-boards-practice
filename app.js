@@ -73,7 +73,7 @@ function startSession() {
   let questions;
   if (state.mode === 'study') questions = pool;
   else if (state.mode === 'test') questions = pool.flatMap((fact) => makeTestQuestions(fact, pool));
-  else questions = pool.flatMap((fact) => fact.districtsMap ? [] : fact.asset ? makeAssetQuestions(fact, pool, practiceMode(fact)) : fact.rating ? makeRatingQuestions(fact, pool) : fact.insignia ? [makeInsigniaQuestion(fact, pool)] : [makeQuestion(fact, pool, practiceMode(fact))]);
+  else questions = pool.flatMap((fact) => fact.districtsMap ? [] : fact.asset ? makeAssetQuestions(fact, pool, practiceMode(fact)) : fact.rating ? makeRatingQuestions(fact, pool) : fact.imageRecognition ? [makeImageRecallQuestion(fact)] : fact.insignia ? [makeInsigniaQuestion(fact, pool)] : [makeQuestion(fact, pool, practiceMode(fact))]);
   if (state.mode === 'test' || (state.mode !== 'study' && state.mode !== 'review')) questions = shuffle(questions);
   const cap = $('lengthSelect').value;
   if (cap !== 'all') questions = questions.slice(0, Number(cap));
@@ -127,10 +127,19 @@ function makeRatingQuestions(fact, pool) {
   ];
 }
 
+// Image-only recognition (distress signals): show the depiction and ask the user to name the signal.
+// The describing text is deliberately NOT shown — that would give the answer away — so this tests
+// visual recognition. The packet wording is graded on key terms so a correct identification isn't
+// failed over exact phrasing.
+function makeImageRecallQuestion(fact) {
+  return { ...fact, format: 'fill', prompt: 'Which distress signal is this?', promptLabel: 'Identify the signal from the image (key points count)', answer: fact.front, keywordGrade: true, exact: false, direction: 'meaning' };
+}
+
 // Graded test questions: verbatim sections are typed word-for-word; assets are recognition;
 // everything else is a typed answer graded on key terms (see keywordScore / answerQuestion).
 function makeTestQuestions(fact, pool) {
   if (fact.districtsMap) return [];
+  if (fact.imageRecognition) return [makeImageRecallQuestion(fact)];
   const cfg = CURRICULUM.for(fact.category);
   if (fact.asset) return makeAssetQuestions(fact, pool, 'matching');
   if (fact.rating) return makeRatingQuestions(fact, pool);

@@ -27,7 +27,7 @@ window.CURRICULUM = {
     mission:    { unit: 'Core Knowledge',        verbatim: true },
     ethos:      { unit: 'Core Knowledge',        verbatim: true },
     sentry:     { unit: 'Core Knowledge',        verbatim: true },
-    distress:   { unit: 'Visual Identification', verbatim: true }, // when added
+    distress:   { unit: 'Visual Identification', recognition: true }, // identify the signal from its image
 
     // Keywords / understanding (verbatim defaults to false).
     etiquette:  { unit: 'Customs & Courtesies' },

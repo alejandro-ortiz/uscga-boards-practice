@@ -121,7 +121,7 @@ window.loadStudyData = async function () {
   // depiction (images/distress/, order matches the packet list) so the signal can be recognized visually.
   const distress = packet.study_additions.distress;
   const distressImages = ['red-star-shells', 'fog-horn', 'flames', 'gun-intervals', 'orange-flag', 'sos-morse', 'mayday-radio', 'parachute-flare', 'dye-marker', 'november-charlie', 'square-flag-ball', 'wave-arms', 'inmarsat', 'dsc', 'epirb', 'orange-smoke', 'white-flashing-light'];
-  distress.items.forEach((item, index) => facts.push({ id: `distress-${index}`, category: 'distress', section: distress.section, front: item.front, back: item.back, image: distressImages[index] ? `images/distress/${distressImages[index]}.svg` : undefined }));
+  distress.items.forEach((item, index) => facts.push({ id: `distress-${index}`, category: 'distress', section: distress.section, front: item.front, back: item.back, image: distressImages[index] ? `images/distress/${distressImages[index]}.svg` : undefined, imageRecognition: true }));
 
   return { title: packet.title, facts };
 };

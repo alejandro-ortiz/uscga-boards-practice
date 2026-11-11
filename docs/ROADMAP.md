@@ -14,8 +14,9 @@ organization only — not a path cadets must walk through, and no "weeks" schedu
 Configured in `curriculum.js`:
 
 - **Whole test:** need **90%** correct overall to pass (`passOverall`).
-- **Verbatim sections — exact wording:** General Orders, Academy Mission, Coast Guard Ethos, and the
-  16 Distress Signals (when added). Marked `verbatim: true`.
+- **Verbatim sections — exact wording:** General Orders, Academy Mission, Coast Guard Ethos.
+  Marked `verbatim: true`. (Distress Signals were initially verbatim but are now image recognition —
+  see below.)
 - **Everything else — keywords, not structure:** a typed answer passes if it contains at least
   **70%** of the expected answer's key terms (`keywordThreshold`). Word order and phrasing don't matter.
 
@@ -87,6 +88,12 @@ grading ignores punctuation/whitespace (still exact words, in order).
   parachute red flare, N-over-C code flags, blue pistol, yellow air horn, wave-arms, etc. No captions
   or identifying text appear on any image, so the user is tested on visual recognition, not reading a
   label. Previously the set was text-only; the images simply didn't exist.
+- **Distress is now true image recognition.** In Practice/Test the distress question shows only the
+  image and asks "Which distress signal is this?" — the describing text is no longer printed as the
+  prompt (it used to name the signal above its own picture, defeating recognition). The answer is the
+  packet description, graded on key terms (≥70%), not verbatim. Facts carry an `imageRecognition` flag
+  (`makeImageRecallQuestion` in app.js); `curriculum.js` marks distress `recognition: true`. Study mode
+  still shows everything for browsing.
 
 ### ▶ Next (in priority order)
 1. **Progress export/import** — back up / move a browser's progress (JSON download + restore);
