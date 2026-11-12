@@ -14,7 +14,7 @@
 body { margin: 0; color: var(--ink); background: radial-gradient(circle at top left, #fff 0, var(--paper) 45%, #e7eaf1 100%); font-family: Georgia, 'Times New Roman', serif; }
 button, select, input { font: inherit; } button { cursor: pointer; }
 .app-shell { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 64px; }
-.topbar { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; }.header-actions { display: flex; gap: 8px; }
+.topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 32px; }.header-actions { display: flex; gap: 8px; flex: none; }.topbar .intro { max-width: 580px; margin: 12px 0 0; color: var(--muted); font: 14px/1.5 Arial, sans-serif; }
 .eyebrow { margin: 0 0 8px; color: var(--teal); font: 700 11px/1.2 Arial, sans-serif; letter-spacing: .12em; } h1, h2, h3, p { margin-top: 0; }
 h1 { margin-bottom: 0; font-size: clamp(36px, 6vw, 62px); line-height: .98; font-weight: 500; } h2 { margin-bottom: 0; font-size: 30px; font-weight: 500; }
 .theme-button, .menu-button, .secondary-button { padding: 10px 13px; color: var(--teal-dark); background: transparent; border: 1px solid var(--line); border-radius: 6px; font: 700 11px Arial, sans-serif; }.theme-button:hover, .menu-button:hover, .secondary-button:hover { background: rgba(8, 13, 85, .08); }
